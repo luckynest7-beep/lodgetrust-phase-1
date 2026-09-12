@@ -1,0 +1,98 @@
+{
+  "backend/image_analysis/aesthetic_score.py": {
+    "mtime": 1786861179.4824352,
+    "seen": 1786861992.2442396,
+    "ast_hash": "e361edea762903933dea04f65ada7e68",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/ai_image_detector.py": {
+    "mtime": 1786860391.6803896,
+    "seen": 1786861992.2442443,
+    "ast_hash": "7135805d16c5d901adef05328e4e4497",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/clip_utils.py": {
+    "mtime": 1786858275.8193908,
+    "seen": 1786861992.2442462,
+    "ast_hash": "7f0813607010271cae161479b4cf9730",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/combine_signals.py": {
+    "mtime": 1786861833.9499853,
+    "seen": 1786861992.2442474,
+    "ast_hash": "bf98dfe2f39a49517e306ac491152b61",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/furniture_detector.py": {
+    "mtime": 1786861184.8791492,
+    "seen": 1786861992.2442484,
+    "ast_hash": "4ddee273f9652863f5331982d90dc00b",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/stolen_image.py": {
+    "mtime": 1786859608.0734642,
+    "seen": 1786861992.244249,
+    "ast_hash": "66bb5b0c99fb3c3bd4e5da0c139a5f20",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/style_tier.py": {
+    "mtime": 1786861174.1288135,
+    "seen": 1786861992.24425,
+    "ast_hash": "f9e6bfaf3ed903b0050a95cdee571783",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_clip_loads.py": {
+    "mtime": 1786857924.7506104,
+    "seen": 1786861992.2442527,
+    "ast_hash": "7c3394f2db9907a2ff9a6e0e3e88dc87",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/README.md": {
+    "mtime": 1786861850.4260244,
+    "seen": 1786861992.2442567,
+    "ast_hash": "b4c4654f3c1a23b5b229204d32373d73",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/requirements.txt": {
+    "mtime": 1786857879.5306745,
+    "seen": 1786861992.2442575,
+    "ast_hash": "3e3c9c6b1b122f903d45a0880d1e0458",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_stolen_image.py": {
+    "mtime": 1786859613.5708532,
+    "seen": 1786861992.244255,
+    "ast_hash": "ca44c5c6ff071a8c43d352b385822610",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_ai_detector.py": {
+    "mtime": 1786860398.0794303,
+    "seen": 1786861992.2442517,
+    "ast_hash": "a0336555b04ca945a42d624754105ba3",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_aesthetic_score.py": {
+    "mtime": 1786861194.2066278,
+    "seen": 1786861992.2442508,
+    "ast_hash": "c70ba51665ff870f1ead0af30be59cd7",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_furniture_detector.py": {
+    "mtime": 1786861199.911173,
+    "seen": 1786861992.244254,
+    "ast_hash": "5cd76b6e5004f5ee57e59b826f836083",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_style_tier.py": {
+    "mtime": 1786861188.4122581,
+    "seen": 1786861992.244256,
+    "ast_hash": "20bcb1ead2d3cf79992519099e8db458",
+    "semantic_hash": ""
+  },
+  "backend/image_analysis/tests/test_combine_signals.py": {
+    "mtime": 1786861840.159049,
+    "seen": 1786861992.2442534,
+    "ast_hash": "73a2de3402f19ac51d1491d1b6cc8c44",
+    "semantic_hash": ""
+  }
+}

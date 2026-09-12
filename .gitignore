@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Model weights / artifacts downloaded at runtime
+*.pt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+*.zip
+
+# FAISS index files (rebuilt from source data)
+*.faiss
+*.meta.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Test caches
+.coverage
+htmlcov/
