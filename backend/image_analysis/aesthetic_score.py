@@ -12,7 +12,16 @@ from PIL import Image
 import torch
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 
-DEFAULT_MODEL_NAME = "cafeai/cafe_aesthetic"
+# Path to fine-tuned model checkpoint (local workspace or project directory)
+_LOCAL_MODEL = Path(__file__).resolve().parents[2] / "fine_tune_aesthetic" / "model"
+_ROOT_MODEL = Path(__file__).resolve().parents[3] / "fine_tune_aesthetic" / "model"
+
+if _LOCAL_MODEL.exists() and (_LOCAL_MODEL / "model.safetensors").exists():
+    DEFAULT_MODEL_NAME = str(_LOCAL_MODEL)
+elif _ROOT_MODEL.exists() and (_ROOT_MODEL / "model.safetensors").exists():
+    DEFAULT_MODEL_NAME = str(_ROOT_MODEL)
+else:
+    DEFAULT_MODEL_NAME = "cafeai/cafe_aesthetic"
 
 _MODEL = None
 _PROCESSOR = None
@@ -75,13 +84,16 @@ def score_aesthetic(image: Union[Image.Image, str, Path]) -> dict:
     with torch.no_grad():
         outputs = model(**inputs)
 
-    probs = torch.softmax(outputs.logits, dim=-1).squeeze(0).cpu().numpy()
-
-    # Model id2label: {0: 'not_aesthetic', 1: 'aesthetic'}
-    prob_aesthetic = float(probs[1]) if len(probs) > 1 else float(probs[0])
-
-    # Normalize 0.0 - 1.0 probability range to 1.0 - 10.0 scale
-    score = round(1.0 + 9.0 * prob_aesthetic, 2)
+    logits = outputs.logits.squeeze()
+    if logits.ndim == 0 or (logits.ndim == 1 and logits.shape[0] == 1):
+        raw_val = float(logits.cpu().item())
+        score = round(max(1.0, min(10.0, raw_val)), 2)
+    else:
+        probs = torch.softmax(outputs.logits, dim=-1).squeeze(0).cpu().numpy()
+        # Model id2label: {0: 'not_aesthetic', 1: 'aesthetic'}
+        prob_aesthetic = float(probs[1]) if len(probs) > 1 else float(probs[0])
+        # Normalize 0.0 - 1.0 probability range to 1.0 - 10.0 scale
+        score = round(1.0 + 9.0 * prob_aesthetic, 2)
 
     return {
         "aesthetic_score": score,

@@ -7,8 +7,8 @@ from PIL import Image
 import torch
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 
-DEFAULT_MODEL_NAME = "prithivMLmods/AI-vs-Deepfake-vs-Real-v2.0"
-BACKUP_MODEL_NAME = "Smogy/SMOGY-Ai-images-detector"
+DEFAULT_MODEL_NAME = "prithivMLmods/deepfake-detector-model-v1"
+BACKUP_MODEL_NAME = "buildborderless/CommunityForensics-DeepfakeDet-ViT"
 
 _MODELS: Dict[str, AutoModelForImageClassification] = {}
 _PROCESSORS: Dict[str, AutoImageProcessor] = {}
@@ -53,11 +53,11 @@ def detect_ai_generated(
 
     Args:
         image: A PIL Image instance or file path.
-        model_name: Hugging Face model identifier to use (default: primary SigLIP2 model).
+        model_name: Hugging Face model identifier to use (default: CommunityForensics ViT).
 
     Returns:
         dict: {
-            "label": str,         # Top label (e.g., "Artificial", "Deepfake", "Real")
+            "label": str,         # Top label (e.g., "Real", "Artificial", "Deepfake")
             "confidence": float,  # Probability of the top label (0.0 - 1.0)
             "scores": dict        # Class label -> probability mapping for all classes
         }
@@ -80,18 +80,34 @@ def detect_ai_generated(
     with torch.no_grad():
         outputs = model(**inputs)
 
-    logits = outputs.logits
-    probs = torch.softmax(logits, dim=-1).squeeze(0).cpu().numpy()
+    logits = outputs.logits.squeeze(0)
 
-    id2label = getattr(model.config, "id2label", None)
-    if id2label is None:
-        id2label = {i: f"class_{i}" for i in range(len(probs))}
+    # Handle binary single-output classification (e.g., CommunityForensics ViT)
+    if logits.ndim == 0 or (logits.ndim == 1 and logits.shape[0] == 1):
+        logit_val = float(logits.cpu().item())
+        prob_ai = float(torch.sigmoid(torch.tensor(logit_val)).item())
+        prob_real = float(1.0 - prob_ai)
 
-    scores = {id2label[i]: float(probs[i]) for i in range(len(probs))}
+        scores = {
+            "Real": round(prob_real, 4),
+            "Artificial": round(prob_ai, 4),
+        }
+        if prob_ai >= 0.5:
+            top_label = "Artificial"
+            top_confidence = round(prob_ai, 4)
+        else:
+            top_label = "Real"
+            top_confidence = round(prob_real, 4)
+    else:
+        probs = torch.softmax(logits, dim=-1).cpu().numpy()
+        id2label = getattr(model.config, "id2label", None)
+        if id2label is None:
+            id2label = {i: f"class_{i}" for i in range(len(probs))}
 
-    top_idx = int(np.argmax(probs))
-    top_label = str(id2label[top_idx])
-    top_confidence = float(probs[top_idx])
+        scores = {id2label[i]: float(probs[i]) for i in range(len(probs))}
+        top_idx = int(np.argmax(probs))
+        top_label = str(id2label[top_idx])
+        top_confidence = float(probs[top_idx])
 
     return {
         "label": top_label,

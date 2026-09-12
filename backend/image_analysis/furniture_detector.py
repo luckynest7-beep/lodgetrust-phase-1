@@ -5,7 +5,7 @@ from typing import List, Optional, Union
 from PIL import Image
 from ultralytics import YOLO
 
-DEFAULT_YOLO_MODEL = "yolov8l.pt"
+DEFAULT_YOLO_MODEL = "yolo11l.pt"
 
 # Default expected amenities for 3-star lodging (can be overridden when Module D criteria land)
 DEFAULT_EXPECTED_AMENITIES = ["bed", "chair", "couch", "tv", "dining table"]

@@ -1,16 +1,16 @@
 # Graph Report - project  (2026-09-12)
 
 ## Corpus Check
-- 34 files · ~9,765 words
+- 39 files · ~10,937 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 296 nodes · 422 edges · 15 communities (14 shown, 1 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.8)
+- 307 nodes · 435 edges · 17 communities (15 shown, 2 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `921ebc0b`
+- Built from commit: `86f41cef`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - api.ts
 - embed_image
 - Layer 5 — Combine B3 Signals
-- score_aesthetic
+- download_ava_subset.py
 - detect_ai_generated
 - combine_for_image
 - detect_furniture
@@ -28,6 +28,8 @@
 - compilerOptions
 - LodgeTrust Module B — Image Analysis & Signal Verification System
 - __init__.py
+- load_csv
+- fine_tune_aesthetic/README.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
@@ -56,7 +58,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (15 total, 1 thin omitted)
+## Communities (17 total, 2 thin omitted)
 
 ### Community 0 - "api.ts"
 Cohesion: 0.10
@@ -70,17 +72,17 @@ Nodes (23): embed_image(), get_device(), load_clip(), Image, Path, CLIP model lo
 Cohesion: 0.07
 Nodes (27): B3a — Style Tier (`style_tier.py`), B3b — Aesthetic Score (`aesthetic_score.py`), B3c — Furniture & Amenity Detector (`furniture_detector.py`), Cosine Similarity Threshold Tuning, Downstream Integration Handoff, Error Resilience, Features & Key Functions, File Overview (+19 more)
 
-### Community 3 - "score_aesthetic"
-Cohesion: 0.16
-Nodes (14): get_device(), load_aesthetic_predictor(), AutoImageProcessor, AutoModelForImageClassification, Image, Path, B3b Aesthetic score module. Note & Caveat: This aesthetic predictor reflects…, Return 'cuda' if GPU is available, else 'cpu'. (+6 more)
+### Community 3 - "download_ava_subset.py"
+Cohesion: 0.67
+Nodes (5): download_single_image(), main(), parse_ava_metadata(), Path, write_label_csv()
 
 ### Community 4 - "detect_ai_generated"
 Cohesion: 0.12
 Nodes (20): detect_ai_generated(), get_device(), load_ai_detector(), AutoImageProcessor, AutoModelForImageClassification, Image, Path, B2 AI-Generated Image Detection module using Hugging Face image classification… (+12 more)
 
 ### Community 5 - "combine_for_image"
-Cohesion: 0.16
-Nodes (16): combine_for_image(), combine_for_listing(), Image, Path, Layer 5 Signal Combiner — Aggregates B3a, B3b, and B3c quality, style, and…, Run B3a, B3b, B3c on a single image and merge into a feature vector. Resilience…, Run combine_for_image on each image and aggregate signals across a listing.…, Unit tests for Layer 5 signal combiner module (combine_signals.py). (+8 more)
+Cohesion: 0.08
+Nodes (30): get_device(), load_aesthetic_predictor(), AutoImageProcessor, AutoModelForImageClassification, Image, Path, B3b Aesthetic score module. Note & Caveat: This aesthetic predictor reflects…, Return 'cuda' if GPU is available, else 'cpu'. (+22 more)
 
 ### Community 6 - "detect_furniture"
 Cohesion: 0.15
@@ -103,23 +105,27 @@ Cohesion: 0.09
 Nodes (21): compilerOptions, allowImportingTsExtensions, isolatedModules, jsx, lib, module, moduleResolution, noEmit (+13 more)
 
 ### Community 11 - "LodgeTrust Module B — Image Analysis & Signal Verification System"
-Cohesion: 0.18
-Nodes (10): 1. Start Backend API Service (FastAPI), 2. Start Frontend Web Interface (React + Vite), 6-Step End-to-End Demo Flow, Architecture Overview, Backend (`project/backend/`), Environment Variables, Frontend (`project/frontend/`), LodgeTrust Module B — Image Analysis & Signal Verification System (+2 more)
+Cohesion: 0.22
+Nodes (8): 1. Start Backend API Service (FastAPI), 2. Start Frontend Web Interface (React + Vite), 3. Run Backend Test Suite, 6-Step End-to-End Demo Flow, LodgeTrust Module B — Image Analysis & Signal Verification System, Machine Learning Models Overview, Quick Start & Running Locally, Repository Structure
+
+### Community 15 - "load_csv"
+Cohesion: 0.40
+Nodes (3): Dataset, load_csv(), Path
 
 ## Knowledge Gaps
 - **68 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+63 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `analyze_images()` connect `main.py` to `test_stolen_image.py`, `detect_ai_generated`, `combine_for_image`?**
-  _High betweenness centrality (0.180) - this node is a cross-community bridge._
-- **Why does `combine_for_image()` connect `combine_for_image` to `embed_image`, `score_aesthetic`, `detect_furniture`, `main.py`?**
-  _High betweenness centrality (0.133) - this node is a cross-community bridge._
+  _High betweenness centrality (0.167) - this node is a cross-community bridge._
+- **Why does `combine_for_image()` connect `combine_for_image` to `embed_image`, `detect_furniture`, `main.py`?**
+  _High betweenness centrality (0.124) - this node is a cross-community bridge._
 - **Why does `check_stolen()` connect `test_stolen_image.py` to `embed_image`, `main.py`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+  _High betweenness centrality (0.076) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `analyze_images()` (e.g. with `detect_ai_generated()` and `combine_for_image()`) actually correct?**
   _`analyze_images()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `version` to the rest of the system?**

@@ -2,3 +2,11 @@ fastapi
 uvicorn[standard]
 python-multipart
 pydantic
+transformers
+torch
+faiss-cpu
+ultralytics
+pillow
+numpy
+scikit-learn
+pytest

@@ -56,6 +56,7 @@ model      = AutoModelForImageClassification.from_pretrained(
     BASE_MODEL,
     num_labels=1,               # regression output
     problem_type="regression",
+    ignore_mismatched_sizes=True,
 )
 
 # ------------------------------------------------------------------

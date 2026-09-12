@@ -1,0 +1,7 @@
+transformers
+datasets
+accelerate
+torch
+pillow
+pandas
+pytest
