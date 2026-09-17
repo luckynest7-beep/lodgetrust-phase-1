@@ -64,14 +64,19 @@ def detect_furniture(
 
     if expected_amenities:
         expected_lower = [item.lower() for item in expected_amenities]
-        matched_count = sum(
-            1 for item in expected_lower if detected_counts.get(item, 0) >= 1
-        )
-        completeness_score = round(matched_count / len(expected_lower), 4)
+        matched = [item for item in expected_lower if detected_counts.get(item, 0) >= 1]
+        missing = [item for item in expected_lower if detected_counts.get(item, 0) == 0]
+        completeness_score = round(len(matched) / len(expected_lower), 4)
     else:
+        matched = []
+        missing = []
         completeness_score = 0.0
 
     return {
         "detected_objects": detected_counts,
         "amenity_completeness_score": completeness_score,
+        "expected_amenities": expected_amenities or [],
+        "matched_amenities": matched,
+        "missing_amenities": missing,
     }
+

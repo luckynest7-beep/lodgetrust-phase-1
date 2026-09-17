@@ -13,15 +13,21 @@ import torch
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 
 # Path to fine-tuned model checkpoint (local workspace or project directory)
-_LOCAL_MODEL = Path(__file__).resolve().parents[2] / "fine_tune_aesthetic" / "model"
-_ROOT_MODEL = Path(__file__).resolve().parents[3] / "fine_tune_aesthetic" / "model"
+_CANDIDATE_MODEL_PATHS = [
+    Path(__file__).resolve().parents[2] / "fine_tune_aesthetic" / "model",
+    Path(__file__).resolve().parents[1] / "fine_tune_aesthetic" / "model",
+    Path(__file__).resolve().parents[3] / "images" / "model",
+    Path(__file__).resolve().parents[2] / "images" / "model",
+]
 
-if _LOCAL_MODEL.exists() and (_LOCAL_MODEL / "model.safetensors").exists():
-    DEFAULT_MODEL_NAME = str(_LOCAL_MODEL)
-elif _ROOT_MODEL.exists() and (_ROOT_MODEL / "model.safetensors").exists():
-    DEFAULT_MODEL_NAME = str(_ROOT_MODEL)
-else:
-    DEFAULT_MODEL_NAME = "cafeai/cafe_aesthetic"
+DEFAULT_MODEL_NAME = "cafeai/cafe_aesthetic"
+for candidate in _CANDIDATE_MODEL_PATHS:
+    if candidate.exists() and (
+        (candidate / "model.safetensors").exists()
+        or (candidate / "pytorch_model.bin").exists()
+    ):
+        DEFAULT_MODEL_NAME = str(candidate)
+        break
 
 _MODEL = None
 _PROCESSOR = None
@@ -98,3 +104,49 @@ def score_aesthetic(image: Union[Image.Image, str, Path]) -> dict:
     return {
         "aesthetic_score": score,
     }
+
+
+def compute_composite_aesthetic_score(
+    vision_score: float,
+    lighting_score: float,
+    color_harmony_score: float,
+    amenity_completeness_score: float,
+) -> dict:
+    """Calculate the multi-factor weighted composite aesthetic score.
+
+    Formula:
+        Composite = 0.40 * Vision + 0.25 * Lighting + 0.20 * Color + 0.15 * Amenity_Scale
+        where Amenity_Scale = 1.0 + 9.0 * amenity_completeness_score (1.0 to 10.0)
+
+    Returns:
+        dict with composite_score and detailed sub-score breakdown.
+    """
+    # Scale amenity completeness (0.0 - 1.0) to 1.0 - 10.0
+    amenity_score_10 = round(1.0 + 9.0 * max(0.0, min(1.0, amenity_completeness_score)), 2)
+
+    v_score = max(1.0, min(10.0, float(vision_score)))
+    l_score = max(1.0, min(10.0, float(lighting_score)))
+    c_score = max(1.0, min(10.0, float(color_harmony_score)))
+
+    composite = (
+        0.40 * v_score
+        + 0.25 * l_score
+        + 0.20 * c_score
+        + 0.15 * amenity_score_10
+    )
+    composite_score = round(max(1.0, min(10.0, composite)), 2)
+
+    return {
+        "composite_score": composite_score,
+        "vision_score": round(v_score, 2),
+        "lighting_score": round(l_score, 2),
+        "color_score": round(c_score, 2),
+        "amenity_score": amenity_score_10,
+        "weights": {
+            "vision": 0.40,
+            "lighting": 0.25,
+            "color": 0.20,
+            "amenities": 0.15,
+        },
+    }
+

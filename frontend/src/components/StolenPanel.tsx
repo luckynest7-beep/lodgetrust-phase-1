@@ -8,9 +8,12 @@ interface StolenPanelProps {
 export const StolenPanel: React.FC<StolenPanelProps> = ({ stolen }) => {
   if (!stolen) {
     return (
-      <div className="card signal-card">
-        <h3 className="card-title">B1 — Stolen / Reused Image Detection</h3>
-        <p className="text-muted">Signal unavailable</p>
+      <div className="apple-card">
+        <div className="card-header-clean">
+          <div className="eyebrow-label">B1 DUPLICATE SEARCH</div>
+          <h3 className="section-title">Duplicate & Stolen Photo Check</h3>
+        </div>
+        <p className="empty-state-text">Signal unavailable</p>
       </div>
     );
   }
@@ -19,49 +22,47 @@ export const StolenPanel: React.FC<StolenPanelProps> = ({ stolen }) => {
   const simPercent = Math.min(100, Math.max(0, Math.round(similarity_score * 100)));
 
   return (
-    <div className={`card signal-card ${is_flagged ? 'card-flagged' : 'card-clean'}`}>
-      <div className="card-header">
-        <h3 className="card-title">B1 — Stolen / Reused Image Detection</h3>
-        <span className={`badge ${is_flagged ? 'badge-danger' : 'badge-success'}`}>
-          {is_flagged ? '🚨 FLAGGED (Reused)' : '✅ Original Photo'}
+    <div className={`apple-card ${is_flagged ? 'card-border-flagged' : ''}`}>
+      <div className="card-header-clean">
+        <div>
+          <div className="eyebrow-label">B1 DUPLICATE SEARCH (FAISS CLIP)</div>
+          <h3 className="section-title">Catalog Duplicate Check</h3>
+        </div>
+        <span className={`mono-badge ${is_flagged ? 'badge-danger' : 'badge-outline'}`}>
+          {is_flagged ? '⚠ Reused Asset' : '✓ Original Asset'}
         </span>
       </div>
 
-      <div className="card-body">
-        <div className="metric-row">
-          <span className="metric-label">Similarity Score</span>
-          <span className="metric-value font-mono">{(similarity_score * 100).toFixed(1)}%</span>
+      <div className="card-body-clean">
+        <div className="metric-row-clean">
+          <span className="metric-name">Cross-Listing Similarity</span>
+          <span className="metric-val font-mono">{(similarity_score * 100).toFixed(1)}%</span>
         </div>
 
-        <div className="progress-bar-container" title={`Similarity: ${(similarity_score * 100).toFixed(1)}%`}>
+        <div className="clean-track-bar mt-2" title={`Similarity: ${(similarity_score * 100).toFixed(1)}%`}>
           <div
-            className={`progress-bar-fill ${is_flagged ? 'fill-danger' : 'fill-primary'}`}
+            className={`clean-fill-bar ${is_flagged ? 'fill-flagged' : 'fill-clean'}`}
             style={{ width: `${simPercent}%` }}
           />
         </div>
 
         {is_flagged ? (
-          <div className="match-alert">
-            <span className="alert-icon">🔍</span>
-            <div>
-              <strong>Duplicate Detected Across Listings</strong>
-              <div className="text-sm">
-                Matched Listing: <code className="code-pill">{matched_listing_id || 'Unknown'}</code>
-                {matched_image_id && (
-                  <> • Image ID: <code className="code-pill">{matched_image_id}</code></>
-                )}
-              </div>
+          <div className="flagged-alert-box mt-3">
+            <div className="alert-badge-label">POTENTIAL DUPLICATE DETECTED</div>
+            <div className="text-xs text-secondary mt-1">
+              Near-duplicate match found in listing <code className="code-pill">{matched_listing_id || 'Unknown'}</code>
+              {matched_image_id && (
+                <> (asset <code className="code-pill">{matched_image_id}</code>)</>
+              )}
             </div>
           </div>
         ) : (
-          <div className="text-sm text-muted mt-2">
-            No near-duplicate images found from other listings above the 95% cosine threshold.
-            {matched_listing_id && (
-              <span> (Best match similarity: {matched_listing_id} at {(similarity_score * 100).toFixed(1)}%)</span>
-            )}
-          </div>
+          <p className="text-xs text-secondary mt-3">
+            No near-duplicate images detected above the 95% cosine threshold in the verified catalog.
+          </p>
         )}
       </div>
     </div>
   );
 };
+

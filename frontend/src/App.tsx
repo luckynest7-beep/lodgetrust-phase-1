@@ -29,67 +29,117 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="app-container">
-      {/* Header */}
-      <header className="app-header">
-        <div className="header-badge">
-          <span>🏨 LodgeTrust Verification Module B</span>
-        </div>
-        <h1 className="app-title">Image Analysis & Signal Extraction</h1>
-        <p className="app-subtitle">
-          Independent multi-signal analysis for hotel and lodge listing photos. Detects stolen photos (FAISS CLIP), synthetic AI images (SigLIP2), and extracts quality, style & amenity feature vectors.
-        </p>
-      </header>
-
-      {/* Main Analysis Card */}
-      <main className="card main-card">
-        <ImageUploader
-          selectedFiles={selectedFiles}
-          onFilesChange={setSelectedFiles}
-          disabled={loading}
-        />
-
-        <div className="action-bar">
-          <button
-            className="btn btn-primary"
-            onClick={handleAnalyze}
-            disabled={loading || selectedFiles.length === 0}
-          >
-            {loading ? 'Analyzing Listing Images...' : `Analyze ${selectedFiles.length > 0 ? `(${selectedFiles.length})` : ''} Image${selectedFiles.length > 1 ? 's' : ''}`}
-          </button>
-        </div>
-
-        {/* Loading Spinner */}
-        {loading && (
-          <div className="loading-box mt-4">
-            <div className="spinner" />
-            <h3 className="font-semibold">Processing Image Analysis Pipeline...</h3>
-            <p className="text-sm text-muted mt-1">
-              Evaluating CLIP near-duplicate search, SigLIP2 AI classification, and YOLOv8 amenity detection. This may take ~15–30 seconds.
-            </p>
+    <div className="app-shell">
+      {/* Top Navigation Bar */}
+      <nav className="top-nav">
+        <div className="nav-container">
+          <div className="brand-lockup">
+            <span className="brand-symbol">◈</span>
+            <span className="brand-name">LodgeTrust</span>
+            <span className="brand-badge">Module B</span>
           </div>
-        )}
+          <div className="nav-status">
+            <span className="status-indicator-dot" />
+            <span className="status-label">Fine-Tuned Neural Engine Online</span>
+          </div>
+        </div>
+      </nav>
 
-        {/* Error Banner */}
-        {error && (
-          <div className="mt-4">
-            <ErrorBanner
-              message="Failed to complete image analysis request"
-              errors={[error]}
-              onRetry={handleAnalyze}
-              onDismiss={() => setError(null)}
+      <div className="app-container">
+        {/* Header Hero */}
+        <header className="hero-header">
+          <div className="eyebrow-pill">MULTIMODAL IMAGE INTELLIGENCE</div>
+          <h1 className="hero-title">Visual Quality & Listing Verification</h1>
+          <p className="hero-subtitle">
+            Autonomous multi-signal verification evaluating fine-tuned aesthetic scores, natural lighting geometry, color harmony palettes, and YOLO amenity completeness.
+          </p>
+        </header>
+
+        {/* Main Processing Area */}
+        <main className="main-panel">
+          <div className="apple-card uploader-card">
+            <div className="card-header-clean">
+              <div>
+                <div className="eyebrow-label">INPUT ASSETS</div>
+                <h3 className="section-title">Upload Room & Property Photos</h3>
+              </div>
+              <span className="text-xs text-secondary font-mono">
+                {selectedFiles.length} {selectedFiles.length === 1 ? 'file' : 'files'} staged
+              </span>
+            </div>
+
+            <ImageUploader
+              selectedFiles={selectedFiles}
+              onFilesChange={setSelectedFiles}
+              disabled={loading}
             />
+
+            <div className="action-bar-clean mt-4">
+              <button
+                className="btn-apple-primary"
+                onClick={handleAnalyze}
+                disabled={loading || selectedFiles.length === 0}
+              >
+                {loading ? (
+                  <>
+                    <span className="apple-spinner-sm" />
+                    <span>Processing Neural Pipeline...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Evaluate Signals</span>
+                    {selectedFiles.length > 0 && (
+                      <span className="btn-count-pill">{selectedFiles.length}</span>
+                    )}
+                  </>
+                )}
+              </button>
+            </div>
           </div>
-        )}
 
-        {/* Results Section */}
-        {results && !loading && <AnalyzeResults data={results} />}
-      </main>
+          {/* Loading Animation */}
+          {loading && (
+            <div className="apple-card loading-card mt-4">
+              <div className="apple-spinner" />
+              <h3 className="loading-title">Synthesizing Multimodal Signals</h3>
+              <p className="loading-desc">
+                Executing fine-tuned vision aesthetic regressor, CIELAB lighting exposure analysis, K-Means color harmony clustering, and YOLO amenity detection.
+              </p>
+            </div>
+          )}
 
-      {/* FAISS Index Management Panel */}
-      <SeedIndexPanel />
+          {/* Error Banner */}
+          {error && (
+            <div className="mt-4">
+              <ErrorBanner
+                message="Analysis execution failed"
+                errors={[error]}
+                onRetry={handleAnalyze}
+                onDismiss={() => setError(null)}
+              />
+            </div>
+          )}
+
+          {/* Results View */}
+          {results && !loading && <AnalyzeResults data={results} />}
+
+          {/* FAISS Index Management Panel */}
+          <div className="mt-5">
+            <SeedIndexPanel />
+          </div>
+        </main>
+      </div>
+
+      {/* Footer */}
+      <footer className="app-footer">
+        <div className="footer-content">
+          <span>LodgeTrust Core Architecture • Hotel & Vacation Rental Listing Verification</span>
+          <span className="font-mono text-xs">v1.2.0-monochrome</span>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default App;
+

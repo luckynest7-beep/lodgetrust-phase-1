@@ -17,13 +17,64 @@ export interface AiDetectorResult {
   scores: Record<string, number>;
 }
 
+export interface ColorSwatch {
+  hex: string;
+  rgb: [number, number, number];
+  percentage: number;
+}
+
+export interface ColorPaletteResult {
+  color_harmony_score: number;
+  dominant_palette: ColorSwatch[];
+  color_temperature: string;
+  warm_tone_pct: number;
+  cool_tone_pct: number;
+  harmony_type: string;
+  saturation_level: string;
+}
+
+export interface LightingAnalysisResult {
+  lighting_score: number;
+  exposure_category: string;
+  mean_brightness: number;
+  contrast: number;
+  highlight_clipping_pct: number;
+  shadow_clipping_pct: number;
+  lighting_atmosphere: string;
+  is_balanced: boolean;
+}
+
+export interface CompositeWeights {
+  vision: number;
+  lighting: number;
+  color: number;
+  amenities: number;
+}
+
+export interface CompositeAestheticResult {
+  composite_score: number;
+  vision_score: number;
+  lighting_score: number;
+  color_score: number;
+  amenity_score: number;
+  weights?: CompositeWeights;
+}
+
 export interface FeatureVector {
   style_tier: string | null;
   style_confidence: number | null;
+  tier_scores?: Record<string, number> | null;
   aesthetic_score: number | null;
   detected_objects: Record<string, number> | null;
   amenity_completeness_score: number | null;
+  expected_amenities?: string[] | null;
+  matched_amenities?: string[] | null;
+  missing_amenities?: string[] | null;
+  lighting_analysis?: LightingAnalysisResult | null;
+  color_analysis?: ColorPaletteResult | null;
+  composite_aesthetic?: CompositeAestheticResult | null;
 }
+
 
 export interface AnalyzeImageResult {
   filename: string;
@@ -37,6 +88,7 @@ export interface AnalyzeListingResponse {
   results: AnalyzeImageResult[];
   aggregated: FeatureVector;
 }
+
 
 export interface StolenAddResponse {
   status: string;

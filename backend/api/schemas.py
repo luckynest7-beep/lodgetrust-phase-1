@@ -28,12 +28,63 @@ class AiDetectorResult(BaseModel):
     scores: Dict[str, float] = Field(default_factory=dict, description="Probabilities for all classes")
 
 
+class ColorSwatch(BaseModel):
+    hex: str = Field(..., description="Hexadecimal color string e.g. #EFECE6")
+    rgb: List[int] = Field(..., description="[R, G, B] values (0-255)")
+    percentage: float = Field(..., description="Percentage of image covered by this cluster")
+
+
+class ColorPaletteResult(BaseModel):
+    color_harmony_score: float = Field(..., description="Overall color harmony score (1.0 - 10.0)")
+    dominant_palette: List[ColorSwatch] = Field(default_factory=list, description="Top dominant color swatches")
+    color_temperature: str = Field(..., description="warm, cool, or neutral_balanced")
+    warm_tone_pct: float = Field(..., description="Percentage of warm tones (0 - 100%)")
+    cool_tone_pct: float = Field(..., description="Percentage of cool tones (0 - 100%)")
+    harmony_type: str = Field(..., description="Monochromatic, Analogous, Complementary, or Balanced Neutral")
+    saturation_level: str = Field(..., description="muted_elegant, vibrant, or low_saturation")
+
+
+class LightingAnalysisResult(BaseModel):
+    lighting_score: float = Field(..., description="Overall lighting quality score (1.0 - 10.0)")
+    exposure_category: str = Field(..., description="well_exposed, underexposed, overexposed, high_contrast")
+    mean_brightness: float = Field(..., description="Average luminance percentage (0 - 100%)")
+    contrast: float = Field(..., description="Standard deviation of luminance (0 - 100)")
+    highlight_clipping_pct: float = Field(..., description="Blown white pixel percentage")
+    shadow_clipping_pct: float = Field(..., description="Crushed black pixel percentage")
+    lighting_atmosphere: str = Field(..., description="Natural Daylight, Warm Ambient, etc.")
+    is_balanced: bool = Field(..., description="True if lighting is well-balanced for lodging")
+
+
+class CompositeWeights(BaseModel):
+    vision: float = Field(default=0.40)
+    lighting: float = Field(default=0.25)
+    color: float = Field(default=0.20)
+    amenities: float = Field(default=0.15)
+
+
+class CompositeAestheticResult(BaseModel):
+    composite_score: float = Field(..., description="Multi-factor weighted aesthetic score (1.0 - 10.0)")
+    vision_score: float = Field(..., description="Base vision model score (1.0 - 10.0)")
+    lighting_score: float = Field(..., description="Lighting quality score (1.0 - 10.0)")
+    color_score: float = Field(..., description="Color harmony score (1.0 - 10.0)")
+    amenity_score: float = Field(..., description="Scaled amenity score (1.0 - 10.0)")
+    weights: Optional[CompositeWeights] = Field(default=None)
+
+
 class FeatureVector(BaseModel):
-    style_tier: Optional[str] = Field(default=None, description="Luxury or budget style classification")
+    style_tier: Optional[str] = Field(default=None, description="Lodging tier classification: budget, midscale, upscale, luxury")
     style_confidence: Optional[float] = Field(default=None, description="Style classification confidence (0.0 - 1.0)")
-    aesthetic_score: Optional[float] = Field(default=None, description="Normalized aesthetic quality score (1.0 - 10.0)")
+    tier_scores: Optional[Dict[str, float]] = Field(default=None, description="Probability distribution across lodging tiers")
+    aesthetic_score: Optional[float] = Field(default=None, description="Normalized vision aesthetic quality score (1.0 - 10.0)")
     detected_objects: Optional[Dict[str, int]] = Field(default_factory=dict, description="Detected object class counts")
     amenity_completeness_score: Optional[float] = Field(default=None, description="Fraction of expected amenities present (0.0 - 1.0)")
+    expected_amenities: Optional[List[str]] = Field(default_factory=list, description="Target standard amenity list")
+    matched_amenities: Optional[List[str]] = Field(default_factory=list, description="Amenities successfully detected")
+    missing_amenities: Optional[List[str]] = Field(default_factory=list, description="Expected amenities not detected")
+    lighting_analysis: Optional[LightingAnalysisResult] = Field(default=None, description="Lighting & exposure metrics")
+    color_analysis: Optional[ColorPaletteResult] = Field(default=None, description="Color palette & harmony metrics")
+    composite_aesthetic: Optional[CompositeAestheticResult] = Field(default=None, description="Multi-factor composite aesthetic score")
+
 
 
 class AnalyzeImageResult(BaseModel):
@@ -58,3 +109,4 @@ class StolenAddResponse(BaseModel):
 class StolenResetResponse(BaseModel):
     status: str = Field(default="reset")
     message: str
+

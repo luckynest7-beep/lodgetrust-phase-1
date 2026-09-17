@@ -8,44 +8,50 @@ interface AiGenPanelProps {
 export const AiGenPanel: React.FC<AiGenPanelProps> = ({ aiData }) => {
   if (!aiData) {
     return (
-      <div className="card signal-card">
-        <h3 className="card-title">B2 — AI-Generated Image Detection</h3>
-        <p className="text-muted">Signal unavailable</p>
+      <div className="apple-card">
+        <div className="card-header-clean">
+          <div className="eyebrow-label">B2 AI SYNTHESIS CHECK</div>
+          <h3 className="section-title">Deepfake & AI Classifier</h3>
+        </div>
+        <p className="empty-state-text">Signal unavailable</p>
       </div>
     );
   }
 
   const { label, confidence, scores } = aiData;
-  const isAi = label.toLowerCase() === 'artificial' || label.toLowerCase() === 'ai_generated' || label.toLowerCase() === 'deepfake';
+  const isAi = label.toLowerCase() === 'artificial' || label.toLowerCase() === 'fake' || label.toLowerCase() === 'deepfake';
 
   return (
-    <div className={`card signal-card ${isAi ? 'card-warning' : 'card-clean'}`}>
-      <div className="card-header">
-        <h3 className="card-title">B2 — AI-Generated Image Detection</h3>
-        <span className={`badge ${isAi ? 'badge-warning' : 'badge-success'}`}>
-          {isAi ? `⚠️ ${label}` : `📷 Real Photo`}
+    <div className="apple-card">
+      <div className="card-header-clean">
+        <div>
+          <div className="eyebrow-label">B2 SYNTHETIC ARTIFACT CHECK</div>
+          <h3 className="section-title">AI & Deepfake Classifier</h3>
+        </div>
+        <span className={`mono-badge ${isAi ? 'badge-warning' : 'badge-dark'}`}>
+          {isAi ? `⚠ ${label}` : `✓ Real Photography`}
         </span>
       </div>
 
-      <div className="card-body">
-        <div className="metric-row">
-          <span className="metric-label">Predicted Label</span>
-          <span className="metric-value font-bold">{label} ({(confidence * 100).toFixed(1)}%)</span>
+      <div className="card-body-clean">
+        <div className="metric-row-clean">
+          <span className="metric-name">Top Prediction</span>
+          <span className="metric-val font-mono">{label} ({(confidence * 100).toFixed(1)}%)</span>
         </div>
 
-        <div className="class-scores-list">
-          <span className="text-sm font-semibold text-muted">Probability Distribution:</span>
+        <div className="class-scores-clean mt-3">
+          <span className="text-xs text-secondary eyebrow-label">CLASS PROBABILITIES</span>
           {Object.entries(scores).map(([className, scoreVal]) => {
             const pct = Math.round(scoreVal * 100);
             return (
-              <div className="score-bar-row" key={className}>
-                <div className="score-bar-label">
-                  <span>{className}</span>
-                  <span className="font-mono">{pct}%</span>
+              <div className="clean-prob-row mt-2" key={className}>
+                <div className="prob-label-row">
+                  <span className="text-xs font-semibold">{className}</span>
+                  <span className="text-xs font-mono text-secondary">{pct}%</span>
                 </div>
-                <div className="progress-bar-container">
+                <div className="clean-track-bar">
                   <div
-                    className={`progress-bar-fill ${className.toLowerCase() === 'real' ? 'fill-success' : 'fill-warning'}`}
+                    className="clean-fill-bar fill-clean"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -54,10 +60,11 @@ export const AiGenPanel: React.FC<AiGenPanelProps> = ({ aiData }) => {
           })}
         </div>
 
-        <div className="caveat-box">
-          ℹ️ <strong>Note:</strong> Public AI detectors reflect probabilistic predictions. Treat synthetic scores as flags for human review.
-        </div>
+        <p className="text-xs text-secondary mt-3">
+          Photometric and structural frequency analysis. Deepfake indicators serve as advisory flags for human compliance review.
+        </p>
       </div>
     </div>
   );
 };
+

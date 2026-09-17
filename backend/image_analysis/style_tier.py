@@ -1,29 +1,59 @@
-"""B3a CLIP zero-shot style/luxury tier classification module."""
+"""B3a CLIP zero-shot style & lodging tier classification module.
+
+Classifies lodging photos across a 4-tier lodging spectrum:
+- budget (economy motel, basic low-cost room)
+- midscale (standard comfortable hotel room)
+- upscale (modern premium boutique hotel)
+- luxury (ultra luxury 5-star executive suite)
+"""
 
 from pathlib import Path
-from typing import Union
+from typing import Dict, List, Union
 import numpy as np
 from PIL import Image
 import torch
 from clip_utils import load_clip, get_device
 
-PROMPT_PAIRS = [
-    ("a photo of a luxury hotel room", "a photo of a budget hotel room"),
-    ("modern high-end furnishings", "old worn-out furniture"),
-    ("a photo of an upscale suite", "a photo of a basic motel room"),
-]
+TIER_PROMPT_MAP = {
+    "budget": [
+        "a photo of a cheap budget motel room",
+        "basic economy lodging with simple worn furnishings",
+        "low cost budget hotel room with minimal decor",
+    ],
+    "midscale": [
+        "a photo of a standard comfortable midscale hotel room",
+        "typical commercial hotel room with clean simple furniture",
+        "standard 3-star lodging accommodation",
+    ],
+    "upscale": [
+        "a photo of a modern stylish boutique hotel room",
+        "upscale contemporary hotel room with high quality decor",
+        "premium designed guestroom with sleek modern furnishings",
+    ],
+    "luxury": [
+        "a photo of a lavish 5-star luxury hotel suite",
+        "ultra luxury penthouse executive suite with bespoke furnishings",
+        "high-end luxury hotel room with opulent architectural finishes",
+    ],
+}
 
 
 def classify_style_tier(image: Union[Image.Image, str, Path]) -> dict:
-    """Classify an image into 'luxury' vs 'budget' style tier using zero-shot CLIP.
+    """Classify an image into lodging tiers using zero-shot CLIP embeddings.
 
     Args:
         image: A PIL Image instance or file path.
 
     Returns:
         dict: {
-            "style_tier": "luxury" | "budget",
-            "style_confidence": float  # 0.0 - 1.0 confidence score
+            "style_tier": "budget" | "midscale" | "upscale" | "luxury",
+            "style_confidence": float,  # 0.0 - 1.0 confidence score
+            "tier_scores": {            # Probability distribution
+                "budget": float,
+                "midscale": float,
+                "upscale": float,
+                "luxury": float,
+            }
         }
     """
     model, processor = load_clip()
@@ -56,13 +86,11 @@ def classify_style_tier(image: Union[Image.Image, str, Path]) -> dict:
 
     img_vec = img_feats / img_feats.norm(dim=-1, keepdim=True)
 
-    lux_scores = []
-    bud_scores = []
+    tier_sims: Dict[str, float] = {}
+    tier_names = list(TIER_PROMPT_MAP.keys())
 
-    for lux_prompt, bud_prompt in PROMPT_PAIRS:
-        inputs_txt = processor(
-            text=[lux_prompt, bud_prompt], padding=True, return_tensors="pt"
-        )
+    for tier_name, prompts in TIER_PROMPT_MAP.items():
+        inputs_txt = processor(text=prompts, padding=True, return_tensors="pt")
         inputs_txt = {k: v.to(device) for k, v in inputs_txt.items()}
 
         with torch.no_grad():
@@ -77,25 +105,28 @@ def classify_style_tier(image: Union[Image.Image, str, Path]) -> dict:
         else:
             txt_feats = txt_out
 
-        txt_vec = txt_feats / txt_feats.norm(dim=-1, keepdim=True)
-        sims = (img_vec @ txt_vec.T).squeeze(0).cpu().numpy()
+        txt_vecs = txt_feats / txt_feats.norm(dim=-1, keepdim=True)
+        # Cosine similarity across prompts for this tier
+        sims = (img_vec @ txt_vecs.T).squeeze(0).cpu().numpy()
+        tier_sims[tier_name] = float(np.mean(sims))
 
-        lux_scores.append(float(sims[0]))
-        bud_scores.append(float(sims[1]))
-
-    avg_lux = float(np.mean(lux_scores))
-    avg_bud = float(np.mean(bud_scores))
-
-    winning_tier = "luxury" if avg_lux >= avg_bud else "budget"
-
-    # Softmax over average similarities for defensible 0.0–1.0 confidence score
-    logits = np.array([avg_lux, avg_bud]) * 10.0  # Scale factor for softmax temperature
+    # Compute softmax probabilities over tier similarities
+    raw_scores = np.array([tier_sims[t] for t in tier_names])
+    logits = raw_scores * 12.0  # Temperature scaling
     exp_logits = np.exp(logits - np.max(logits))
     probs = exp_logits / np.sum(exp_logits)
 
-    confidence = float(probs[0] if winning_tier == "luxury" else probs[1])
+    tier_scores = {
+        tier_names[i]: round(float(probs[i]), 4) for i in range(len(tier_names))
+    }
+
+    winning_idx = int(np.argmax(probs))
+    winning_tier = tier_names[winning_idx]
+    confidence = round(float(probs[winning_idx]), 4)
 
     return {
         "style_tier": winning_tier,
         "style_confidence": confidence,
+        "tier_scores": tier_scores,
     }
+

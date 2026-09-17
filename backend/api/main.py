@@ -226,9 +226,16 @@ async def analyze_images(files: List[UploadFile] = File(...)):
             b3_res = FeatureVector(
                 style_tier=raw_b3.get("style_tier"),
                 style_confidence=raw_b3.get("style_confidence"),
+                tier_scores=raw_b3.get("tier_scores"),
                 aesthetic_score=raw_b3.get("aesthetic_score"),
                 detected_objects=raw_b3.get("detected_objects", {}),
                 amenity_completeness_score=raw_b3.get("amenity_completeness_score"),
+                expected_amenities=raw_b3.get("expected_amenities", []),
+                matched_amenities=raw_b3.get("matched_amenities", []),
+                missing_amenities=raw_b3.get("missing_amenities", []),
+                lighting_analysis=raw_b3.get("lighting_analysis"),
+                color_analysis=raw_b3.get("color_analysis"),
+                composite_aesthetic=raw_b3.get("composite_aesthetic"),
             )
         except Exception as e:
             logger.warning(f"B3 feature combination failed for '{file.filename}': {e}")
@@ -251,9 +258,16 @@ async def analyze_images(files: List[UploadFile] = File(...)):
             aggregated = FeatureVector(
                 style_tier=raw_agg.get("style_tier"),
                 style_confidence=raw_agg.get("style_confidence"),
+                tier_scores=raw_agg.get("tier_scores"),
                 aesthetic_score=raw_agg.get("aesthetic_score"),
                 detected_objects=raw_agg.get("detected_objects", {}),
                 amenity_completeness_score=raw_agg.get("amenity_completeness_score"),
+                expected_amenities=raw_agg.get("expected_amenities", []),
+                matched_amenities=raw_agg.get("matched_amenities", []),
+                missing_amenities=raw_agg.get("missing_amenities", []),
+                lighting_analysis=raw_agg.get("lighting_analysis"),
+                color_analysis=raw_agg.get("color_analysis"),
+                composite_aesthetic=raw_agg.get("composite_aesthetic"),
             )
         except Exception as e:
             logger.warning(f"Listing-level aggregation failed: {e}")
@@ -261,4 +275,6 @@ async def analyze_images(files: List[UploadFile] = File(...)):
     else:
         aggregated = FeatureVector()
 
+
     return AnalyzeListingResponse(results=per_image_results, aggregated=aggregated)
+
