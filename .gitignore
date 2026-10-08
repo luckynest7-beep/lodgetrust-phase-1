@@ -30,3 +30,11 @@ Thumbs.db
 # Test caches
 .coverage
 htmlcov/
+
+# Environment variables
+.env
+.env.*
+
+# Local tools & agents
+graphify-out/
+.claude-flow/

@@ -235,9 +235,9 @@ export const FeatureVectorPanel: React.FC<FeatureVectorPanelProps> = ({
 
           {/* Standard Amenities Checklist */}
           <div className="amenity-checklist-box mt-3">
-            <span className="eyebrow-label">3-STAR STANDARD AMENITY CRITERIA</span>
+            <span className="eyebrow-label">STANDARD AMENITY CRITERIA</span>
             <div className="checklist-items-grid mt-2">
-              {(expected_amenities || ['bed', 'chair', 'couch', 'tv', 'dining table']).map((item) => {
+              {(expected_amenities || ['bed', 'chair', 'couch', 'tv', 'dining table', 'toilet', 'sink', 'refrigerator', 'microwave']).map((item) => {
                 const count = detected_objects ? detected_objects[item.toLowerCase()] || 0 : 0;
                 const isMatched = count > 0 || (matched_amenities || []).includes(item.toLowerCase());
                 return (

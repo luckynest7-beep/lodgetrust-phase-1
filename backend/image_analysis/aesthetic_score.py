@@ -14,10 +14,10 @@ from transformers import AutoImageProcessor, AutoModelForImageClassification
 
 # Path to fine-tuned model checkpoint (local workspace or project directory)
 _CANDIDATE_MODEL_PATHS = [
+    Path(__file__).resolve().parents[1] / "model",  # project/backend/model
     Path(__file__).resolve().parents[2] / "fine_tune_aesthetic" / "model",
     Path(__file__).resolve().parents[1] / "fine_tune_aesthetic" / "model",
     Path(__file__).resolve().parents[3] / "images" / "model",
-    Path(__file__).resolve().parents[2] / "images" / "model",
 ]
 
 DEFAULT_MODEL_NAME = "cafeai/cafe_aesthetic"
