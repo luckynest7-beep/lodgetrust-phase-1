@@ -95,9 +95,29 @@ class AnalyzeImageResult(BaseModel):
     errors: List[str] = Field(default_factory=list, description="Sub-module error messages if any occurred")
 
 
+class ComplianceResult(BaseModel):
+    star_claimed: int = Field(..., description="The star category verified against")
+    criteria_total: int = Field(..., description="Total number of criteria evaluated")
+    criteria_met: int = Field(..., description="Number of criteria met by the listing")
+    missing: List[str] = Field(default_factory=list, description="List of missing criteria")
+    met_list: List[str] = Field(default_factory=list, description="List of met criteria")
+    compliance_ratio: float = Field(..., description="Ratio of met criteria to total criteria (0.0 - 1.0)")
+    error: Optional[str] = Field(default=None, description="Error message if compliance check failed")
+
+
+class TrustEvaluationResult(BaseModel):
+    final_trust_percentage: float
+    price_plausibility_score: float
+    description_match_score: float
+    estimated_price: Optional[float] = None
+    analysis_notes: Optional[str] = None
+
+
 class AnalyzeListingResponse(BaseModel):
     results: List[AnalyzeImageResult] = Field(..., description="Per-image analysis results")
     aggregated: FeatureVector = Field(..., description="Aggregated feature vector across all listing images")
+    compliance: Optional[ComplianceResult] = Field(default=None, description="Module D HRACC compliance RAG results")
+    trust_evaluation: Optional[TrustEvaluationResult] = Field(default=None, description="Module E LLM evaluation")
 
 
 class StolenAddResponse(BaseModel):

@@ -3,6 +3,7 @@ import { AnalyzeListingResponse } from '../lib/api';
 import { StolenPanel } from './StolenPanel';
 import { AiGenPanel } from './AiGenPanel';
 import { FeatureVectorPanel } from './FeatureVectorPanel';
+import { CompliancePanel } from './CompliancePanel';
 import { ErrorBanner } from './ErrorBanner';
 
 interface AnalyzeResultsProps {
@@ -67,6 +68,10 @@ export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data }) => {
               title="Listing Composite Quality & Aesthetic Synthesis"
               isAggregate={true}
             />
+
+            {data.compliance && (
+              <CompliancePanel compliance={data.compliance} />
+            )}
 
             <div className="per-image-overview-section mt-5">
               <div className="eyebrow-label">INDIVIDUAL ASSET SUMMARY</div>

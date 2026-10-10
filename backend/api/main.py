@@ -27,23 +27,38 @@ if str(BACKEND_DIR) not in sys.path:
 if str(IMAGE_ANALYSIS_DIR) not in sys.path:
     sys.path.insert(0, str(IMAGE_ANALYSIS_DIR))
 
+COMPLIANCE_RAG_DIR = BACKEND_DIR.parent / "compliance_rag"
+if str(COMPLIANCE_RAG_DIR) not in sys.path:
+    sys.path.insert(0, str(COMPLIANCE_RAG_DIR))
+
+try:
+    from compliance_check import check_compliance
+except ImportError:
+    check_compliance = None
+
 from ai_image_detector import detect_ai_generated  # noqa: E402
 from combine_signals import combine_for_image, combine_for_listing  # noqa: E402
 from furniture_detector import DEFAULT_EXPECTED_AMENITIES  # noqa: E402
 from stolen_image import add_image, check_stolen, clear_index  # noqa: E402
 
+# Import the refactored evaluator
+from trust_evaluator import analyze_hotel_review
+
 from api.schemas import (  # noqa: E402
     AiDetectorResult,
     AnalyzeImageResult,
     AnalyzeListingResponse,
+    ComplianceResult,
     ExpectedAmenitiesResponse,
     FeatureVector,
     HealthResponse,
     StolenAddResponse,
     StolenResetResponse,
     StolenResult,
+    TrustEvaluationResult,
 )
 from api.seed_index import seed_dummy_index  # noqa: E402
+import tempfile
 
 # Configure logging
 logging.basicConfig(
@@ -59,12 +74,17 @@ ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/jpg", "image/webp"}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup hook to seed the FAISS index with demo images."""
+    import asyncio
     logger.info("Initializing LodgeTrust API service...")
-    try:
-        count = seed_dummy_index()
-        logger.info(f"Startup complete. Seeded {count} demo images in FAISS index.")
-    except Exception as e:
-        logger.warning(f"Failed to seed demo FAISS index on startup: {e}")
+
+    def _seed():
+        try:
+            count = seed_dummy_index()
+            logger.info(f"Startup complete. Seeded {count} demo images in FAISS index.")
+        except Exception as e:
+            logger.warning(f"Demo FAISS index seeding status: {e}")
+
+    asyncio.create_task(asyncio.to_thread(_seed))
     yield
     logger.info("Shutting down LodgeTrust API service.")
 
@@ -159,8 +179,15 @@ def reset_stolen_index():
 
 
 @app.post("/api/analyze", response_model=AnalyzeListingResponse)
-async def analyze_images(files: List[UploadFile] = File(...)):
-    """Analyze one or more uploaded listing images across B1, B2, and B3 modules."""
+async def analyze_images(
+    files: List[UploadFile] = File(...),
+    star_category: Optional[int] = Form(3),
+    description: Optional[str] = Form(""),
+    price: Optional[float] = Form(0.0),
+    food_included: Optional[bool] = Form(False),
+    food_description: Optional[str] = Form("")
+):
+    """Analyze one or more uploaded listing images across B1, B2, B3, and Module D."""
     if not files:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -276,5 +303,82 @@ async def analyze_images(files: List[UploadFile] = File(...)):
         aggregated = FeatureVector()
 
 
-    return AnalyzeListingResponse(results=per_image_results, aggregated=aggregated)
+    # Run Compliance RAG on aggregated detected amenities
+    compliance_res = None
+    if check_compliance and aggregated.detected_objects and star_category is not None:
+        try:
+            claimed = list(aggregated.detected_objects.keys())
+            comp_data = check_compliance(star_category, claimed)
+            if "error" not in comp_data:
+                compliance_res = ComplianceResult(**comp_data)
+            else:
+                logger.warning(f"Compliance RAG returned error: {comp_data['error']}")
+                compliance_res = ComplianceResult(
+                    star_claimed=star_category,
+                    criteria_total=0,
+                    criteria_met=0,
+                    missing=[],
+                    met_list=[],
+                    compliance_ratio=0.0,
+                    error=comp_data["error"]
+                )
+        except Exception as e:
+            logger.error(f"Compliance RAG failed: {e}")
+            compliance_res = ComplianceResult(
+                star_claimed=star_category,
+                criteria_total=0,
+                criteria_met=0,
+                missing=[],
+                met_list=[],
+                compliance_ratio=0.0,
+                error=str(e)
+            )
+
+    # Trust Evaluation (Module E - LLM Integration)
+    trust_eval_res = None
+    if len(files) > 0 and description:
+        try:
+            # We need to save the first file temporarily for the evaluator
+            first_file = files[0]
+            await first_file.seek(0)
+            file_bytes = await first_file.read()
+            
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file:
+                tmp_file.write(file_bytes)
+                tmp_file_path = tmp_file.name
+
+            # Call the evaluator
+            # Note: We can append food_description to description if food is included
+            full_desc = description
+            if food_included and food_description:
+                full_desc += f"\nFood included: {food_description}"
+
+            eval_data = analyze_hotel_review(
+                image_path=tmp_file_path,
+                description=full_desc,
+                claimed_price=price or 0.0,
+                claimed_star_rating=star_category or 3
+            )
+
+            # Cleanup
+            if os.path.exists(tmp_file_path):
+                os.remove(tmp_file_path)
+
+            if eval_data and "final_trust_percentage" in eval_data:
+                trust_eval_res = TrustEvaluationResult(
+                    final_trust_percentage=eval_data["final_trust_percentage"],
+                    price_plausibility_score=eval_data.get("price_plausibility_score", 0.0),
+                    description_match_score=eval_data.get("description_match_score", 0.0),
+                    estimated_price=eval_data.get("estimated_price"),
+                    analysis_notes=eval_data.get("analysis_notes")
+                )
+        except Exception as e:
+            logger.error(f"Trust Evaluation failed: {e}")
+
+    return AnalyzeListingResponse(
+        results=per_image_results, 
+        aggregated=aggregated, 
+        compliance=compliance_res,
+        trust_evaluation=trust_eval_res
+    )
 

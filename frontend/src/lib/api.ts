@@ -84,9 +84,20 @@ export interface AnalyzeImageResult {
   errors: string[];
 }
 
+export interface ComplianceResult {
+  star_claimed: number;
+  criteria_total: number;
+  criteria_met: number;
+  missing: string[];
+  met_list: string[];
+  compliance_ratio: number;
+  error?: string | null;
+}
+
 export interface AnalyzeListingResponse {
   results: AnalyzeImageResult[];
   aggregated: FeatureVector;
+  compliance?: ComplianceResult | null;
 }
 
 
@@ -105,9 +116,21 @@ export interface ExpectedAmenitiesResponse {
   expected_amenities: string[];
 }
 
-export async function analyzeImages(files: File[]): Promise<AnalyzeListingResponse> {
+export async function analyzeImages(
+  files: File[], 
+  starCategory: number = 3,
+  description: string = '',
+  price: number = 0,
+  foodIncluded: boolean = false,
+  foodDescription: string = ''
+): Promise<AnalyzeListingResponse> {
   const formData = new FormData();
   files.forEach((file) => formData.append('files', file));
+  formData.append('star_category', starCategory.toString());
+  formData.append('description', description);
+  formData.append('price', price.toString());
+  formData.append('food_included', foodIncluded.toString());
+  formData.append('food_description', foodDescription);
 
   const response = await fetch(`${API_BASE}/api/analyze`, {
     method: 'POST',
