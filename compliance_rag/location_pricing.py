@@ -77,18 +77,36 @@ def get_location_price_range(
     star_key = str(max(1, min(5, star_category or 3)))
 
     if not clean_loc:
-        # Fallback to Pan-India baseline
-        return {
+        pan_india_defaults = {
+            "1": (1000.0, 2000.0),
+            "2": (1500.0, 3000.0),
+            "3": (2500.0, 5000.0),
+            "4": (4500.0, 9500.0),
+            "5": (8500.0, 20000.0),
+        }
+        fallback_min, fallback_max = pan_india_defaults.get(star_key, (2500.0, 5000.0))
+        res = {
             "location": "Unspecified",
             "matched_location": "National Standard (All-India Benchmark)",
             "star_category": int(star_key),
-            "min_price": 2500.0,
-            "max_price": 5000.0,
+            "min_price": fallback_min,
+            "max_price": fallback_max,
             "currency": "INR",
             "market_tier": "Pan-India Baseline",
-            "notes": f"Standard benchmark tariffs for {star_key}-star lodging across India.",
+            "notes": f"Standard benchmark tariffs for {star_key}-star lodging across India (₹{int(fallback_min):,} – ₹{int(fallback_max):,}).",
             "source": "LodgeTrust Regional Hospitality Benchmark (RAG Indexed)"
         }
+        if claimed_price is not None and claimed_price > 0:
+            if claimed_price < fallback_min * 0.7:
+                res["price_assessment"] = "SUSPICIOUSLY_LOW"
+                res["price_assessment_label"] = "Abnormally Low for National Benchmark"
+            elif claimed_price > fallback_max * 1.5:
+                res["price_assessment"] = "PREMIUM_PRICED"
+                res["price_assessment_label"] = "Significantly Higher than National Benchmark"
+            else:
+                res["price_assessment"] = "IN_RANGE"
+                res["price_assessment_label"] = "Within Expected National Tariff"
+        return res
 
     matched_region = None
     market_tier = "Standard Market"

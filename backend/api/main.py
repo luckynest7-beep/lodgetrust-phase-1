@@ -329,11 +329,33 @@ async def analyze_images(
         aggregated = FeatureVector()
 
 
-    # Run Compliance RAG on aggregated detected amenities
+    # Run Compliance RAG on aggregated detected amenities + listing description claims
     compliance_res = None
-    if check_compliance and aggregated.detected_objects and star_category is not None:
+    if check_compliance and star_category is not None:
         try:
-            claimed = list(aggregated.detected_objects.keys())
+            claimed = list(aggregated.detected_objects.keys()) if (aggregated and aggregated.detected_objects) else []
+            # Extract common amenities claimed in description text
+            if description:
+                desc_lower = description.lower()
+                amenity_keywords = {
+                    "wifi": "Free WiFi",
+                    "wi-fi": "Free WiFi",
+                    "internet": "Free WiFi",
+                    "ac": "Air Conditioning",
+                    "air condition": "Air Conditioning",
+                    "air-condition": "Air Conditioning",
+                    "breakfast": "Breakfast Service",
+                    "pool": "Swimming Pool",
+                    "gym": "Fitness Center / Gym",
+                    "tv": "Television",
+                    "kettle": "Electric Kettle / Tea Maker",
+                    "safe": "In-room Safe",
+                    "parking": "Parking Facility",
+                }
+                for kw, standard_label in amenity_keywords.items():
+                    if kw in desc_lower and standard_label not in claimed:
+                        claimed.append(standard_label)
+
             comp_data = check_compliance(star_category, claimed)
             if "error" not in comp_data:
                 compliance_res = ComplianceResult(**comp_data)
@@ -364,31 +386,26 @@ async def analyze_images(
     trust_eval_res = None
     if len(files) > 0 and description:
         try:
-            # We need to save the first file temporarily for the evaluator
             first_file = files[0]
             await first_file.seek(0)
             file_bytes = await first_file.read()
-            
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file:
-                tmp_file.write(file_bytes)
-                tmp_file_path = tmp_file.name
 
-            # Call the evaluator
-            # Note: We can append food_description to description if food is included
             full_desc = description
             if food_included and food_description:
                 full_desc += f"\nFood included: {food_description}"
 
+            # Pass precomputed Module B and Module D to eliminate double-execution
+            precomputed_b_dict = aggregated.dict() if hasattr(aggregated, 'dict') else {}
+            precomputed_d_dict = compliance_res.dict() if (compliance_res and hasattr(compliance_res, 'dict')) else None
+
             eval_data = analyze_hotel_review(
-                image_path=tmp_file_path,
+                image_path=file_bytes,
                 description=full_desc,
                 claimed_price=price or 0.0,
-                claimed_star_rating=star_category or 3
+                claimed_star_rating=star_category or 3,
+                precomputed_mod_b=precomputed_b_dict,
+                precomputed_mod_d=precomputed_d_dict
             )
-
-            # Cleanup
-            if os.path.exists(tmp_file_path):
-                os.remove(tmp_file_path)
 
             if eval_data and "final_trust_percentage" in eval_data:
                 trust_eval_res = TrustEvaluationResult(

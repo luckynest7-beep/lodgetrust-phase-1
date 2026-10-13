@@ -47,6 +47,9 @@ def init_hotel_database() -> None:
     );
     """)
 
+    cursor.execute("UPDATE hotels SET analysis_status = 'DEMO_BENCHMARK' WHERE analysis_status = 'VERIFIED';")
+    conn.commit()
+
     cursor.execute("SELECT COUNT(*) FROM hotels;")
     count = cursor.fetchone()[0]
 
@@ -70,7 +73,7 @@ def init_hotel_database() -> None:
                 "trust_score": 94.0,
                 "aesthetic_score": 9.2,
                 "compliance_ratio": 0.96,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-15",
                 "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600"
             },
@@ -90,7 +93,7 @@ def init_hotel_database() -> None:
                 "trust_score": 86.0,
                 "aesthetic_score": 7.4,
                 "compliance_ratio": 0.88,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-20",
                 "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600"
             },
@@ -130,7 +133,7 @@ def init_hotel_database() -> None:
                 "trust_score": 96.5,
                 "aesthetic_score": 9.6,
                 "compliance_ratio": 0.98,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-02",
                 "image_url": "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600"
             },
@@ -152,7 +155,7 @@ def init_hotel_database() -> None:
                 "trust_score": 98.0,
                 "aesthetic_score": 9.8,
                 "compliance_ratio": 1.0,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-10",
                 "image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600"
             },
@@ -172,7 +175,7 @@ def init_hotel_database() -> None:
                 "trust_score": 91.5,
                 "aesthetic_score": 8.9,
                 "compliance_ratio": 0.94,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-28",
                 "image_url": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600"
             },
@@ -192,7 +195,7 @@ def init_hotel_database() -> None:
                 "trust_score": 84.0,
                 "aesthetic_score": 7.1,
                 "compliance_ratio": 0.85,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-07-14",
                 "image_url": "https://images.unsplash.com/photo-1591088398332-8a7791972843?w=600"
             },
@@ -234,7 +237,7 @@ def init_hotel_database() -> None:
                 "trust_score": 95.0,
                 "aesthetic_score": 9.4,
                 "compliance_ratio": 0.97,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-01",
                 "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600"
             },
@@ -254,7 +257,7 @@ def init_hotel_database() -> None:
                 "trust_score": 92.0,
                 "aesthetic_score": 9.1,
                 "compliance_ratio": 0.95,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-11",
                 "image_url": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=600"
             },
@@ -274,7 +277,7 @@ def init_hotel_database() -> None:
                 "trust_score": 87.0,
                 "aesthetic_score": 7.9,
                 "compliance_ratio": 0.89,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-07-29",
                 "image_url": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600"
             },
@@ -296,7 +299,7 @@ def init_hotel_database() -> None:
                 "trust_score": 96.0,
                 "aesthetic_score": 9.5,
                 "compliance_ratio": 0.98,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-08",
                 "image_url": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600"
             },
@@ -316,7 +319,7 @@ def init_hotel_database() -> None:
                 "trust_score": 89.0,
                 "aesthetic_score": 8.3,
                 "compliance_ratio": 0.91,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-14",
                 "image_url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
             },
@@ -338,7 +341,7 @@ def init_hotel_database() -> None:
                 "trust_score": 97.0,
                 "aesthetic_score": 9.7,
                 "compliance_ratio": 0.99,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-12",
                 "image_url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600"
             },
@@ -358,7 +361,7 @@ def init_hotel_database() -> None:
                 "trust_score": 90.0,
                 "aesthetic_score": 8.5,
                 "compliance_ratio": 0.92,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-19",
                 "image_url": "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?w=600"
             },
@@ -400,7 +403,7 @@ def init_hotel_database() -> None:
                 "trust_score": 99.0,
                 "aesthetic_score": 9.9,
                 "compliance_ratio": 1.0,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-09-18",
                 "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600"
             },
@@ -420,7 +423,7 @@ def init_hotel_database() -> None:
                 "trust_score": 88.5,
                 "aesthetic_score": 8.7,
                 "compliance_ratio": 0.91,
-                "analysis_status": "VERIFIED",
+                "analysis_status": "DEMO_BENCHMARK",
                 "verified_date": "2026-08-05",
                 "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600"
             },
@@ -680,11 +683,11 @@ def query_hotels(
 
     order_clause = "ORDER BY CASE WHEN trust_score IS NULL THEN 1 ELSE 0 END, trust_score DESC"
     if sort_by == "price_asc":
-        order_clause = "ORDER BY price_per_night ASC"
+        order_clause = "ORDER BY CASE WHEN price_per_night <= 0 THEN 1 ELSE 0 END, price_per_night ASC"
     elif sort_by == "price_desc":
         order_clause = "ORDER BY price_per_night DESC"
     elif sort_by == "stars_desc":
-        order_clause = "ORDER BY star_rating DESC, price_per_night ASC"
+        order_clause = "ORDER BY star_rating DESC, CASE WHEN price_per_night <= 0 THEN 1 ELSE 0 END, price_per_night ASC"
 
     sql = f"""
     SELECT * FROM hotels

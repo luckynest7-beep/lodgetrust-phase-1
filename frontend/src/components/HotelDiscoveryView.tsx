@@ -166,7 +166,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    mapboxgl.accessToken = token || 'pk.eyJ1IjoibG9kZ2V0cnVzdCIsImEiOiJjbTF2In0.mock';
+    mapboxgl.accessToken = token || '';
 
     // Find coordinates for initial city (default to Chennai coordinates)
     const cityInfo = cities.find(c => c.city.toLowerCase() === selectedCity.toLowerCase());
@@ -303,7 +303,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
             color: ${hotel.has_phase1_analysis ? '#248a3d' : '#636366'};
             padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 8px; text-align: center;
           ">
-            ${hotel.has_phase1_analysis ? `✓ LodgeTrust Verified Score: ${hotel.trust_score}%` : '○ Pending Phase 1 Audit'}
+            ${hotel.has_phase1_analysis ? `◈ Benchmark Score (Sample): ${hotel.trust_score}%` : '○ Pending Live Audit'}
           </div>
           <div style="display: flex; gap: 6px; margin-top: 4px;">
             ${onAuditListing ? `
@@ -535,7 +535,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
               onChange={(e) => setVerifiedOnly(e.target.checked)}
               style={{ accentColor: '#34c759', width: '16px', height: '16px' }}
             />
-            <span>Phase 1 Verified Audits Only</span>
+            <span>Audited Benchmark Listings Only</span>
           </label>
         </div>
       </div>
@@ -685,7 +685,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                         fontWeight: 700,
                         textAlign: 'center'
                       }}>
-                        {hotel.trust_score}% Trust
+                        {hotel.trust_score}% Benchmark
                       </div>
                     ) : (
                       <div style={{

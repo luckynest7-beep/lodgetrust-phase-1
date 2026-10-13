@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HotelMap, HotelSearchResult } from './HotelMap';
+import { getCities, CityInfo } from '../lib/api';
 
 interface TrustEvaluationFormProps {
   selectedFiles: File[];
@@ -29,26 +30,33 @@ export const TrustEvaluationForm: React.FC<TrustEvaluationFormProps> = ({
   const [foodIncluded, setFoodIncluded] = useState(false);
   const [foodDescription, setFoodDescription] = useState('');
   const [stars, setStars] = useState<number>(initialStars || 3);
+  const [cities, setCities] = useState<CityInfo[]>([]);
+
+  // Fetch supported cities from backend
+  useEffect(() => {
+    getCities().then(data => {
+      if (data && data.length > 0) setCities(data);
+    }).catch(() => {});
+  }, []);
 
   // Sync when initial values change (e.g. user selects a hotel from Phase 2 discovery)
-  React.useEffect(() => {
+  useEffect(() => {
     if (initialLocation) setLocation(initialLocation);
     if (initialDescription) setDescription(initialDescription);
     if (initialStars) setStars(initialStars);
     if (initialPrice !== undefined) setPrice(initialPrice);
   }, [initialLocation, initialDescription, initialStars, initialPrice]);
 
-  const popularLocations = ['Chennai', 'Goa', 'Mumbai', 'Delhi NCR', 'Bengaluru', 'Shimla', 'Jaipur', 'Ooty'];
+  const popularLocations = cities.length > 0
+    ? cities.map(c => c.city)
+    : ['Chennai', 'Goa', 'Mumbai', 'Delhi NCR', 'Bengaluru', 'Shimla', 'Jaipur', 'Ooty'];
 
-  const cityCoordinates: Record<string, [number, number]> = {
-    'Chennai': [80.2493, 13.0584],
-    'Goa': [73.7553, 15.5527],
-    'Mumbai': [72.8777, 19.0760],
-    'Delhi NCR': [77.2090, 28.6139],
-    'Bengaluru': [77.5946, 12.9716],
-    'Shimla': [77.1734, 31.1048],
-    'Jaipur': [75.7873, 26.9124],
-    'Ooty': [76.6932, 11.4102]
+  const getCoordinatesForLocation = (loc: string): [number, number] => {
+    const matched = cities.find(c => loc.toLowerCase().includes(c.city.toLowerCase()));
+    if (matched && matched.coordinates && Array.isArray(matched.coordinates) && matched.coordinates.length >= 2) {
+      return matched.coordinates;
+    }
+    return [80.2493, 13.0584]; // Default to Chennai center
   };
 
   const handleSelectHotel = (hotel: HotelSearchResult) => {
@@ -382,7 +390,7 @@ export const TrustEvaluationForm: React.FC<TrustEvaluationFormProps> = ({
           {showMap && (
             <div style={{ marginTop: '12px' }}>
               <HotelMap
-                initialCenter={cityCoordinates[location] || [73.7553, 15.5527]}
+                initialCenter={getCoordinatesForLocation(location)}
                 initialZoom={10}
                 height="380px"
                 onSelectHotel={handleSelectHotel}

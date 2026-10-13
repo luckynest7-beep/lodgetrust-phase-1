@@ -125,12 +125,15 @@ export const CompliancePanel: React.FC<CompliancePanelProps> = ({ compliance }) 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                 <h5 style={{ fontSize: '14px', fontWeight: 600, color: '#ff9f0a', margin: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                  Unverified / Missing
+                  Not Observed in Photo(s)
                 </h5>
                 <span style={{ fontSize: '12px', fontWeight: 600, color: '#ff9f0a', background: 'rgba(255, 149, 0, 0.15)', padding: '2px 8px', borderRadius: '10px' }}>
-                  {compliance.missing.length} Missing
+                  {compliance.missing.length} Unconfirmed
                 </span>
               </div>
+              <p style={{ fontSize: '12px', color: '#8e8e93', margin: '0 0 12px 0', lineHeight: 1.4 }}>
+                Amenities not visibly confirmed in the provided image(s). Off-camera facilities (e.g. bathroom fittings or central AC) may exist but require multi-photo coverage.
+              </p>
 
               {compliance.missing.length === 0 ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px', background: 'rgba(52, 199, 89, 0.08)', borderRadius: '8px', color: '#34c759', fontSize: '13px' }}>

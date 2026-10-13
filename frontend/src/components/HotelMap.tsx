@@ -187,7 +187,7 @@ const DARK_MAP_STYLE: any = {
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    mapboxgl.accessToken = token || 'pk.eyJ1IjoibG9kZ2V0cnVzdCIsImEiOiJjbTF2In0.mock';
+    mapboxgl.accessToken = token || '';
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,

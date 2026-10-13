@@ -6,6 +6,9 @@ import sys
 from pathlib import Path
 from PIL import Image
 
+import io
+from typing import Union, Optional, Dict, Any
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -22,38 +25,51 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../compliance_rag'))
 from image_analysis.combine_signals import combine_for_image
 from compliance_check import check_compliance
 
-def analyze_hotel_review(image_path: str, description: str, claimed_price: float, claimed_star_rating: int):
+def analyze_hotel_review(
+    image_path: Union[str, bytes], 
+    description: str, 
+    claimed_price: float, 
+    claimed_star_rating: int,
+    precomputed_mod_b: Optional[Dict[str, Any]] = None,
+    precomputed_mod_d: Optional[Dict[str, Any]] = None
+):
     """
     Evaluates a hotel room review by cross-referencing visual signals, LLM estimations, 
-    and compliance checks.
+    and compliance checks. Reuses precomputed features if provided to eliminate redundant inference.
     """
-    print(f"--- Starting Trust Evaluation for: {image_path} ---")
-    print("1. Running Module B (Visual Signals Extraction)...")
+    print(f"--- Starting Trust Evaluation ---")
     
-    # 1. Module B Output
-    try:
-        mod_b_output = combine_for_image(image_path)
-    except Exception as e:
-        print(f"Failed to run Module B: {e}")
-        return {"error": str(e)}
+    # 1. Module B Output (reuse precomputed features if passed)
+    if precomputed_mod_b:
+        print("1. Reusing precomputed Module B visual features...")
+        mod_b_output = precomputed_mod_b
+    else:
+        print("1. Running Module B (Visual Signals Extraction)...")
+        try:
+            mod_b_output = combine_for_image(image_path)
+        except Exception as e:
+            print(f"Failed to run Module B: {e}")
+            return {"error": str(e)}
 
     # Extract key elements from Module B
     style_tier = mod_b_output.get('style_tier', 'Unknown')
     aesthetic_score = mod_b_output.get('aesthetic_score', 0)
-    detected_amenities = list(mod_b_output.get('detected_objects', {}).keys())
-    lighting_info = mod_b_output.get('lighting_analysis', {})
+    detected_amenities = list(mod_b_output.get('detected_objects', {}).keys()) if mod_b_output.get('detected_objects') else []
+    lighting_info = mod_b_output.get('lighting_analysis', {}) or {}
     
     print(f"   Detected Tier: {style_tier}")
     print(f"   Aesthetic Score: {aesthetic_score}")
     print(f"   Detected Amenities: {detected_amenities}")
 
-    print("2. Running Module D (Regulatory Compliance Check)...")
-    # 2. Module D Output
-    # We pass the detected amenities combined with the description (or just detected) 
-    # as the 'claimed_amenities' to check if the visuals + claims meet the star rating.
-    # We'll pass the detected_amenities for a stricter visual check.
-    mod_d_output = check_compliance(claimed_star_rating, detected_amenities)
-    compliance_ratio = mod_d_output.get('compliance_ratio', 0.0)
+    # 2. Module D Output (reuse precomputed compliance if passed)
+    if precomputed_mod_d:
+        print("2. Reusing precomputed Module D compliance result...")
+        mod_d_output = precomputed_mod_d
+    else:
+        print("2. Running Module D (Regulatory Compliance Check)...")
+        mod_d_output = check_compliance(claimed_star_rating, detected_amenities)
+        
+    compliance_ratio = mod_d_output.get('compliance_ratio', 0.0) if mod_d_output else 0.0
     print(f"   Compliance Ratio: {compliance_ratio * 100}%")
 
     print("3. Querying LLM (Cost Estimation & Description Matching)...")
@@ -68,9 +84,19 @@ def analyze_hotel_review(image_path: str, description: str, claimed_price: float
             "mod_d_output": mod_d_output
         }
         
-    # Read and encode image for Gemini
-    with open(image_path, "rb") as img_file:
-        img_data = base64.b64encode(img_file.read()).decode('utf-8')
+    # Read and encode image as valid JPEG for Gemini inlineData
+    try:
+        if isinstance(image_path, bytes):
+            img = Image.open(io.BytesIO(image_path)).convert("RGB")
+        else:
+            img = Image.open(image_path).convert("RGB")
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=85)
+        img_data = base64.b64encode(buf.getvalue()).decode('utf-8')
+    except Exception as e:
+        print(f"Warning: PIL JPEG encoding error: {e}, falling back to raw file read")
+        with open(image_path, "rb") as img_file:
+            img_data = base64.b64encode(img_file.read()).decode('utf-8')
         
     # Construct LLM Prompt
     prompt = f"""
@@ -184,17 +210,6 @@ def analyze_hotel_review(image_path: str, description: str, claimed_price: float
     print(f"FINAL TRUST PERCENTAGE: {final_trust_percentage}%")
     print("="*50)
     print(f"Notes: {llm_result.get('analysis_notes')}")
-
-    return {
-        "final_trust_percentage": final_trust_percentage,
-        "price_plausibility_score": price_score,
-        "description_match_score": desc_score,
-        "estimated_price": llm_result.get('estimated_price'),
-        "analysis_notes": llm_result.get('analysis_notes'),
-        "compliance_ratio": compliance_ratio,
-        "mod_d_output": mod_d_output,
-        "mod_b_output": mod_b_output
-    }
 
     return {
         "final_trust_percentage": final_trust_percentage,

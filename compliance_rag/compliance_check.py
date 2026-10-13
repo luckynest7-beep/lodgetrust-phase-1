@@ -115,18 +115,23 @@ def check_compliance(star_category: int, claimed_amenities: List[str]) -> Dict[s
     missing_list = []
 
     if api_key and api_key != "YOUR_GEMINI_API_KEY_HERE":
+        rag_context_text = "\n".join([f"- {c}" for c in curated_rag_criteria[:12]]) if curated_rag_criteria else "Official HRACC Classification Guidelines indexed in ChromaDB."
+
         prompt = f"""
 You are an expert hotel compliance auditor verifying property listings according to official HRACC (Hotel & Restaurant Approval & Classification Committee) standards.
 
 Target Rating: {star_norm}-Star Lodging
-Visually Detected Amenities from Property Photos: {json.dumps(claimed_amenities)}
+Detected Amenities from Property Photos & Listing: {json.dumps(claimed_amenities)}
 
 Official Required Standards for {star_norm}-Star Hotels:
 {json.dumps(canonical_names, indent=2)}
 
+RAG-Retrieved HRACC Regulatory Context from Ministry of Tourism Knowledge Base:
+{rag_context_text}
+
 TASK:
-1. Cross-reference the detected amenities against the {star_norm}-Star standards.
-2. For each standard in the list, evaluate if it is MET (detected in the listing/photos) or MISSING.
+1. Cross-reference the detected amenities against the {star_norm}-Star standards and retrieved HRACC regulatory context.
+2. For each standard in the list, evaluate if it is MET (detected in the listing/photos/description) or MISSING.
 3. Keep the output clean, professional, and free of bureaucratic legal text.
 4. Output concise, human-readable amenity labels matching the official standards.
 
@@ -138,6 +143,7 @@ Return STRICT JSON matching this schema:
 """
         models_to_try = [
             os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
+            "gemini-3.8-flash",
             "gemini-2.0-flash",
             "gemini-1.5-flash"
         ]
