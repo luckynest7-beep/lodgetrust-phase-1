@@ -113,10 +113,25 @@ class TrustEvaluationResult(BaseModel):
     analysis_notes: Optional[str] = None
 
 
+class LocationPriceResult(BaseModel):
+    location: str = Field(..., description="The query location entered by user")
+    matched_location: Optional[str] = Field(default=None, description="The matched benchmark regional market")
+    star_category: int = Field(..., description="Star category evaluated")
+    min_price: float = Field(..., description="Minimum expected price per night in INR")
+    max_price: float = Field(..., description="Maximum expected price per night in INR")
+    currency: str = Field(default="INR", description="Currency symbol / code")
+    market_tier: Optional[str] = Field(default=None, description="Market classification tier")
+    notes: Optional[str] = Field(default=None, description="Market analysis context notes")
+    source: Optional[str] = Field(default=None, description="Data source reference")
+    price_assessment: Optional[str] = Field(default=None, description="IN_RANGE, SUSPICIOUSLY_LOW, PREMIUM_PRICED")
+    price_assessment_label: Optional[str] = Field(default=None, description="Human readable label for assessment")
+
+
 class AnalyzeListingResponse(BaseModel):
     results: List[AnalyzeImageResult] = Field(..., description="Per-image analysis results")
     aggregated: FeatureVector = Field(..., description="Aggregated feature vector across all listing images")
     compliance: Optional[ComplianceResult] = Field(default=None, description="Module D HRACC compliance RAG results")
+    location_price: Optional[LocationPriceResult] = Field(default=None, description="RAG Location expected price benchmark range")
     trust_evaluation: Optional[TrustEvaluationResult] = Field(default=None, description="Module E LLM evaluation")
 
 
@@ -129,4 +144,42 @@ class StolenAddResponse(BaseModel):
 class StolenResetResponse(BaseModel):
     status: str = Field(default="reset")
     message: str
+
+
+# Phase 2: Hotel & Lodge Discovery Schemas
+class HotelListing(BaseModel):
+    id: str
+    name: str
+    city: str
+    state: str
+    address: str
+    latitude: float
+    longitude: float
+    coordinates: List[float]  # [lng, lat] for Mapbox
+    accommodation_type: str
+    star_rating: int
+    price_per_night: float
+    amenities: List[str]
+    has_phase1_analysis: bool
+    trust_score: Optional[float] = None
+    aesthetic_score: Optional[float] = None
+    compliance_ratio: Optional[float] = None
+    analysis_status: str
+    verified_date: Optional[str] = None
+    image_url: Optional[str] = None
+
+
+class CityInfo(BaseModel):
+    city: str
+    state: str
+    coordinates: List[float]  # [lng, lat]
+    hotel_count: int
+    verified_count: int
+
+
+class HotelListResponse(BaseModel):
+    total: int
+    city: Optional[str] = None
+    hotels: List[HotelListing]
+
 

@@ -9,6 +9,9 @@ from PIL import Image
 try:
     from dotenv import load_dotenv
     load_dotenv()
+    root_env = Path(__file__).resolve().parent.parent / ".env"
+    if root_env.exists():
+        load_dotenv(root_env)
 except ImportError:
     pass  # python-dotenv not installed, will rely on system environment variables
 
@@ -101,7 +104,13 @@ def analyze_hotel_review(image_path: str, description: str, claimed_price: float
     }}
     """
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={api_key}"
+    models_to_try = [
+        os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
+        "gemini-2.0-flash",
+        "gemini-1.5-flash",
+        "gemini-3.8-flash"
+    ]
+
     headers = {"Content-Type": "application/json"}
     payload = {
         "contents": [{
@@ -118,17 +127,29 @@ def analyze_hotel_review(image_path: str, description: str, claimed_price: float
         "generationConfig": {"response_mime_type": "application/json"}
     }
 
-    try:
-        response = requests.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        data = response.json()
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-        llm_result = json.loads(text)
-    except Exception as e:
-        print(f"Failed to get LLM response: {e}")
+    llm_result = None
+    last_error = None
+    for model_name in models_to_try:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+        try:
+            response = requests.post(url, headers=headers, json=payload, timeout=20)
+            if response.status_code == 200:
+                data = response.json()
+                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                llm_result = json.loads(text)
+                print(f"   Successfully queried Gemini model: {model_name}")
+                break
+            else:
+                last_error = f"{response.status_code} {response.text}"
+        except Exception as e:
+            last_error = str(e)
+            continue
+
+    if not llm_result:
+        print(f"Failed to get LLM response: {last_error}")
         return {
             "final_trust_percentage": 0,
-            "error": str(e),
+            "error": last_error or "LLM generation failed",
             "mod_b_output": mod_b_output,
             "mod_d_output": mod_d_output
         }

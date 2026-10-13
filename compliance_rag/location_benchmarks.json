@@ -1,0 +1,184 @@
+[
+  {
+    "id": "loc_goa",
+    "region": "Goa",
+    "aliases": ["Goa", "North Goa", "South Goa", "Panaji", "Calangute", "Baga", "Anjuna", "Candolim", "Palolem", "Vagator"],
+    "market_tier": "Coastal & Leisure Resort Hub",
+    "description": "High seasonal demand coastal resort market with premium on beach proximity, pools, and resort amenities.",
+    "pricing_by_star": {
+      "1": {"min": 1200, "max": 2500},
+      "2": {"min": 1800, "max": 3500},
+      "3": {"min": 2800, "max": 6000},
+      "4": {"min": 5500, "max": 12000},
+      "5": {"min": 11000, "max": 28000}
+    }
+  },
+  {
+    "id": "loc_mumbai",
+    "region": "Mumbai (MMR)",
+    "aliases": ["Mumbai", "Bombay", "Bandra", "Andheri", "BKC", "Colaba", "Juhu", "Powai", "Navi Mumbai", "South Mumbai"],
+    "market_tier": "Financial Capital & Tier-1 Metro",
+    "description": "Premium commercial real estate market with high baseline tariffs for business travelers and luxury heritage properties.",
+    "pricing_by_star": {
+      "1": {"min": 1800, "max": 3200},
+      "2": {"min": 2500, "max": 4800},
+      "3": {"min": 4000, "max": 8500},
+      "4": {"min": 7500, "max": 16000},
+      "5": {"min": 14000, "max": 35000}
+    }
+  },
+  {
+    "id": "loc_delhi_ncr",
+    "region": "Delhi & NCR",
+    "aliases": ["Delhi", "New Delhi", "Gurugram", "Gurgaon", "Noida", "Connaught Place", "Aerocity", "South Delhi"],
+    "market_tier": "National Capital & Tier-1 Metro",
+    "description": "Diplomatic, commercial, and transit hub with distinct high-volume Aerocity hospitality clusters and business corridor rates.",
+    "pricing_by_star": {
+      "1": {"min": 1500, "max": 2800},
+      "2": {"min": 2200, "max": 4200},
+      "3": {"min": 3500, "max": 7000},
+      "4": {"min": 6500, "max": 14000},
+      "5": {"min": 12000, "max": 30000}
+    }
+  },
+  {
+    "id": "loc_bengaluru",
+    "region": "Bengaluru",
+    "aliases": ["Bengaluru", "Bangalore", "Whitefield", "Indiranagar", "Koramangala", "Electronic City", "MG Road", "Hebbal"],
+    "market_tier": "Tech Capital & Tier-1 Metro",
+    "description": "Consistent year-round corporate tech corridor travel demand with premium business amenities and boutique urban lodges.",
+    "pricing_by_star": {
+      "1": {"min": 1400, "max": 2600},
+      "2": {"min": 2000, "max": 4000},
+      "3": {"min": 3200, "max": 6500},
+      "4": {"min": 6000, "max": 13000},
+      "5": {"min": 11000, "max": 26000}
+    }
+  },
+  {
+    "id": "loc_hyderabad",
+    "region": "Hyderabad",
+    "aliases": ["Hyderabad", "HITEC City", "Gachibowli", "Banjara Hills", "Jubilee Hills", "Secunderabad"],
+    "market_tier": "IT Hub & Metro",
+    "description": "Expanding IT and convention center market with competitive upscale corporate room inventory.",
+    "pricing_by_star": {
+      "1": {"min": 1200, "max": 2400},
+      "2": {"min": 1800, "max": 3600},
+      "3": {"min": 2800, "max": 5800},
+      "4": {"min": 5200, "max": 11500},
+      "5": {"min": 9500, "max": 22000}
+    }
+  },
+  {
+    "id": "loc_chennai",
+    "region": "Chennai",
+    "aliases": ["Chennai", "Madras", "OMR", "T Nagar", "Guindy", "ECR", "Mylapore", "Nungambakkam"],
+    "market_tier": "Industrial & Coastal Metro",
+    "description": "Balanced industrial, medical tourism, and coastal transit hospitality market.",
+    "pricing_by_star": {
+      "1": {"min": 1200, "max": 2300},
+      "2": {"min": 1800, "max": 3500},
+      "3": {"min": 2700, "max": 5500},
+      "4": {"min": 5000, "max": 11000},
+      "5": {"min": 9000, "max": 21000}
+    }
+  },
+  {
+    "id": "loc_kolkata",
+    "region": "Kolkata",
+    "aliases": ["Kolkata", "Calcutta", "Park Street", "Salt Lake", "New Town", "Howrah"],
+    "market_tier": "Cultural & Eastern Metro",
+    "description": "Eastern gateway metro with distinct heritage colonial hospitality and expanding New Town corporate corridor.",
+    "pricing_by_star": {
+      "1": {"min": 1100, "max": 2200},
+      "2": {"min": 1600, "max": 3200},
+      "3": {"min": 2500, "max": 5200},
+      "4": {"min": 4800, "max": 10500},
+      "5": {"min": 8500, "max": 20000}
+    }
+  },
+  {
+    "id": "loc_rajasthan_heritage",
+    "region": "Jaipur & Rajasthan Heritage",
+    "aliases": ["Jaipur", "Udaipur", "Jodhpur", "Jaisalmer", "Pushkar", "Ranthambore", "Rajasthan"],
+    "market_tier": "Royal Heritage & Palatial Tourism",
+    "description": "Heritage havell properties and luxury palace hotels command wide spreads between modest guest lodges and palatial suites.",
+    "pricing_by_star": {
+      "1": {"min": 1000, "max": 2200},
+      "2": {"min": 1600, "max": 3500},
+      "3": {"min": 2600, "max": 6500},
+      "4": {"min": 5500, "max": 15000},
+      "5": {"min": 12000, "max": 45000}
+    }
+  },
+  {
+    "id": "loc_hill_stations",
+    "region": "Himalayan Hill Stations",
+    "aliases": ["Shimla", "Manali", "Dharamshala", "Mussoorie", "Nainital", "Rishikesh", "Kasol", "Spiti", "Leh", "Ladakh"],
+    "market_tier": "Mountain Resort & High Elevation Leisure",
+    "description": "Scenic mountain escape destinations where valley views, heating amenities, and winter peak seasons heavily dictate tariffs.",
+    "pricing_by_star": {
+      "1": {"min": 1200, "max": 2500},
+      "2": {"min": 1800, "max": 3800},
+      "3": {"min": 3000, "max": 6500},
+      "4": {"min": 6000, "max": 13500},
+      "5": {"min": 12000, "max": 32000}
+    }
+  },
+  {
+    "id": "loc_south_hills_nature",
+    "region": "Western Ghats & South Leisure",
+    "aliases": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Madikeri", "Chikmagalur", "Thekkady", "Alleppey", "Kochi"],
+    "market_tier": "Plantation & Nature Retreat",
+    "description": "Plantation estates, backwater lodges, and serene hill sanctuaries with distinct cottage and estate villa options.",
+    "pricing_by_star": {
+      "1": {"min": 1100, "max": 2300},
+      "2": {"min": 1700, "max": 3500},
+      "3": {"min": 2800, "max": 6000},
+      "4": {"min": 5200, "max": 12000},
+      "5": {"min": 10000, "max": 25000}
+    }
+  },
+  {
+    "id": "loc_tier2_commercial",
+    "region": "Tier-2 Commercial Cities",
+    "aliases": ["Pune", "Ahmedabad", "Chandigarh", "Coimbatore", "Indore", "Lucknow", "Nagpur", "Bhopal", "Surat", "Vadodara", "Visakhapatnam"],
+    "market_tier": "Tier-2 Growth Corridor",
+    "description": "Active industrial, commerce, and education centers with stable, affordable business hotel inventory.",
+    "pricing_by_star": {
+      "1": {"min": 1000, "max": 2000},
+      "2": {"min": 1500, "max": 3000},
+      "3": {"min": 2400, "max": 4800},
+      "4": {"min": 4500, "max": 9500},
+      "5": {"min": 8000, "max": 18000}
+    }
+  },
+  {
+    "id": "loc_pilgrimage_heritage",
+    "region": "Spiritual & Pilgrimage Towns",
+    "aliases": ["Varanasi", "Kashi", "Haridwar", "Rishikesh", "Tirupati", "Shirdi", "Madurai", "Puri", "Amritsar", "Ayodhya", "Ujjain"],
+    "market_tier": "Spiritual & Cultural Heritage",
+    "description": "High footfall spiritual destinations featuring extensive dharamsalas and budget lodges up to luxury riverside boutique retreats.",
+    "pricing_by_star": {
+      "1": {"min": 800, "max": 1800},
+      "2": {"min": 1300, "max": 2800},
+      "3": {"min": 2200, "max": 4800},
+      "4": {"min": 4200, "max": 9000},
+      "5": {"min": 7500, "max": 19000}
+    }
+  },
+  {
+    "id": "loc_general_india",
+    "region": "National Standard (All-India Benchmark)",
+    "aliases": ["India", "National", "Standard", "Other", "Default"],
+    "market_tier": "Pan-India Baseline",
+    "description": "National baseline hospitality tariffs across regional districts and standard urban areas.",
+    "pricing_by_star": {
+      "1": {"min": 1000, "max": 2000},
+      "2": {"min": 1500, "max": 3000},
+      "3": {"min": 2500, "max": 5000},
+      "4": {"min": 4500, "max": 9500},
+      "5": {"min": 8500, "max": 20000}
+    }
+  }
+]

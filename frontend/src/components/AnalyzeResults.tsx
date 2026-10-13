@@ -4,13 +4,15 @@ import { StolenPanel } from './StolenPanel';
 import { AiGenPanel } from './AiGenPanel';
 import { FeatureVectorPanel } from './FeatureVectorPanel';
 import { CompliancePanel } from './CompliancePanel';
+import { LocationPricingPanel } from './LocationPricingPanel';
 import { ErrorBanner } from './ErrorBanner';
 
 interface AnalyzeResultsProps {
   data: AnalyzeListingResponse;
+  claimedPrice?: number;
 }
 
-export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data }) => {
+export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data, claimedPrice }) => {
   const { results, aggregated } = data;
   const [activeTab, setActiveTab] = useState<number | 'aggregate'>('aggregate');
 
@@ -68,6 +70,13 @@ export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data }) => {
               title="Listing Composite Quality & Aesthetic Synthesis"
               isAggregate={true}
             />
+
+            {data.location_price && (
+              <LocationPricingPanel 
+                locationPrice={data.location_price} 
+                claimedPrice={claimedPrice} 
+              />
+            )}
 
             {data.compliance && (
               <CompliancePanel compliance={data.compliance} />

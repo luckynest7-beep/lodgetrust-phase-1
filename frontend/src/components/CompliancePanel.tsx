@@ -8,6 +8,9 @@ interface CompliancePanelProps {
 export const CompliancePanel: React.FC<CompliancePanelProps> = ({ compliance }) => {
   if (!compliance) return null;
 
+  const scorePct = Math.round((compliance.compliance_ratio || 0) * 100);
+  const isHighCompliance = scorePct >= 70;
+
   return (
     <div className="apple-card" style={{ 
       marginTop: '1.5rem', 
@@ -18,25 +21,29 @@ export const CompliancePanel: React.FC<CompliancePanelProps> = ({ compliance }) 
       border: '1px solid rgba(255, 255, 255, 0.1)',
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)'
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
         <div>
-          <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em', color: '#86868b', marginBottom: '4px' }}>
-            MODULE D: COMPLIANCE RAG
+          <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', color: '#0a84ff', marginBottom: '4px' }}>
+            MODULE D • RAG REGULATORY COMPLIANCE
           </div>
           <h4 style={{ fontSize: '20px', fontWeight: 600, color: '#f5f5f7', margin: 0 }}>
-            HRACC {compliance.star_claimed}-Star Hotel Compliance
+            HRACC {compliance.star_claimed}-Star Standard Verification
           </h4>
         </div>
         <div style={{
-          background: compliance.compliance_ratio > 0.8 ? 'rgba(52, 199, 89, 0.15)' : 'rgba(255, 204, 0, 0.15)',
-          color: compliance.compliance_ratio > 0.8 ? '#34c759' : '#ffcc00',
-          padding: '6px 12px',
+          background: isHighCompliance ? 'rgba(52, 199, 89, 0.15)' : 'rgba(255, 149, 0, 0.15)',
+          color: isHighCompliance ? '#34c759' : '#ff9f0a',
+          padding: '6px 14px',
           borderRadius: '12px',
-          fontWeight: 600,
+          fontWeight: 700,
           fontSize: '14px',
-          border: `1px solid ${compliance.compliance_ratio > 0.8 ? 'rgba(52, 199, 89, 0.3)' : 'rgba(255, 204, 0, 0.3)'}`
+          border: `1px solid ${isHighCompliance ? 'rgba(52, 199, 89, 0.3)' : 'rgba(255, 149, 0, 0.3)'}`,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px'
         }}>
-          {(compliance.compliance_ratio * 100).toFixed(0)}% Score
+          <span>{scorePct}%</span>
+          <span style={{ fontSize: '12px', fontWeight: 500, opacity: 0.85 }}>Adherence</span>
         </div>
       </div>
       
@@ -53,78 +60,110 @@ export const CompliancePanel: React.FC<CompliancePanelProps> = ({ compliance }) 
         </div>
       ) : (
         <div>
-          <div style={{ height: '8px', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '4px', overflow: 'hidden', marginBottom: '24px' }}>
+          {/* Progress bar */}
+          <div style={{ height: '6px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '3px', overflow: 'hidden', marginBottom: '20px' }}>
             <div style={{ 
               height: '100%', 
-              width: `${compliance.compliance_ratio * 100}%`, 
-              backgroundColor: compliance.compliance_ratio > 0.8 ? '#34c759' : '#ffcc00',
-              borderRadius: '4px',
-              transition: 'width 1s cubic-bezier(0.2, 0.8, 0.2, 1)'
+              width: `${scorePct}%`, 
+              backgroundColor: isHighCompliance ? '#34c759' : '#ff9f0a',
+              borderRadius: '3px',
+              transition: 'width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
             }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          {/* Two-column clean grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+            
+            {/* Met standards */}
             <div style={{ 
-              background: 'rgba(255, 255, 255, 0.03)', 
+              background: 'rgba(52, 199, 89, 0.04)', 
               padding: '16px', 
-              borderRadius: '16px', 
-              border: '1px solid rgba(255, 255, 255, 0.05)' 
+              borderRadius: '14px', 
+              border: '1px solid rgba(52, 199, 89, 0.15)' 
             }}>
-              <h5 style={{ fontSize: '15px', fontWeight: 600, color: '#34c759', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Criteria Met ({compliance.criteria_met})
-              </h5>
-              {compliance.compliance_ratio === 0 ? (
-                <span style={{ color: '#86868b', fontSize: '13px' }}>None</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <h5 style={{ fontSize: '14px', fontWeight: 600, color: '#34c759', margin: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Verified Standards
+                </h5>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: '#34c759', background: 'rgba(52, 199, 89, 0.15)', padding: '2px 8px', borderRadius: '10px' }}>
+                  {compliance.criteria_met} Met
+                </span>
+              </div>
+
+              {(!compliance.met_list || compliance.met_list.length === 0) ? (
+                <p style={{ color: '#8e8e93', fontSize: '13px', margin: 0, fontStyle: 'italic' }}>No standard amenities detected in photos.</p>
               ) : (
-                <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
-                  {compliance.met_list && compliance.met_list.map((item, idx) => (
-                    <li key={idx} style={{ 
-                      color: '#d2d2d7', 
-                      fontSize: '13px', 
-                      marginBottom: '8px',
-                      paddingLeft: '16px',
-                      position: 'relative',
-                      lineHeight: '1.4'
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {compliance.met_list.map((item, idx) => (
+                    <div key={idx} style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '8px',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      padding: '8px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255, 255, 255, 0.04)',
+                      fontSize: '13px',
+                      color: '#e5e5ea'
                     }}>
-                      <span style={{ position: 'absolute', left: 0, top: '6px', width: '4px', height: '4px', borderRadius: '50%', background: '#34c759' }} />
-                      {item}
-                    </li>
+                      <span style={{ color: '#34c759', fontSize: '13px', fontWeight: 'bold' }}>✓</span>
+                      <span>{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
             
+            {/* Missing standards */}
             <div style={{ 
-              background: 'rgba(255, 255, 255, 0.03)', 
+              background: 'rgba(255, 149, 0, 0.04)', 
               padding: '16px', 
-              borderRadius: '16px', 
-              border: '1px solid rgba(255, 255, 255, 0.05)' 
+              borderRadius: '14px', 
+              border: '1px solid rgba(255, 149, 0, 0.15)' 
             }}>
-              <h5 style={{ fontSize: '15px', fontWeight: 600, color: '#ff3b30', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Missing ({compliance.missing.length})
-              </h5>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <h5 style={{ fontSize: '14px', fontWeight: 600, color: '#ff9f0a', margin: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  Unverified / Missing
+                </h5>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: '#ff9f0a', background: 'rgba(255, 149, 0, 0.15)', padding: '2px 8px', borderRadius: '10px' }}>
+                  {compliance.missing.length} Missing
+                </span>
+              </div>
+
               {compliance.missing.length === 0 ? (
-                <span style={{ color: '#86868b', fontSize: '13px' }}>All criteria met</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px', background: 'rgba(52, 199, 89, 0.08)', borderRadius: '8px', color: '#34c759', fontSize: '13px' }}>
+                  <span>✓</span>
+                  <span>All official {compliance.star_claimed}-Star regulatory standards satisfied!</span>
+                </div>
               ) : (
-                <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {compliance.missing.map((item, idx) => (
-                    <li key={idx} style={{ 
-                      color: '#d2d2d7', 
-                      fontSize: '13px', 
-                      marginBottom: '8px',
-                      paddingLeft: '16px',
-                      position: 'relative',
-                      lineHeight: '1.4'
+                    <div key={idx} style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '8px',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      padding: '8px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255, 255, 255, 0.04)',
+                      fontSize: '13px',
+                      color: '#d2d2d7'
                     }}>
-                      <span style={{ position: 'absolute', left: 0, top: '6px', width: '4px', height: '4px', borderRadius: '50%', background: '#ff3b30' }} />
-                      {item}
-                    </li>
+                      <span style={{ color: '#ff9f0a', fontSize: '12px' }}>•</span>
+                      <span>{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
+
+          </div>
+
+          <div style={{ marginTop: '16px', fontSize: '12px', color: '#86868b', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span>ℹ️</span>
+            <span>RAG audited against official Ministry of Tourism HRACC specifications for {compliance.star_claimed}-Star classification.</span>
           </div>
         </div>
       )}

@@ -15,8 +15,21 @@ from pathlib import Path
 from typing import List, Optional
 
 from PIL import Image
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile, status
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
+
+try:
+    from dotenv import load_dotenv
+    # Load backend .env or project root .env
+    load_dotenv()
+    root_env = Path(__file__).resolve().parent.parent / ".env"
+    if root_env.exists():
+        load_dotenv(root_env)
+    parent_root_env = Path(__file__).resolve().parent.parent.parent / ".env"
+    if parent_root_env.exists():
+        load_dotenv(parent_root_env)
+except ImportError:
+    pass
 
 # Ensure image_analysis module directory is on sys.path
 CURRENT_DIR = Path(__file__).resolve().parent
@@ -36,6 +49,11 @@ try:
 except ImportError:
     check_compliance = None
 
+try:
+    from location_pricing import get_location_price_range
+except ImportError:
+    get_location_price_range = None
+
 from ai_image_detector import detect_ai_generated  # noqa: E402
 from combine_signals import combine_for_image, combine_for_listing  # noqa: E402
 from furniture_detector import DEFAULT_EXPECTED_AMENITIES  # noqa: E402
@@ -48,16 +66,22 @@ from api.schemas import (  # noqa: E402
     AiDetectorResult,
     AnalyzeImageResult,
     AnalyzeListingResponse,
+    CityInfo,
     ComplianceResult,
     ExpectedAmenitiesResponse,
     FeatureVector,
     HealthResponse,
+    HotelListing,
+    HotelListResponse,
+    LocationPriceResult,
     StolenAddResponse,
     StolenResetResponse,
     StolenResult,
     TrustEvaluationResult,
 )
 from api.seed_index import seed_dummy_index  # noqa: E402
+from hotel_database import get_available_cities, init_hotel_database, query_hotels, get_chennai_geojson  # noqa: E402
+
 import tempfile
 
 # Configure logging
@@ -79,6 +103,7 @@ async def lifespan(app: FastAPI):
 
     def _seed():
         try:
+            init_hotel_database()
             count = seed_dummy_index()
             logger.info(f"Startup complete. Seeded {count} demo images in FAISS index.")
         except Exception as e:
@@ -182,6 +207,7 @@ def reset_stolen_index():
 async def analyze_images(
     files: List[UploadFile] = File(...),
     star_category: Optional[int] = Form(3),
+    location: Optional[str] = Form(""),
     description: Optional[str] = Form(""),
     price: Optional[float] = Form(0.0),
     food_included: Optional[bool] = Form(False),
@@ -375,10 +401,80 @@ async def analyze_images(
         except Exception as e:
             logger.error(f"Trust Evaluation failed: {e}")
 
+    # Location Price Range Estimation (RAG Benchmark)
+    location_price_res = None
+    if get_location_price_range:
+        try:
+            loc_data = get_location_price_range(location or "", star_category or 3, price)
+            location_price_res = LocationPriceResult(**loc_data)
+        except Exception as e:
+            logger.warning(f"Location price RAG calculation failed: {e}")
+
     return AnalyzeListingResponse(
         results=per_image_results, 
         aggregated=aggregated, 
         compliance=compliance_res,
+        location_price=location_price_res,
         trust_evaluation=trust_eval_res
     )
+
+
+@app.get("/api/location-price", response_model=LocationPriceResult)
+async def check_location_price(
+    location: str = Query(""),
+    star_category: int = Query(3),
+    price: Optional[float] = Query(None)
+):
+    """Retrieve expected price range benchmark for a specific location using RAG."""
+    if not get_location_price_range:
+        raise HTTPException(status_code=500, detail="Location pricing RAG module not loaded")
+    data = get_location_price_range(location, star_category, price)
+    return LocationPriceResult(**data)
+
+
+# Phase 2: Hotel & Lodge Discovery Endpoints
+@app.get("/api/cities", response_model=List[CityInfo])
+async def list_supported_cities():
+    """Retrieve list of supported Indian cities with center coordinates and lodging counts."""
+    return get_available_cities()
+
+
+@app.get("/api/hotels", response_model=HotelListResponse)
+async def list_hotels(
+    city: Optional[str] = Query(None, description="City name in India (e.g., Goa, Mumbai, Delhi NCR, etc.)"),
+    accommodation_type: Optional[str] = Query(None, description="Type: Hotel, Resort, Heritage Palace, Boutique Lodge"),
+    min_stars: Optional[int] = Query(None, description="Minimum star rating (1-5)"),
+    verified_only: bool = Query(False, description="Filter only listings with completed Phase 1 trust audits"),
+    sort_by: str = Query("trust_score", description="Sort by: trust_score, price_asc, price_desc, stars_desc"),
+    limit: int = Query(50, description="Max results")
+):
+    """Retrieve verified hotel and lodge listings matching city and filter criteria."""
+    results = query_hotels(
+        city=city,
+        accommodation_type=accommodation_type,
+        min_star_rating=min_stars,
+        verified_only=verified_only,
+        sort_by=sort_by,
+        limit=limit
+    )
+    return HotelListResponse(
+        total=len(results),
+        city=city,
+        hotels=results
+    )
+
+
+@app.get("/api/geojson/chennai")
+async def get_chennai_geojson_endpoint():
+    """Retrieve authentic GeoJSON feature collection for Chennai hotels directly from Map_Data."""
+    data = get_chennai_geojson()
+    if not data:
+        raise HTTPException(
+            status_code=404,
+            detail="chennai_hotels.geojson not found in Map_Data folder"
+        )
+    return data
+
+
+
 

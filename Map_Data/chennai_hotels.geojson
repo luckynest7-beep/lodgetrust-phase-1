@@ -1,0 +1,3984 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-10-11T15:09:51Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/28682249",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:postcode": "600026",
+        "addr:state": "Tamil Nadu",
+        "addr:street": "Arcot Road",
+        "building": "yes",
+        "contact:email": "reserv.chn@hotelgreenpark.com",
+        "contact:fax": "+91 44 23757677",
+        "name": "Green Park - Chennai",
+        "operator": "Green Park Hotels",
+        "phone": "+91 44  66515151",
+        "source": "http://www.hotelgreenpark.com/chennai/contactus.htm",
+        "tourism": "hotel",
+        "website": "http://www.hotelgreenpark.com/default.htm",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2081701,
+          13.0510511
+        ]
+      },
+      "id": "way/28682249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32551266",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:housenumber": "124/1",
+        "addr:postcode": "600032",
+        "addr:street": "Jawaharlal Nehru Rd",
+        "brand": "Hilton",
+        "brand:wikidata": "Q598884",
+        "brand:wikipedia": "en:Hilton Hotels & Resorts",
+        "building": "yes",
+        "contact:facebook": "https://www.facebook.com/HiltonChennai",
+        "contact:instagram": "https://www.instagram.com/hiltonchennai/",
+        "email": "maahi-salesadm@hilton.com",
+        "fax": "+91 44 22255700",
+        "internet_access": "yes",
+        "internet_access:fee": "yes",
+        "name": "Hilton Chennai",
+        "phone": "+91 44 222-55555",
+        "rooms": "204",
+        "smoking": "outside",
+        "stars": "5",
+        "tourism": "hotel",
+        "website": "https://www.hilton.com/en/hotels/maahihi-hilton-chennai/",
+        "wheelchair": "yes",
+        "wikidata": "Q5764519",
+        "wikipedia": "en:Hilton Chennai",
+        "youtube": "https://www.youtube.com/channel/UC84p_5t4Po9wVWnXjlDrdxw?sub_confirmation=1w",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2047663,
+          13.016676
+        ]
+      },
+      "id": "way/32551266"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/186797308",
+        "brand": "Taj",
+        "brand:wikidata": "Q1521893",
+        "name": "Taj Coromandel",
+        "official_name": "Taj Hotels",
+        "tourism": "hotel",
+        "wikidata": "Q7676704",
+        "wikimedia_commons": "Category:Taj Coromandel",
+        "wikipedia": "en:Taj Coromandel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2475307,
+          13.0582335
+        ]
+      },
+      "id": "way/186797308"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/214599077",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:housenumber": "39",
+        "addr:postcode": "600032",
+        "addr:street": "Velachery Road",
+        "building": "hotel",
+        "building:levels": "9",
+        "name": "Park Hyatt Chennai",
+        "not:brand:wikidata": "Q115794911",
+        "phone": "+91 44 7177 1234",
+        "tourism": "hotel",
+        "website": "https://chennai.park.hyatt.com",
+        "wikidata": "Q7137800",
+        "wikipedia": "en:Park Hyatt Chennai",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2234955,
+          13.0106425
+        ]
+      },
+      "id": "way/214599077"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/217645028",
+        "brand": "Taj",
+        "brand:wikidata": "Q1521893",
+        "name": "Taj Connemara",
+        "official_name": "Taj Hotels",
+        "tourism": "hotel",
+        "wikidata": "Q7676703",
+        "wikimedia_commons": "Category:Taj Connemara",
+        "wikipedia": "en:Taj Connemara",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2609141,
+          13.0625726
+        ]
+      },
+      "id": "way/217645028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/218189445",
+        "name": "Hotel Ambassador Pallava",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2585909,
+          13.0671421
+        ]
+      },
+      "id": "way/218189445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/218189446",
+        "name": "Hotel Ranjith",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.248569,
+          13.0563011
+        ]
+      },
+      "id": "way/218189446"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/257899674",
+        "name": "Chola Sheraton",
+        "tourism": "hotel",
+        "wikidata": "Q6945492",
+        "wikipedia": "en:Welcomhotel Chennai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2573123,
+          13.0453871
+        ]
+      },
+      "id": "node/257899674"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/301725748",
+        "name": "Samco",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.256529,
+          13.0382411
+        ]
+      },
+      "id": "node/301725748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/301725773",
+        "name": "Eldams Lodge",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2488531,
+          13.0390202
+        ]
+      },
+      "id": "node/301725773"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/304956888",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:postcode": "600026",
+        "addr:state": "Tamil Nadu",
+        "addr:street": "Arcot Road",
+        "contact:email": "reserv.chn@hotelgreenpark.com",
+        "contact:fax": "+91 44 23757677",
+        "name": "Green Park - Chennai",
+        "operator": "Green Park Hotels",
+        "phone": "+91 44 66515151",
+        "source": "http://www.hotelgreenpark.com/chennai/contactus.htm",
+        "tourism": "hotel",
+        "website": "http://www.hotelgreenpark.com/default.htm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2081917,
+          13.051048
+        ]
+      },
+      "id": "node/304956888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/308194426",
+        "air_conditioning": "yes",
+        "created_by": "Potlatch 0.10e",
+        "name": "Le Royal Meridian",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2055161,
+          13.0070349
+        ]
+      },
+      "id": "node/308194426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/308210316",
+        "name": "Residency Towers",
+        "tourism": "hotel",
+        "wikidata": "Q7315425",
+        "wikipedia": "en:Residency Towers Chennai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2437255,
+          13.0402539
+        ]
+      },
+      "id": "node/308210316"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/308300962",
+        "name": "Accord Metropolitan",
+        "tourism": "hotel",
+        "wikidata": "Q4672714",
+        "wikipedia": "en:Accord Metropolitan Hotel, Chennai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2425563,
+          13.0459441
+        ]
+      },
+      "id": "node/308300962"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/308300964",
+        "addr:city": "Chennai",
+        "addr:housenumber": "564",
+        "addr:postcode": "600017",
+        "addr:street": "Anna Salai (Mount Road)",
+        "brand": "Courtyard",
+        "brand:wikidata": "Q1053170",
+        "brand:wikipedia": "en:Courtyard by Marriott",
+        "name": "Courtyard Marriott",
+        "official_name": "Courtyard by Marriott",
+        "phone": "66764000",
+        "tourism": "hotel",
+        "website": "https://www.marriott.com/en-us/hotels/maacy-courtyard-chennai/overview/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2477447,
+          13.0459725
+        ]
+      },
+      "id": "node/308300964"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/308451667",
+        "created_by": "Potlatch 0.10e",
+        "name": "Hotel Mount Palace",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2469187,
+          13.0404792
+        ]
+      },
+      "id": "node/308451667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/310982486",
+        "addr:city": "Chennai",
+        "addr:street": "Dr Radhakrishnan Salai",
+        "name": "Hotel Clarion",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2711218,
+          13.0434191
+        ]
+      },
+      "id": "node/310982486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/313131948",
+        "name": "Palmgrove",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2480182,
+          13.0528514
+        ]
+      },
+      "id": "node/313131948"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/315897109",
+        "created_by": "Potlatch 0.10f",
+        "name": "Barathi Hostel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2630724,
+          13.0575776
+        ]
+      },
+      "id": "node/315897109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/339129782",
+        "created_by": "Potlatch 0.10f",
+        "name": "Hotel Maris",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2578584,
+          13.0452178
+        ]
+      },
+      "id": "node/339129782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/339129820",
+        "created_by": "Potlatch 0.10f",
+        "name": "New Woodlands",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2621727,
+          13.0453549
+        ]
+      },
+      "id": "node/339129820"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/339129823",
+        "name": "Hotel Savera",
+        "tourism": "hotel",
+        "wikidata": "Q7428173",
+        "wikipedia": "en:Savera Hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2612636,
+          13.0460029
+        ]
+      },
+      "id": "node/339129823"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/343251191",
+        "created_by": "Potlatch 0.10f",
+        "name": "Sangeetha Residency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2672996,
+          13.0367415
+        ]
+      },
+      "id": "node/343251191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/344408916",
+        "name": "Hotel Aruna Inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2422523,
+          13.066127
+        ]
+      },
+      "id": "node/344408916"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/353205971",
+        "name": "Sridevi Park",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2330855,
+          13.0453722
+        ]
+      },
+      "id": "node/353205971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/353974487",
+        "created_by": "Potlatch 0.10f",
+        "name": "Orient Inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2589389,
+          13.0457449
+        ]
+      },
+      "id": "node/353974487"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/354468676",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:housenumber": "80",
+        "addr:street": "2nd Main Road",
+        "building": "yes",
+        "name": "Treebo J's Five Two Boutique",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2539545,
+          13.0273996
+        ]
+      },
+      "id": "way/354468676"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/354546532",
+        "building": "yes",
+        "name": "Sri Vari",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.212787,
+          13.0851132
+        ]
+      },
+      "id": "way/354546532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/354573865",
+        "air_conditioning": "yes",
+        "building": "yes",
+        "building:levels": "9",
+        "contact:facebook": "grandbygrt",
+        "email": "reservations @grtgrand.com",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "internet_access:ssid": "GRAND BY GRT",
+        "name": "GRT Grand Days",
+        "phone": "+91 44281 55500",
+        "smoking": "no",
+        "source": "local knowledge",
+        "stars": "5",
+        "tourism": "hotel",
+        "website": "https://grthotels.com/amp/chennai.html",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2450962,
+          13.040212
+        ]
+      },
+      "id": "way/354573865"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/354839366",
+        "building": "yes",
+        "name": "Devils Den",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2222067,
+          13.0649708
+        ]
+      },
+      "id": "way/354839366"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/354944056",
+        "name": "Deccan Plaza",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2666728,
+          13.0465348
+        ]
+      },
+      "id": "node/354944056"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/354959513",
+        "created_by": "Potlatch 0.10f",
+        "name": "Broadlands Lodge",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.273438,
+          13.0630301
+        ]
+      },
+      "id": "node/354959513"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/354986564",
+        "building": "yes",
+        "building:levels": "9",
+        "name": "Hotel Blue Star",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2756415,
+          13.0887466
+        ]
+      },
+      "id": "way/354986564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355022112",
+        "building": "yes",
+        "name": "Oriental Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2578792,
+          13.0459206
+        ]
+      },
+      "id": "way/355022112"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355022976",
+        "addr:city": "Chennai",
+        "addr:district": "Chennai",
+        "addr:housenumber": "180",
+        "addr:postcode": "600018",
+        "addr:street": "Parthasarathy Garden",
+        "brand": "Raj Park Hotel",
+        "building": "yes",
+        "name": "Raj Park Hotel - Chennai",
+        "tourism": "hotel",
+        "website": "https://www.rajpark.com/alwarpet-chennai-hotel/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2593025,
+          13.0443146
+        ]
+      },
+      "id": "way/355022976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355026426",
+        "brand": "OYO",
+        "brand:wikidata": "Q24906315",
+        "building": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "customers",
+        "name": "OYO 2527 Lake View Park",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2280546,
+          13.0412645
+        ]
+      },
+      "id": "way/355026426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355047852",
+        "building": "yes",
+        "name": "Sundar ganga Nivas",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2201281,
+          13.0655665
+        ]
+      },
+      "id": "way/355047852"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355091629",
+        "building": "yes",
+        "name": "Benzz Park",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2392574,
+          13.04612
+        ]
+      },
+      "id": "way/355091629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355102901",
+        "addr:city": "Chennai",
+        "addr:district": "Chennai",
+        "addr:housenumber": "104",
+        "addr:postcode": "600018",
+        "addr:street": "Pasumpon Muthuramalingar Thevar Salai (Chamiers Road)",
+        "air_conditioning": "yes",
+        "brand": "K11",
+        "building": "yes",
+        "building:levels": "3",
+        "description": "Off a busy road, this polished hotel is an 10-minute walk from Nandanam metro station. It’s 2 km from both Guindy National Park and the 7th-century Kapaleesh warar Temple.\n1km Apollo Hospital, 2km American Emmbassey\nThe warm, relaxed rooms very comfortabl",
+        "email": "thek11goldengate@gmail.com",
+        "image": "https://business.google.com/v/_/AKsrIN397AYrNilHvPN8kitB6F4m0v9k2imo9ZkAaalHkT071jHe_w/ace7/_?exp=1778401&myads=1",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "mobile": "8190011511",
+        "name": "The K11 Golden Gate",
+        "opening_hours": "24/7",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:google_pay": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "phone": "+914424311611",
+        "ref:vatin": "33BXMPG6280J2Z6",
+        "reservation": "recommended",
+        "rooms": "23",
+        "smoking": "outside",
+        "stars": "3",
+        "start_date": "2025-04-01",
+        "tourism": "hotel",
+        "website": "https://www.k11rooms.in",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.246552,
+          13.0292774
+        ]
+      },
+      "id": "way/355102901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/355515110",
+        "name": "Park Sheraton Residency",
+        "tourism": "hotel",
+        "wikidata": "Q5974726",
+        "wikipedia": "en:Crowne Plaza Chennai Adyar Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2495759,
+          13.0294193
+        ]
+      },
+      "id": "node/355515110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/355515112",
+        "name": "Raintree",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.253197,
+          13.028834
+        ]
+      },
+      "id": "node/355515112"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355636633",
+        "addr:city": "Vadapalani",
+        "addr:housenumber": "3",
+        "addr:postcode": "600026",
+        "addr:street": "Seethammal St",
+        "brand": "Hotel",
+        "building": "yes",
+        "internet_access": "yes",
+        "name": "Olive Grand",
+        "rooms": "17",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2048995,
+          13.0488137
+        ]
+      },
+      "id": "way/355636633"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355649687",
+        "addr:city": "Chennai",
+        "addr:postcode": "600015",
+        "addr:street": "Kodambakkam Rd",
+        "building": "yes",
+        "internet_access": "yes",
+        "name": "Murugan idly kadai",
+        "operator": "Murugan",
+        "smoking": "no",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2201964,
+          13.0295622
+        ]
+      },
+      "id": "way/355649687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/365349190",
+        "building": "yes",
+        "name": "E Hotel",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2631014,
+          13.0585009
+        ]
+      },
+      "id": "way/365349190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/365983866",
+        "name": "Hotel Checkers",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2228881,
+          13.0142025
+        ]
+      },
+      "id": "node/365983866"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/366852035",
+        "created_by": "Potlatch 0.10f",
+        "name": "Rani Meyyamai Hostel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2592643,
+          13.0649764
+        ]
+      },
+      "id": "node/366852035"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/366853372",
+        "created_by": "Potlatch 0.10f",
+        "name": "ITDC Hotel Kanchi",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2578567,
+          13.0644831
+        ]
+      },
+      "id": "node/366853372"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/367147772",
+        "name": "Lemon Tree Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2246934,
+          13.0111805
+        ]
+      },
+      "id": "node/367147772"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/410295480",
+        "name": "GLM Meridian",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2395062,
+          13.0326957
+        ]
+      },
+      "id": "node/410295480"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/413846924",
+        "name": "Hotel Picnic",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2679907,
+          13.0363286
+        ]
+      },
+      "id": "node/413846924"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/473396781",
+        "name": "Esthell Continental Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2594014,
+          13.007268
+        ]
+      },
+      "id": "node/473396781"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/571352148",
+        "name": "GRT Business Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2453615,
+          13.0397233
+        ]
+      },
+      "id": "node/571352148"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/623010976",
+        "name": "Hotel ashoka",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2605699,
+          13.0724389
+        ]
+      },
+      "id": "node/623010976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1089483326",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Bagyam Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2863123,
+          13.0890847
+        ]
+      },
+      "id": "way/1089483326"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1089789104",
+        "building": "yes",
+        "building:levels": "6",
+        "name": "Hotel Chennai Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2901893,
+          13.0923972
+        ]
+      },
+      "id": "way/1089789104"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1089821945",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Hotel Excellent",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.28634,
+          13.0968071
+        ]
+      },
+      "id": "way/1089821945"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1090016339",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Hotel Indian Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2905411,
+          13.0932779
+        ]
+      },
+      "id": "way/1090016339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1090016341",
+        "building": "yes",
+        "building:levels": "6",
+        "name": "Hotel Ashiqa Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2905861,
+          13.093489
+        ]
+      },
+      "id": "way/1090016341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1095915253",
+        "brand": "Novotel",
+        "brand:wikidata": "Q420545",
+        "building": "yes",
+        "building:levels": "8",
+        "name": "Novotel",
+        "phone": "+914424302333",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2442769,
+          13.029987
+        ]
+      },
+      "id": "way/1095915253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1096215753",
+        "addr:housenumber": "94",
+        "addr:street": "Satyadev Avenue",
+        "building": "yes",
+        "building:levels": "12",
+        "name": "Somerset Greenways Chennai",
+        "phone": "+914471000001",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2705447,
+          13.0172315
+        ]
+      },
+      "id": "way/1096215753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1096215755",
+        "building": "yes",
+        "building:levels": "16",
+        "name": "The Leela Palace Chennai",
+        "phone": "+914433661234",
+        "tourism": "hotel",
+        "website": "https://www.theleela.com/the-leela-palace-chennai/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.274024,
+          13.0170473
+        ]
+      },
+      "id": "way/1096215755"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1104436646",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Merdeka Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2903389,
+          13.0932959
+        ]
+      },
+      "id": "way/1104436646"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1104577671",
+        "building": "yes",
+        "building:levels": "9",
+        "name": "Hotel Lion CIty",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2900687,
+          13.0935038
+        ]
+      },
+      "id": "way/1104577671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1104590077",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Almas Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2912362,
+          13.0959245
+        ]
+      },
+      "id": "way/1104590077"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1105242363",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Apple Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2902796,
+          13.0961644
+        ]
+      },
+      "id": "way/1105242363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1105396065",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "JSN Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2892312,
+          13.0963359
+        ]
+      },
+      "id": "way/1105396065"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1105421877",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "City Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2890604,
+          13.0963509
+        ]
+      },
+      "id": "way/1105421877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1105471125",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Alreef Residency",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2878999,
+          13.0965082
+        ]
+      },
+      "id": "way/1105471125"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1108157141",
+        "addr:city": "Egmore, Chennai",
+        "addr:housenumber": "29",
+        "addr:postcode": "600008",
+        "addr:street": "Whannels Road",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Hotel Park Plaza",
+        "phone": "+914440011111",
+        "tourism": "hotel",
+        "website": "http://www.hotelparkplaza.in/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2644599,
+          13.0764601
+        ]
+      },
+      "id": "way/1108157141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1110183908",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "i5 Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2866845,
+          13.0969432
+        ]
+      },
+      "id": "way/1110183908"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1112836238",
+        "addr:city": "Chennai",
+        "addr:housenumber": "120",
+        "addr:postcode": "600018",
+        "addr:street": "St. Mary's Road",
+        "building": "yes",
+        "building:levels": "14",
+        "name": "The Raintree, St Mary's Road",
+        "phone": "+914442252525",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2526642,
+          13.0286314
+        ]
+      },
+      "id": "way/1112836238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1116171128",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Orange Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2904683,
+          13.0968922
+        ]
+      },
+      "id": "way/1116171128"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1116171134",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Rahmat Mansion",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2905892,
+          13.0964054
+        ]
+      },
+      "id": "way/1116171134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1116186782",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Adelaide Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2900236,
+          13.0965107
+        ]
+      },
+      "id": "way/1116186782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1116262485",
+        "building": "yes",
+        "building:levels": "8",
+        "name": "Sornam International Hotel",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2770694,
+          13.0838193
+        ]
+      },
+      "id": "way/1116262485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1122814979",
+        "brand": "Ramada",
+        "brand:wikidata": "Q1502859",
+        "building": "yes",
+        "building:levels": "11",
+        "name": "Ramada Plaza by Wyndham Chennai",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.222397,
+          13.0121595
+        ]
+      },
+      "id": "way/1122814979"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1122926999",
+        "brand": "Radisson Blu",
+        "brand:wikidata": "Q7281341",
+        "building": "yes",
+        "building:levels": "12",
+        "name": "Radisson Blu Chennai City Centre",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2557846,
+          13.0671275
+        ]
+      },
+      "id": "way/1122926999"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1122927007",
+        "addr:city": "Chennai",
+        "addr:housenumber": "2",
+        "addr:postcode": "600002",
+        "addr:street": "Club House Road",
+        "brand": "Taj",
+        "brand:wikidata": "Q1521893",
+        "building": "yes",
+        "name": "Taj Club House Chennai",
+        "name:ta": "தாஜ் கிளப் ஹவுஸ்",
+        "official_name": "Taj Hotels",
+        "phone": "04466313131",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2641045,
+          13.0614641
+        ]
+      },
+      "id": "way/1122927007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1126048198",
+        "addr:city": "Chennai",
+        "addr:housenumber": "8",
+        "addr:postcode": "60017",
+        "addr:street": "Duraiswamy Road",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Kuber Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2311831,
+          13.0409084
+        ]
+      },
+      "id": "way/1126048198"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1128440834",
+        "building": "yes",
+        "building:levels": "8",
+        "name": "The Park Chennai",
+        "phone": "04442676000",
+        "tourism": "hotel",
+        "website": "https://www.theparkhotels.com/chennai/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2498325,
+          13.0528715
+        ]
+      },
+      "id": "way/1128440834"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1128463083",
+        "addr:city": "Chennai",
+        "addr:housenumber": "690",
+        "addr:postcode": "600006",
+        "addr:street": "Anna Salai (Mount Road)",
+        "brand": "Ibis",
+        "brand:wikidata": "Q920166",
+        "building": "yes",
+        "building:levels": "12",
+        "name": "Ibis Chennai City Centre",
+        "phone": "04471225588",
+        "tourism": "hotel",
+        "website": "https://all.accor.com/hotel/8020/index.en.shtml",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2566211,
+          13.0575997
+        ]
+      },
+      "id": "way/1128463083"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1130786901",
+        "building": "yes",
+        "building:levels": "6",
+        "name": "The Lotus Hotel Sameera",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2702737,
+          13.0666401
+        ]
+      },
+      "id": "way/1130786901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1136399872",
+        "brand": "Hablis",
+        "building": "yes",
+        "building:levels": "12",
+        "email": "reservations@hablis.com",
+        "name": "Hablis Business Hotel",
+        "phone": "+914440235555",
+        "tourism": "hotel",
+        "website": "https://www.hablis.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2081567,
+          13.0076053
+        ]
+      },
+      "id": "way/1136399872"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1136402717",
+        "addr:city": "Chennai",
+        "addr:housenumber": "365",
+        "addr:postcode": "600018",
+        "addr:street": "Anna Salai (Mount Road)",
+        "brand": "Hyatt Regency",
+        "brand:wikidata": "Q115794868",
+        "building": "yes",
+        "building:levels": "11",
+        "name": "Hyatt Regency Chennai",
+        "phone": "+91 44 6100 1234",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2487379,
+          13.0428707
+        ]
+      },
+      "id": "way/1136402717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1136624968",
+        "addr:city": "Chennai",
+        "addr:housenumber": "245",
+        "addr:postcode": "600001",
+        "addr:street": "Thambu Chetty Street",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Metro Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2895052,
+          13.0968434
+        ]
+      },
+      "id": "way/1136624968"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1136635150",
+        "building": "yes",
+        "building:levels": "6",
+        "name": "Green Palace",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2883279,
+          13.096869
+        ]
+      },
+      "id": "way/1136635150"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1146452731",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Deluxe Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2404622,
+          13.0401204
+        ]
+      },
+      "id": "way/1146452731"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1147465446",
+        "addr:city": "Chennai",
+        "addr:housenumber": "73",
+        "addr:postcode": "600001",
+        "addr:street": "Ramaswamy Street",
+        "building": "yes",
+        "building:levels": "8",
+        "name": "GP Mansion",
+        "phone": "+919710822277",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2890558,
+          13.099369
+        ]
+      },
+      "id": "way/1147465446"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176830",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Central Lodge Deluxe",
+        "phone": "+914442053383",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2762353,
+          13.0839109
+        ]
+      },
+      "id": "way/1155176830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176831",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Modern Central Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2762179,
+          13.083989
+        ]
+      },
+      "id": "way/1155176831"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176834",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Saravana Inn",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2761907,
+          13.0842331
+        ]
+      },
+      "id": "way/1155176834"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176835",
+        "building": "yes",
+        "building:levels": "2",
+        "name": "Jaishankar Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.276192,
+          13.0843014
+        ]
+      },
+      "id": "way/1155176835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176836",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Kerala Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2761521,
+          13.0843732
+        ]
+      },
+      "id": "way/1155176836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176837",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Great Hotel",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2761531,
+          13.084468
+        ]
+      },
+      "id": "way/1155176837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155176838",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Hotel City Tower",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.276163,
+          13.0845961
+        ]
+      },
+      "id": "way/1155176838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155178383",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Hotel Santhi Bhavan",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2760182,
+          13.0852828
+        ]
+      },
+      "id": "way/1155178383"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155178386",
+        "building": "yes",
+        "building:levels": "6",
+        "name": "Hotel Sapthagiri",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2760362,
+          13.0855083
+        ]
+      },
+      "id": "way/1155178386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155178390",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "City Home",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2759991,
+          13.0858001
+        ]
+      },
+      "id": "way/1155178390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1155178399",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Hotel Sakthi",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2764119,
+          13.0835798
+        ]
+      },
+      "id": "way/1155178399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1156852203",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Hotel Rolex",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.283533,
+          13.0886278
+        ]
+      },
+      "id": "way/1156852203"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1160657184",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "The National Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.281576,
+          13.0900648
+        ]
+      },
+      "id": "way/1160657184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1160813608",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "S.S.P. Guest House",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2808098,
+          13.0885623
+        ]
+      },
+      "id": "way/1160813608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1164810788",
+        "building": "yes",
+        "building:levels": "2",
+        "name": "Itta Lodge",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2754551,
+          13.0915345
+        ]
+      },
+      "id": "way/1164810788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1169595161",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Hotel GMT Centre",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2783586,
+          13.0836026
+        ]
+      },
+      "id": "way/1169595161"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1169595163",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Sneha Guest House",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2782747,
+          13.0835703
+        ]
+      },
+      "id": "way/1169595163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1176809881",
+        "building": "yes",
+        "building:levels": "5",
+        "name": "Jayanthi Mansion",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2844119,
+          13.0943474
+        ]
+      },
+      "id": "way/1176809881"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1241298315",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Le Parrys Hotel",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2842323,
+          13.1001494
+        ]
+      },
+      "id": "way/1241298315"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1796027011",
+        "name": "Best Guest House",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2306962,
+          13.0334876
+        ]
+      },
+      "id": "node/1796027011"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1973406456",
+        "name": "Bell Central",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.26928,
+          13.080643
+        ]
+      },
+      "id": "node/1973406456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3160526793",
+        "name": "The Raintree Hotel",
+        "tourism": "hotel",
+        "wikidata": "Q7284966",
+        "wikipedia": "en:Raintree Hotel, St Mary's Road"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2438998,
+          13.0339315
+        ]
+      },
+      "id": "node/3160526793"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3413856311",
+        "addr:city": "Chennai",
+        "addr:country": "IN",
+        "addr:housenumber": "2",
+        "addr:postcode": "600002",
+        "addr:street": "Boodha Perumal Street",
+        "name": "Ammu Palace",
+        "phone": "044-4210-5790",
+        "phone:mobile": "96987 21333",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2672752,
+          13.0660462
+        ]
+      },
+      "id": "node/3413856311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3440625520",
+        "name": "Ammu Palace",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2671647,
+          13.0658923
+        ]
+      },
+      "id": "node/3440625520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4213294589",
+        "name": "Friend's Park Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1757382,
+          13.0425766
+        ]
+      },
+      "id": "node/4213294589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4221170491",
+        "addr:postcode": "600017",
+        "check_date": "2026-04-19",
+        "email": "send2vistana@yahoo.co.in",
+        "internet_access": "wlan",
+        "name": "Vistana",
+        "opening_hours": "24/7",
+        "phone": "04424356074",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2364037,
+          13.040252
+        ]
+      },
+      "id": "node/4221170491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4241554629",
+        "addr:street": "Bazullah Road",
+        "name": "grand sweet and snacks (Amritham Restaurant)",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2351498,
+          13.0470653
+        ]
+      },
+      "id": "node/4241554629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308319492",
+        "addr:postcode": "600015",
+        "addr:street": "West Jones Road",
+        "name": "Hotel Aarun",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2165248,
+          13.0247041
+        ]
+      },
+      "id": "node/4308319492"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308319900",
+        "addr:street": "Kodambakkam Road",
+        "name": "Amma Unavagam",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2198305,
+          13.0249392
+        ]
+      },
+      "id": "node/4308319900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308320096",
+        "addr:street": "Gangai Amman Koil Street",
+        "name": "Amma Unavagam",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2125531,
+          13.0246097
+        ]
+      },
+      "id": "node/4308320096"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4383158391",
+        "addr:street": "Durgabai Deshmukh Road",
+        "internet_access": "wlan",
+        "name:es": "ams raj palace sundar",
+        "tourism": "hotel",
+        "website": "https://www.hotelrajpalacesundar.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2610083,
+          13.0186427
+        ]
+      },
+      "id": "node/4383158391"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4490505231",
+        "addr:city": "Chennai",
+        "addr:housenumber": "6",
+        "addr:neighbourhood": "Gandhi Nagar",
+        "addr:postcode": "600020",
+        "addr:street": "1st Canal Cross Street",
+        "addr:suburb": "Adyar",
+        "email": "guestcare@lakshminest.com",
+        "name": "Lakshmi Nest",
+        "phone": "+91 9841155561",
+        "tourism": "hotel",
+        "website": "http://lakshminest.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2498155,
+          13.0086025
+        ]
+      },
+      "id": "node/4490505231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4570905189",
+        "addr:postcode": "600008",
+        "addr:street": "Montieth Road",
+        "air_conditioning": "yes",
+        "bar": "no",
+        "check_date": "2026-04-14",
+        "description": "A 3 Star hotel with an indoor restaurant",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "level": "0",
+        "name": "Vestin Park Hotel",
+        "name:en": "Vestin Park",
+        "payment:account_cards": "yes",
+        "payment:app": "yes",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:google_pay": "yes",
+        "payment:mastercard": "yes",
+        "payment:mastercard_contactless": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "reservation": "recommended",
+        "stars": "3",
+        "tourism": "hotel",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2591153,
+          13.0676323
+        ]
+      },
+      "id": "node/4570905189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4681456547",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2293256,
+          13.0392788
+        ]
+      },
+      "id": "node/4681456547"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4700284689",
+        "addr:postcode": "600002",
+        "addr:street": "Wallajah Road",
+        "internet_access": "wlan",
+        "name:en": "The Spin Hotel - A boutique",
+        "opening_hours": "24/7",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2738723,
+          13.0663653
+        ]
+      },
+      "id": "node/4700284689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4713786191",
+        "addr:postcode": "600020",
+        "addr:street": "Sardar Patel Road",
+        "name:en": "Prems Graama Bhojanam",
+        "opening_hours": "Mo-Su 12:00-15:00, 19:00-22:00",
+        "phone": "098400 62772",
+        "tourism": "hotel",
+        "website": "http://premsgraamabhojanam.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2540033,
+          13.0061768
+        ]
+      },
+      "id": "node/4713786191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4720492289",
+        "name:en": "Hotel Empire",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2469195,
+          13.0399642
+        ]
+      },
+      "id": "node/4720492289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4815922449",
+        "addr:street": "Bazzar Street",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1912697,
+          13.0378713
+        ]
+      },
+      "id": "node/4815922449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4817286827",
+        "addr:housenumber": "55",
+        "addr:postcode": "600008",
+        "addr:street": "Adithanar Road",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2626922,
+          13.0726496
+        ]
+      },
+      "id": "node/4817286827"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5039277629",
+        "addr:housenumber": "No. 2, KPR Garden",
+        "addr:street": "Thiruvalluvar Salai, Ramapuram",
+        "check_date": "2025-12-20",
+        "name": "Suprabatham - Sweets and Veg. Restaurant",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.183908,
+          13.0309219
+        ]
+      },
+      "id": "node/5039277629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5064277921",
+        "name:en": "Cristal Guest House",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.275514,
+          13.0633174
+        ]
+      },
+      "id": "node/5064277921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5232761114",
+        "name": "Hotel Mines",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2066037,
+          13.0236643
+        ]
+      },
+      "id": "node/5232761114"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5242842704",
+        "air_conditioning": "yes",
+        "name": "Lemon Tree Hotel Shimona",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1848739,
+          13.0201552
+        ]
+      },
+      "id": "node/5242842704"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5289649121",
+        "addr:housenumber": "22",
+        "addr:street": "Kenneth Lane",
+        "name:en": "Raj Residency",
+        "phone": "+9104443531014",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2622791,
+          13.0771213
+        ]
+      },
+      "id": "node/5289649121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5321394630",
+        "name": "Emirates Residency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2008249,
+          13.0730295
+        ]
+      },
+      "id": "node/5321394630"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5489094415",
+        "name": "Suba hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1737446,
+          13.0410453
+        ]
+      },
+      "id": "node/5489094415"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5498745420",
+        "addr:street": "6/3, 61st St, Indira Colony, Ashok Nagar, Chennai, Tamil Nadu 600083",
+        "name": "Amma Unavagam",
+        "opening_hours": "Mo-Su 06:30-19:00",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2168568,
+          13.0326902
+        ]
+      },
+      "id": "node/5498745420"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5518300717",
+        "addr:housenumber": "11",
+        "addr:street": "Kodambakkam High Road",
+        "name": "The Spring Hotel",
+        "phone": "+9104428213319",
+        "tourism": "hotel",
+        "website": "https://www.thespringhotel.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2483204,
+          13.0530637
+        ]
+      },
+      "id": "node/5518300717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5737223326",
+        "name": "Hotel Imperial Plaza",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2629526,
+          13.0772269
+        ]
+      },
+      "id": "node/5737223326"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5737223331",
+        "name": "Hotel Victoria",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2625212,
+          13.0768942
+        ]
+      },
+      "id": "node/5737223331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5737223347",
+        "addr:housenumber": "15",
+        "addr:street": "Kennet Ln, Egmore, Chennai, Tamil Nadu 600008",
+        "name": "Hotel Pandian",
+        "phone": "9841421207",
+        "tourism": "hotel",
+        "website": "https://hotelpandian.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2627183,
+          13.0755628
+        ]
+      },
+      "id": "node/5737223347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5741680955",
+        "name": "Hotel Masa",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2624076,
+          13.0757272
+        ]
+      },
+      "id": "node/5741680955"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5744866567",
+        "name": "The King’s Hotel",
+        "note": "bar restaurant",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2551543,
+          13.0724048
+        ]
+      },
+      "id": "node/5744866567"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5786621654",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2453042,
+          13.0605534
+        ]
+      },
+      "id": "node/5786621654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6012040746",
+        "name": "அம்மா உணவகம்",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2450231,
+          13.0315385
+        ]
+      },
+      "id": "node/6012040746"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6110242623",
+        "name": "Vijay Park",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2180855,
+          13.1417193
+        ]
+      },
+      "id": "node/6110242623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6221567956",
+        "addr:housenumber": "122",
+        "addr:postcode": "600005",
+        "addr:street": "Bells Road",
+        "name:en": "Le Stay Inn (correct location)",
+        "phone": "9962020800",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2729499,
+          13.0586239
+        ]
+      },
+      "id": "node/6221567956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6237692785",
+        "addr:housenumber": "2",
+        "addr:postcode": "600084",
+        "addr:street": "Vellala Street",
+        "name:en": "Hotel Shakthipriya",
+        "opening_hours": "24/7",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2522186,
+          13.0853606
+        ]
+      },
+      "id": "node/6237692785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6261204389",
+        "name:en": "Hotel shanthi",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2654818,
+          13.0854818
+        ]
+      },
+      "id": "node/6261204389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6269478585",
+        "name:en": "Emerald Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2690201,
+          13.0806049
+        ]
+      },
+      "id": "node/6269478585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6269478587",
+        "name:en": "Cauvery Lodge",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2679567,
+          13.0812029
+        ]
+      },
+      "id": "node/6269478587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6269487485",
+        "name:en": "Kaam Inn Lodge",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2680617,
+          13.0811153
+        ]
+      },
+      "id": "node/6269487485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6269487486",
+        "name:en": "OYO Sun Park inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2679011,
+          13.0813007
+        ]
+      },
+      "id": "node/6269487486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274161687",
+        "addr:housenumber": "80",
+        "email": "info@appleresidency.com",
+        "internet_access": "wlan",
+        "name:en": "Hotel Apple Residency",
+        "phone": "04428544201",
+        "tourism": "hotel",
+        "website": "http://www.appleresidency.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2750748,
+          13.0659475
+        ]
+      },
+      "id": "node/6274161687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274226686",
+        "name:en": "Sea View Towers",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.277469,
+          13.0651025
+        ]
+      },
+      "id": "node/6274226686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274247687",
+        "name:en": "Hotel Century",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2782477,
+          13.0644862
+        ]
+      },
+      "id": "node/6274247687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274294698",
+        "name:en": "Wellington Mansion",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2763826,
+          13.063392
+        ]
+      },
+      "id": "node/6274294698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274342092",
+        "name:en": "Silver Star Mansion",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2747026,
+          13.0635818
+        ]
+      },
+      "id": "node/6274342092"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274344087",
+        "name:en": "White House Residency",
+        "phone": "04442155055",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2740283,
+          13.0645538
+        ]
+      },
+      "id": "node/6274344087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6274363585",
+        "name:en": "Sree Bhavan",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2738049,
+          13.0654542
+        ]
+      },
+      "id": "node/6274363585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6760781984",
+        "addr:street": "Venkatesa Agraharam",
+        "name": "Hotel Shelter Inn",
+        "tourism": "hotel",
+        "website": "https://www.hotelshelter.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2660641,
+          13.0328612
+        ]
+      },
+      "id": "node/6760781984"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6953494396",
+        "addr:housenumber": "45",
+        "addr:street": "Second main road, Sabari nagar, Porur, Chennai: 600 116",
+        "description": "Home food",
+        "name": "Hotel Varsha",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "phone": "044-22520533",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1697502,
+          13.0256613
+        ]
+      },
+      "id": "node/6953494396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6960124974",
+        "addr:housenumber": "7/20",
+        "addr:street": "Police office road, St. Thomas mount, Chennai-650016",
+        "name": "Jai Ganesha Bhavan",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "phone": "044-22310298",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.19864,
+          13.0104467
+        ]
+      },
+      "id": "node/6960124974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7054979658",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "The Belstead",
+        "smoking": "no",
+        "tourism": "hotel",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2455306,
+          13.062277
+        ]
+      },
+      "id": "node/7054979658"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7065400485",
+        "name": "Grand Oliver",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2700756,
+          13.082574
+        ]
+      },
+      "id": "node/7065400485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7080292285",
+        "amenity": "restaurant",
+        "cuisine": "indian",
+        "diet:vegan": "yes",
+        "diet:vegetarian": "only",
+        "name:en": "Veg Food Factory",
+        "tourism": "hotel",
+        "website": "http://www.hotelsennthur.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2632742,
+          13.0616605
+        ]
+      },
+      "id": "node/7080292285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7164249835",
+        "addr:housenumber": "2",
+        "addr:street": "Bharathi Salai, Easwaran Nagar, Ramapuram, Chennai, Tamil Nadu 600089",
+        "description": "Bakery and fast food",
+        "name": "Les Crossants",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1774529,
+          13.0319155
+        ]
+      },
+      "id": "node/7164249835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7255674005",
+        "name": "Celebrity Inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2430069,
+          13.0568213
+        ]
+      },
+      "id": "node/7255674005"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7255727239",
+        "name": "Park Elanza",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2428454,
+          13.0566294
+        ]
+      },
+      "id": "node/7255727239"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7256070385",
+        "addr:street": "Veeraraghava Street (Big St)",
+        "name:en": "Peace Park Inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2755069,
+          13.0613609
+        ]
+      },
+      "id": "node/7256070385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7261248829",
+        "brand": "OYO",
+        "brand:wikidata": "Q24906315",
+        "name": "Oyo Neha",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2465575,
+          13.0540714
+        ]
+      },
+      "id": "node/7261248829"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7267078080",
+        "brand": "OYO",
+        "brand:wikidata": "Q24906315",
+        "name": "Oyo SilverKey",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2464988,
+          13.0555339
+        ]
+      },
+      "id": "node/7267078080"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7320949186",
+        "name:en": "Sri Dharani tiffin centre",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2150256,
+          13.0754707
+        ]
+      },
+      "id": "node/7320949186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8094698193",
+        "addr:city": "Chennai",
+        "addr:housenumber": "19/6",
+        "addr:postcode": "600 083",
+        "addr:street": "S.V. Chidambaram Salai",
+        "addr:suburb": "Jafferkhanpet",
+        "email": "royalresidencych83@gmail.com",
+        "name": "Royal Residency",
+        "phone": "044 2474 5133",
+        "tourism": "hotel",
+        "website": "http://royalresidencychennai.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2107828,
+          13.0270224
+        ]
+      },
+      "id": "node/8094698193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8097349017",
+        "name:en": "Raagaa Vilas",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1783797,
+          13.0675144
+        ]
+      },
+      "id": "node/8097349017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8097349117",
+        "addr:housenumber": "09.11.2020",
+        "addr:street": "Poonamallee High Road",
+        "name:en": "Shri Dharsana Park",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1783418,
+          13.0675409
+        ]
+      },
+      "id": "node/8097349117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8099656922",
+        "addr:street": "Bajanai Koil St, Nandambakkam, Tamil Nadu 600089",
+        "name": "Amma Unavagam",
+        "opening_hours": "Mo-Su 07:00-22:00",
+        "tourism": "hotel",
+        "website": "ammaunavagam.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1917776,
+          13.016345
+        ]
+      },
+      "id": "node/8099656922"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8108608211",
+        "addr:street": "16/11, Vadivel Street, Jawahar Nagar, West Jafferkhanpet, Vadivel St, Jawahar Nagar, West Jafferkhanpet, Chennai, Tamil Nadu 600083",
+        "name": "Samuthaya Koodam",
+        "phone": "98845 67789",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.211374,
+          13.0278165
+        ]
+      },
+      "id": "node/8108608211"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8108613660",
+        "addr:street": "31 & 32, 1St Anjugam Nagar, Jafferkhanpet, Ashok Nagar, Chennai, Tamil Nadu 600083",
+        "name": "G R Guest House",
+        "phone": "96771 92893",
+        "tourism": "hotel",
+        "website": "grguesthousechennai.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2090818,
+          13.0296004
+        ]
+      },
+      "id": "node/8108613660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8935487081",
+        "name": "The Residency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2407673,
+          13.0448669
+        ]
+      },
+      "id": "node/8935487081"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8935522911",
+        "name": "Buhari hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2445843,
+          13.0471004
+        ]
+      },
+      "id": "node/8935522911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9722789617",
+        "name:en": "Tiffin Center",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2387798,
+          13.029318
+        ]
+      },
+      "id": "node/9722789617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9743742617",
+        "addr:street": "Dr Radhakrishnan Salai",
+        "name:en": "Grill Box",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.268663,
+          13.0444342
+        ]
+      },
+      "id": "node/9743742617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9955370914",
+        "name": "Hotel Chennai Deluxe",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1987229,
+          13.0697125
+        ]
+      },
+      "id": "node/9955370914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10267728611",
+        "name": "فندق موريا",
+        "name:en": "Mourya hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2088591,
+          13.0489323
+        ]
+      },
+      "id": "node/10267728611"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10828900907",
+        "name:en": "Feathers A Radha Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1808341,
+          13.0218918
+        ]
+      },
+      "id": "node/10828900907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10867759021",
+        "addr:city": "Chennai",
+        "addr:housenumber": "4/8",
+        "addr:postcode": "600003",
+        "addr:street": "Nabikhan Street",
+        "air_conditioning": "yes",
+        "brand": "Bussiness Class Hotel",
+        "email": "theparkavenue2023@gmail.com",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "The Park Avenue Hotel",
+        "phone": "07305010423",
+        "rooms": "18",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2702476,
+          13.0839868
+        ]
+      },
+      "id": "node/10867759021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11071527623",
+        "name": "Ganpathy Bhavan",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2123869,
+          13.0861823
+        ]
+      },
+      "id": "node/11071527623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11159466936",
+        "addr:housenumber": "14, 15",
+        "addr:street": "Varasidhi Vinayakar Koil Street",
+        "air_conditioning": "yes",
+        "internet_access": "wlan",
+        "level": "0;1;2;3",
+        "name": "Greens Suite",
+        "phone": "+91 44 4262 9405",
+        "rooms": "69",
+        "tourism": "hotel",
+        "website": "greenssuite2021@gmail.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2703442,
+          13.0814738
+        ]
+      },
+      "id": "node/11159466936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11204047131",
+        "addr:city": "TRIPLCIANE",
+        "addr:district": "Chennai",
+        "addr:housenumber": "7,8",
+        "addr:postcode": "600005",
+        "addr:street": "MUNIYAPPA STREET",
+        "brand": "OYO",
+        "brand:wikidata": "Q24906315",
+        "email": "rkhinnchennai@gmail.com",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "SPOT ON OYO RKH Inn",
+        "phone": "9884063303",
+        "rooms": "20",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2734588,
+          13.0570203
+        ]
+      },
+      "id": "node/11204047131"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11309794267",
+        "name": "White Park",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.269664,
+          13.0838575
+        ]
+      },
+      "id": "node/11309794267"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11309891170",
+        "name": "4U",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2703526,
+          13.0813777
+        ]
+      },
+      "id": "node/11309891170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11610505369",
+        "name:en": "A R Residency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2306176,
+          13.0452436
+        ]
+      },
+      "id": "node/11610505369"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11835025316",
+        "name": "Hotel M Grand",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2400216,
+          13.0493431
+        ]
+      },
+      "id": "node/11835025316"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11930811762",
+        "name": "Hotel ganga",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2016551,
+          13.1281889
+        ]
+      },
+      "id": "node/11930811762"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11934934963",
+        "name": "Goutham Manor",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2441861,
+          13.0635038
+        ]
+      },
+      "id": "node/11934934963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12290477701",
+        "name": "The Madras Grand",
+        "phone": "+91 93848 81777",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2560202,
+          13.07518
+        ]
+      },
+      "id": "node/12290477701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12640696569",
+        "name": "Mango Hill",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2405153,
+          13.0517341
+        ]
+      },
+      "id": "node/12640696569"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12851233369",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2465523,
+          13.0292797
+        ]
+      },
+      "id": "node/12851233369"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13176952837",
+        "air_conditioning": "yes",
+        "name": "The hotel royal plaza",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1982775,
+          13.0695934
+        ]
+      },
+      "id": "node/13176952837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13550985001",
+        "name": "Kaira Park",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.25741,
+          13.0350289
+        ]
+      },
+      "id": "node/13550985001"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13744249301",
+        "check_date": "2026-04-20",
+        "name:en": "Hotel Simsan",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2013141,
+          13.0766802
+        ]
+      },
+      "id": "node/13744249301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13839680356",
+        "name": "Hotel Karpagam",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2683501,
+          13.03231
+        ]
+      },
+      "id": "node/13839680356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13839703920",
+        "name": "Krishna Residency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2688875,
+          13.0322636
+        ]
+      },
+      "id": "node/13839703920"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13968685301",
+        "name": "Madras Regency",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2051046,
+          13.0706055
+        ]
+      },
+      "id": "node/13968685301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13968685302",
+        "name": "La Castle",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2048902,
+          13.0704215
+        ]
+      },
+      "id": "node/13968685302"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13968699102",
+        "name": "Goldmine Hotel",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2030341,
+          13.071911
+        ]
+      },
+      "id": "node/13968699102"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13968702801",
+        "name": "Hotel Arun Internationaal",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2026936,
+          13.0722384
+        ]
+      },
+      "id": "node/13968702801"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13990579045",
+        "name": "Hotel Mount Palace",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2246891,
+          13.0148705
+        ]
+      },
+      "id": "node/13990579045"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13991557701",
+        "addr:housenumber": "79",
+        "addr:postcode": "600026",
+        "addr:street": "Jawaharlal Nehru Road (100 Feet Road)",
+        "internet_access": "wlan",
+        "name": "Ambica empire",
+        "opening_hours": "24/7",
+        "self_service": "no",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2111563,
+          13.0557063
+        ]
+      },
+      "id": "node/13991557701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14000867401",
+        "addr:housenumber": "39",
+        "addr:postcode": "600017",
+        "addr:street": "Bazullah Road",
+        "email": "reservations@starcityhotel.com",
+        "internet_access": "wlan",
+        "name": "Star City Hotels",
+        "opening_hours": "24/7",
+        "phone": "+91 9840055922",
+        "tourism": "hotel",
+        "website": "https://starcityhotel.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2349522,
+          13.0469006
+        ]
+      },
+      "id": "node/14000867401"
+    }
+  ]
+}

@@ -38,3 +38,8 @@ htmlcov/
 # Local tools & agents
 graphify-out/
 .claude-flow/
+
+# Backups & scratch folders
+*_backup/
+test_chroma/
+*.log

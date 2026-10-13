@@ -94,10 +94,32 @@ export interface ComplianceResult {
   error?: string | null;
 }
 
+export interface LocationPriceResult {
+  location: string;
+  matched_location?: string;
+  star_category: number;
+  min_price: number;
+  max_price: number;
+  currency: string;
+  market_tier?: string;
+  notes?: string;
+  source?: string;
+  price_assessment?: string;
+  price_assessment_label?: string;
+}
+
 export interface AnalyzeListingResponse {
   results: AnalyzeImageResult[];
   aggregated: FeatureVector;
   compliance?: ComplianceResult | null;
+  location_price?: LocationPriceResult | null;
+  trust_evaluation?: {
+    final_trust_percentage: number;
+    price_plausibility_score: number;
+    description_match_score: number;
+    estimated_price?: number;
+    analysis_notes?: string;
+  } | null;
 }
 
 
@@ -122,11 +144,13 @@ export async function analyzeImages(
   description: string = '',
   price: number = 0,
   foodIncluded: boolean = false,
-  foodDescription: string = ''
+  foodDescription: string = '',
+  location: string = ''
 ): Promise<AnalyzeListingResponse> {
   const formData = new FormData();
   files.forEach((file) => formData.append('files', file));
   formData.append('star_category', starCategory.toString());
+  formData.append('location', location);
   formData.append('description', description);
   formData.append('price', price.toString());
   formData.append('food_included', foodIncluded.toString());
@@ -188,3 +212,102 @@ export async function getExpectedAmenities(): Promise<ExpectedAmenitiesResponse>
   }
   return response.json();
 }
+
+export async function getLocationPrice(
+  location: string,
+  starCategory: number = 3,
+  price?: number
+): Promise<LocationPriceResult> {
+  const params = new URLSearchParams({
+    location,
+    star_category: starCategory.toString(),
+  });
+  if (price !== undefined && price > 0) {
+    params.append('price', price.toString());
+  }
+  const response = await fetch(`${API_BASE}/api/location-price?${params.toString()}`);
+  if (!response.ok) {
+    throw new Error('Failed to retrieve location price benchmarks');
+  }
+  return response.json();
+}
+
+// Phase 2: Hotel & Lodge Discovery Types & API Client
+export interface HotelListing {
+  id: string;
+  name: string;
+  city: string;
+  state: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+  coordinates: [number, number]; // [lng, lat]
+  accommodation_type: string;
+  star_rating: number;
+  price_per_night: number;
+  amenities: string[];
+  has_phase1_analysis: boolean;
+  trust_score?: number | null;
+  aesthetic_score?: number | null;
+  compliance_ratio?: number | null;
+  analysis_status: 'VERIFIED' | 'PENDING_AUDIT';
+  verified_date?: string | null;
+  image_url?: string | null;
+}
+
+export interface CityInfo {
+  city: string;
+  state: string;
+  coordinates: [number, number]; // [lng, lat]
+  hotel_count: number;
+  verified_count: number;
+}
+
+export interface HotelListResponse {
+  total: number;
+  city?: string | null;
+  hotels: HotelListing[];
+}
+
+export interface HotelFilterOptions {
+  city?: string;
+  accommodation_type?: string;
+  min_stars?: number;
+  verified_only?: boolean;
+  sort_by?: 'trust_score' | 'price_asc' | 'price_desc' | 'stars_desc';
+}
+
+export async function getCities(): Promise<CityInfo[]> {
+  const response = await fetch(`${API_BASE}/api/cities`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch supported cities');
+  }
+  return response.json();
+}
+
+export async function getHotels(options: HotelFilterOptions = {}): Promise<HotelListResponse> {
+  const params = new URLSearchParams();
+  if (options.city && options.city !== 'All') {
+    params.append('city', options.city);
+  }
+  if (options.accommodation_type && options.accommodation_type !== 'All') {
+    params.append('accommodation_type', options.accommodation_type);
+  }
+  if (options.min_stars && options.min_stars > 0) {
+    params.append('min_stars', options.min_stars.toString());
+  }
+  if (options.verified_only) {
+    params.append('verified_only', 'true');
+  }
+  if (options.sort_by) {
+    params.append('sort_by', options.sort_by);
+  }
+
+  const response = await fetch(`${API_BASE}/api/hotels?${params.toString()}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch hotels');
+  }
+  return response.json();
+}
+
+

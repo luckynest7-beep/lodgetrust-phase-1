@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-10-11T15:23:00Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9787506029",
+        "guest_house": "guest_house",
+        "level": "6",
+        "name": "Central Government Touring Officers Guest House",
+        "operator": "Central Public Works Department",
+        "tourism": "guest_house"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2472305,
+          13.0657982
+        ]
+      },
+      "id": "node/9787506029"
+    }
+  ]
+}
