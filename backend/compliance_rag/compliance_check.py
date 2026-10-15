@@ -8,12 +8,15 @@ from typing import List, Dict, Any
 try:
     from dotenv import load_dotenv
     load_dotenv()
-    parent_env = Path(__file__).resolve().parent.parent / "backend" / ".env"
-    if parent_env.exists():
-        load_dotenv(parent_env)
-    root_env = Path(__file__).resolve().parent.parent / ".env"
-    if root_env.exists():
-        load_dotenv(root_env)
+    # Check current dir, backend dir, and project root
+    for env_candidate in [
+        Path(__file__).resolve().parent / ".env",
+        Path(__file__).resolve().parent.parent / ".env",
+        Path(__file__).resolve().parent.parent / "backend" / ".env",
+        Path(__file__).resolve().parent.parent.parent / ".env",
+    ]:
+        if env_candidate.exists():
+            load_dotenv(env_candidate)
 except ImportError:
     pass
 

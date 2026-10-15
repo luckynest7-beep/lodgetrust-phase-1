@@ -29,7 +29,7 @@ export const StolenPanel: React.FC<StolenPanelProps> = ({ stolen }) => {
           <h3 className="section-title">Catalog Duplicate Check</h3>
         </div>
         <span className={`mono-badge ${is_flagged ? 'badge-danger' : 'badge-outline'}`}>
-          {is_flagged ? '⚠ Reused Asset' : '✓ Original Asset'}
+          {is_flagged ? 'Reused Asset' : 'Original Asset'}
         </span>
       </div>
 

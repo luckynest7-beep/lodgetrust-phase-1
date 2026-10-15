@@ -10,3 +10,7 @@ pillow
 numpy
 scikit-learn
 pytest
+sentence-transformers
+chromadb
+google-generativeai
+python-dotenv

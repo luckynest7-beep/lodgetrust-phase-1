@@ -40,7 +40,9 @@ if str(BACKEND_DIR) not in sys.path:
 if str(IMAGE_ANALYSIS_DIR) not in sys.path:
     sys.path.insert(0, str(IMAGE_ANALYSIS_DIR))
 
-COMPLIANCE_RAG_DIR = BACKEND_DIR.parent / "compliance_rag"
+COMPLIANCE_RAG_DIR = BACKEND_DIR / "compliance_rag"
+if not COMPLIANCE_RAG_DIR.exists():
+    COMPLIANCE_RAG_DIR = BACKEND_DIR.parent / "compliance_rag"
 if str(COMPLIANCE_RAG_DIR) not in sys.path:
     sys.path.insert(0, str(COMPLIANCE_RAG_DIR))
 

@@ -8,29 +8,29 @@ Full end-to-end system for LodgeTrust listing image verification, combining a 5-
 
 ```text
 project/
-├── backend/                             # Python FastAPI Service & ML Signal Pipeline
-│   ├── api/                             # FastAPI HTTP REST Service
-│   │   ├── main.py                      # Application routes & CORS middleware
+├── backend/                             # Python FastAPI Service, ML Pipelines & Compliance RAG
+│   ├── api/                             # FastAPI HTTP REST Service & routes
+│   │   ├── main.py                      # Application endpoints & CORS middleware
 │   │   ├── schemas.py                   # Pydantic request/response schemas
 │   │   └── seed_index.py                # Startup FAISS pre-seeding helper
-│   ├── image_analysis/                  # 5-Layer ML Signal Pipeline
-│   │   ├── clip_utils.py                # CLIP loader & 768-dim embedding generator
-│   │   ├── stolen_image.py              # B1 Stolen photo FAISS cosine search
-│   │   ├── ai_image_detector.py         # B2 Deepfake Detector (prithivMLmods)
-│   │   ├── style_tier.py                # B3a Zero-shot luxury/budget tier classifier
-│   │   ├── aesthetic_score.py           # B3b Fine-tuned aesthetic score predictor
-│   │   ├── furniture_detector.py        # B3c YOLO11l furniture/amenity detector
-│   │   ├── combine_signals.py           # Layer 5 Signal aggregator & feature combiner
-│   │   └── tests/                       # Complete Pytest test suite (18 unit tests)
+│   ├── image_analysis/                  # 5-Layer ML Vision Pipeline (CLIP, SigLIP2, YOLO11, BEiT)
+│   ├── compliance_rag/                  # Module D: HRACC Regulatory RAG & Regional Pricing
+│   │   ├── chroma_db/                   # ChromaDB vector store
+│   │   ├── chunks.json                  # Parsed HRACC regulatory chunks
+│   │   ├── compliance_check.py          # Star category auditor & Gemini fallback
+│   │   ├── location_pricing.py          # Regional tariff benchmark evaluator
+│   │   └── location_benchmarks.json     # Baseline Indian hospitality prices
+│   ├── hotel_database.py                # Lodging catalog & GeoJSON loader
+│   ├── lodgetrust.db                    # SQLite lodging database
+│   ├── trust_evaluator.py               # Module E: Gemini 3.8-Flash trust orchestrator
 │   └── requirements.txt                 # Backend Python dependencies
-├── fine_tune_aesthetic/                 # Aesthetic Model Fine-Tuning Workspace
-│   ├── data/                            # 2,000 AVA dataset images & train/val labels
-│   ├── scripts/                         # Training & dataset download scripts
-│   ├── model/                           # Fine-tuned BEiT checkpoint & processor
-│   ├── requirements.txt                 # Fine-tuning dependencies
-│   └── README.md                        # Fine-tuning guide (Local & Google Colab)
-├── frontend/                            # React + Vite + TypeScript Web UI
-│   ├── src/                             # Dashboard, signal cards, uploader, & index manager
+├── data/                                # Authentic Spatial & Map Data
+│   └── Map_Data/                        # GeoJSON boundary & lodging points
+│       ├── chennai_hotels.geojson       # Chennai hotel features
+│       ├── chennai_data.geojson         # Chennai geographic datasets
+│       └── chennai_guest.geojson        # Guest accommodation points
+├── frontend/                            # React + Vite + TypeScript Web UI (Apple HIG Dark Mode)
+│   ├── src/                             # Auditor components, Mapbox explorer, & API client
 │   ├── vite.config.ts                   # Vite dev proxy configuration
 │   └── package.json
 └── README.md

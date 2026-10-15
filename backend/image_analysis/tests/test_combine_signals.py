@@ -62,7 +62,7 @@ def test_combine_handles_file_paths(tmp_path):
 
     result = combine_for_listing([img, str(img_path), img_path])
 
-    assert result["style_tier"] in {"luxury", "budget"}
+    assert result["style_tier"] in {"luxury", "upscale", "midscale", "budget"}
     assert 0.0 <= result["style_confidence"] <= 1.0
     assert 1.0 <= result["aesthetic_score"] <= 10.0
 

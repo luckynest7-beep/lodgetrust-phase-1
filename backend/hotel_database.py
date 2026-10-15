@@ -482,6 +482,13 @@ def find_geojson_file(filename: str = "chennai_hotels.geojson") -> Optional[str]
     """Locates the GeoJSON file across potential project directories."""
     current_dir = os.path.dirname(os.path.abspath(__file__))
     candidates = [
+        os.path.join(os.path.dirname(current_dir), "data", "Map_Data", filename),
+        os.path.join(os.path.dirname(current_dir), "data", "Map_Data", "chennai_data.geojson"),
+        os.path.join(os.path.dirname(current_dir), "data", filename),
+        os.path.join(os.path.dirname(current_dir), "data", "chennai_data.geojson"),
+        os.path.join(os.getcwd(), "data", "Map_Data", filename),
+        os.path.join(os.getcwd(), "data", "Map_Data", "chennai_data.geojson"),
+        os.path.join(os.getcwd(), "data", filename),
         os.path.join(os.path.dirname(current_dir), "Map_Data", filename),
         os.path.join(os.path.dirname(current_dir), "Map_Data", "chennai_data.geojson"),
         os.path.join(os.getcwd(), "Map_Data", filename),
@@ -489,6 +496,7 @@ def find_geojson_file(filename: str = "chennai_hotels.geojson") -> Optional[str]
         os.path.join(os.getcwd(), "lodgetrust-phase-1", "Map_Data", filename),
         os.path.join(os.getcwd(), "lodgetrust-phase-1", "Map_Data", "chennai_data.geojson"),
         os.path.join(current_dir, "Map_Data", filename),
+        os.path.join(current_dir, "data", "Map_Data", filename),
     ]
     for c in candidates:
         if os.path.isfile(c):

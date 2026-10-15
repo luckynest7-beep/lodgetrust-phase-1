@@ -26,45 +26,47 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
   } = locationPrice;
 
   // Evaluation status coloring
-  let statusBg = 'rgba(10, 132, 255, 0.15)';
-  let statusBorder = 'rgba(10, 132, 255, 0.3)';
-  let statusColor = '#0a84ff';
+  let statusBg = 'rgba(0, 113, 227, 0.12)';
+  let statusBorder = 'rgba(0, 113, 227, 0.35)';
+  let statusColor = '#0071E3';
 
   if (price_assessment === 'IN_RANGE') {
-    statusBg = 'rgba(52, 199, 89, 0.15)';
-    statusBorder = 'rgba(52, 199, 89, 0.3)';
-    statusColor = '#34c759';
+    statusBg = 'rgba(5, 150, 105, 0.14)';
+    statusBorder = 'rgba(5, 150, 105, 0.4)';
+    statusColor = '#065F46';
   } else if (price_assessment === 'SUSPICIOUSLY_LOW') {
-    statusBg = 'rgba(255, 69, 58, 0.15)';
-    statusBorder = 'rgba(255, 69, 58, 0.3)';
-    statusColor = '#ff453a';
+    statusBg = 'rgba(220, 38, 38, 0.14)';
+    statusBorder = 'rgba(220, 38, 38, 0.4)';
+    statusColor = '#991B1B';
   } else if (price_assessment === 'PREMIUM_PRICED') {
-    statusBg = 'rgba(255, 159, 10, 0.15)';
-    statusBorder = 'rgba(255, 159, 10, 0.3)';
-    statusColor = '#ff9f0a';
+    statusBg = 'rgba(217, 119, 6, 0.14)';
+    statusBorder = 'rgba(217, 119, 6, 0.4)';
+    statusColor = '#92400E';
   }
 
   return (
     <div className="apple-card" style={{ 
-      marginTop: '1.5rem', 
-      padding: '24px', 
-      borderRadius: '20px', 
-      backgroundColor: 'rgba(28, 28, 30, 0.7)', 
-      backdropFilter: 'blur(20px)',
-      border: '1px solid rgba(255, 255, 255, 0.1)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)'
+      marginTop: '1.75rem', 
+      marginBottom: '28px',
+      padding: '26px', 
+      borderRadius: '24px', 
+      backgroundColor: 'rgba(255, 255, 255, 0.20)', 
+      backdropFilter: 'blur(20px) saturate(170%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(170%)',
+      border: '1.5px solid rgba(255, 255, 255, 0.42)',
+      boxShadow: 'var(--shadow-glass)'
     }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
         <div>
-          <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', color: '#0a84ff', marginBottom: '6px' }}>
+          <div style={{ fontSize: '11.5px', fontWeight: 850, letterSpacing: '0.09em', color: '#0071E3', marginBottom: '4px' }}>
             LOCATION PRICE INTELLIGENCE (RAG)
           </div>
-          <h4 style={{ fontSize: '20px', fontWeight: 600, color: '#f5f5f7', margin: 0 }}>
+          <h4 style={{ fontSize: '22px', fontWeight: 850, color: '#000000', margin: 0, letterSpacing: '-0.02em' }}>
             {location || 'Regional Market'} Benchmark
           </h4>
-          <div style={{ fontSize: '13px', color: '#86868b', marginTop: '4px' }}>
-            Matched Region: <strong style={{ color: '#d2d2d7' }}>{matched_location}</strong> • <span style={{ color: '#a1a1a6' }}>{market_tier}</span>
+          <div style={{ fontSize: '13.5px', color: '#1E293B', fontWeight: 700, marginTop: '4px' }}>
+            Matched Region: <strong style={{ color: '#000000' }}>{matched_location}</strong> • <span style={{ color: '#334155' }}>{market_tier}</span>
           </div>
         </div>
 
@@ -72,16 +74,17 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
           <div style={{
             background: statusBg,
             color: statusColor,
-            padding: '6px 14px',
+            padding: '7px 16px',
             borderRadius: '12px',
-            fontWeight: 600,
-            fontSize: '13px',
-            border: `1px solid ${statusBorder}`,
+            fontWeight: 850,
+            fontSize: '13.5px',
+            border: `1.5px solid ${statusBorder}`,
             display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '8px',
+            boxShadow: 'var(--shadow-sm)'
           }}>
-            <span style={{ fontSize: '8px' }}>●</span>
+            <span style={{ fontSize: '9px' }}>●</span>
             {price_assessment_label}
           </div>
         )}
@@ -89,11 +92,13 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
 
       {/* Main Price Range Hero */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '16px',
-        padding: '20px 24px',
-        marginBottom: '20px',
+        background: 'rgba(255, 255, 255, 0.22)',
+        backdropFilter: 'blur(16px)',
+        border: '1.5px solid rgba(255, 255, 255, 0.45)',
+        borderRadius: '18px',
+        padding: '22px 26px',
+        marginBottom: '22px',
+        boxShadow: 'var(--shadow-sm)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -101,30 +106,32 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
         gap: '16px'
       }}>
         <div>
-          <div style={{ fontSize: '12px', fontWeight: 600, color: '#86868b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>
+          <div style={{ fontSize: '12px', fontWeight: 850, color: '#000000', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>
             Expected {star_category}-Star Tariff Range
           </div>
-          <div style={{ fontSize: '32px', fontWeight: 800, color: '#f5f5f7', letterSpacing: '-0.02em', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+          <div style={{ fontSize: '34px', fontWeight: 900, color: '#000000', letterSpacing: '-0.03em', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
             <span>₹{min_price.toLocaleString()}</span>
-            <span style={{ fontSize: '20px', color: '#86868b', fontWeight: 400 }}>–</span>
+            <span style={{ fontSize: '22px', color: '#64748B', fontWeight: 600 }}>–</span>
             <span>₹{max_price.toLocaleString()}</span>
-            <span style={{ fontSize: '14px', fontWeight: 400, color: '#86868b', marginLeft: '4px' }}>/ night</span>
+            <span style={{ fontSize: '15px', fontWeight: 700, color: '#334155', marginLeft: '6px' }}>/ night</span>
           </div>
         </div>
 
         {claimedPrice !== undefined && claimedPrice > 0 && (
           <div style={{
-            background: 'rgba(0,0,0,0.3)',
-            padding: '12px 18px',
-            borderRadius: '12px',
-            border: '1px solid rgba(255,255,255,0.06)',
-            textAlign: 'right'
+            background: 'rgba(255, 255, 255, 0.25)',
+            backdropFilter: 'blur(12px)',
+            padding: '14px 20px',
+            borderRadius: '14px',
+            border: '1.5px solid rgba(255, 255, 255, 0.45)',
+            textAlign: 'right',
+            boxShadow: 'var(--shadow-sm)'
           }}>
-            <div style={{ fontSize: '11px', color: '#86868b', marginBottom: '2px', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: '11px', fontWeight: 800, color: '#000000', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               Claimed Tariff
             </div>
-            <div style={{ fontSize: '20px', fontWeight: 700, color: statusColor }}>
-              ₹{claimedPrice.toLocaleString()} <span style={{ fontSize: '12px', fontWeight: 400, color: '#86868b' }}>/ night</span>
+            <div style={{ fontSize: '22px', fontWeight: 900, color: statusColor }}>
+              ₹{claimedPrice.toLocaleString()} <span style={{ fontSize: '13px', fontWeight: 700, color: '#334155' }}>/ night</span>
             </div>
           </div>
         )}
@@ -133,16 +140,17 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
       {/* RAG Context Notes */}
       {notes && (
         <div style={{
-          background: 'rgba(255, 255, 255, 0.02)',
-          borderLeft: '3px solid #0a84ff',
-          borderRadius: '0 12px 12px 0',
-          padding: '14px 18px',
-          marginBottom: '16px'
+          background: 'rgba(0, 113, 227, 0.08)',
+          borderLeft: '4px solid #0071E3',
+          borderRadius: '0 14px 14px 0',
+          padding: '16px 20px',
+          marginBottom: '18px',
+          boxShadow: 'var(--shadow-sm)'
         }}>
-          <div style={{ fontSize: '12px', fontWeight: 600, color: '#0a84ff', marginBottom: '4px' }}>
+          <div style={{ fontSize: '12px', fontWeight: 850, color: '#0071E3', marginBottom: '4px', letterSpacing: '0.06em' }}>
             REGIONAL MARKET CONTEXT (RAG SYNTHESIS)
           </div>
-          <p style={{ margin: 0, fontSize: '14px', color: '#d2d2d7', lineHeight: 1.5 }}>
+          <p style={{ margin: 0, fontSize: '14.5px', color: '#000000', fontWeight: 700, lineHeight: 1.6 }}>
             {notes}
           </p>
         </div>
@@ -150,9 +158,9 @@ export const LocationPricingPanel: React.FC<LocationPricingPanelProps> = ({
 
       {/* Attribution footer */}
       {source && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '11px', color: '#636366' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12px', fontWeight: 700, color: '#1E293B' }}>
           <span>Source: {source}</span>
-          <span>ChromaDB Vector Retrieval Active</span>
+          <span style={{ color: '#0071E3' }}>ChromaDB Vector Retrieval Active</span>
         </div>
       )}
     </div>

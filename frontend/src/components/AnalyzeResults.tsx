@@ -82,10 +82,10 @@ export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data, claimedPri
               <CompliancePanel compliance={data.compliance} />
             )}
 
-            <div className="per-image-overview-section mt-5">
+            <div className="apple-card per-image-overview-section" style={{ marginTop: '28px', marginBottom: '28px' }}>
               <div className="eyebrow-label">INDIVIDUAL ASSET SUMMARY</div>
-              <h4 className="section-subtitle">Per-Photo Signal Breakdown</h4>
-              <div className="asset-grid mt-3">
+              <h4 className="section-subtitle" style={{ marginBottom: '16px' }}>Per-Photo Signal Breakdown</h4>
+              <div className="asset-grid">
                 {results.map((res, idx) => {
                   const compScore = res.b3_feature_vector?.composite_aesthetic?.composite_score ?? res.b3_feature_vector?.aesthetic_score;
                   return (
@@ -140,7 +140,7 @@ export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data, claimedPri
               />
             )}
 
-            <div className="photo-details-header mb-3">
+            <div className="photo-details-header mb-3" style={{ marginBottom: '20px' }}>
               <div className="eyebrow-label">INDIVIDUAL ASSET DETAIL</div>
               <h3 className="section-title">
                 Photo #{activeTab as number + 1}: <code className="code-pill">{selectedResult.filename}</code>
@@ -153,8 +153,8 @@ export const AnalyzeResults: React.FC<AnalyzeResultsProps> = ({ data, claimedPri
               title={`Asset Score Breakdown — ${selectedResult.filename}`}
             />
 
-            {/* B1 and B2 Side by Side Grid */}
-            <div className="signals-dual-grid mt-4">
+            {/* B1 and B2 Side by Side Grid with clean spacing */}
+            <div className="signals-dual-grid" style={{ marginTop: '28px', marginBottom: '28px' }}>
               <StolenPanel stolen={selectedResult.b1_stolen} />
               <AiGenPanel aiData={selectedResult.b2_ai_generated} />
             </div>

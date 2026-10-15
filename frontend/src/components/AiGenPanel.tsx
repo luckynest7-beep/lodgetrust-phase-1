@@ -29,7 +29,7 @@ export const AiGenPanel: React.FC<AiGenPanelProps> = ({ aiData }) => {
           <h3 className="section-title">AI & Deepfake Classifier</h3>
         </div>
         <span className={`mono-badge ${isAi ? 'badge-warning' : 'badge-dark'}`}>
-          {isAi ? `⚠ ${label}` : `✓ Real Photography`}
+          {isAi ? label : 'Real Photography'}
         </span>
       </div>
 

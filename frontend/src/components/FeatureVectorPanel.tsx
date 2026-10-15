@@ -53,15 +53,15 @@ export const FeatureVectorPanel: React.FC<FeatureVectorPanelProps> = ({
   const getTierLabel = (tier: string | null) => {
     switch (tier?.toLowerCase()) {
       case 'budget':
-        return '🏷️ Economy / Budget Tier';
+        return 'Economy / Budget Tier';
       case 'midscale':
-        return '🏨 Standard / Midscale Tier';
+        return 'Standard / Midscale Tier';
       case 'upscale':
-        return '✨ Upscale / Premium Boutique';
+        return 'Upscale / Premium Boutique';
       case 'luxury':
-        return '✦ Ultra Luxury 5-Star';
+        return 'Ultra Luxury 5-Star';
       default:
-        return tier ? `✦ ${tier.toUpperCase()}` : 'Unclassified';
+        return tier ? tier.toUpperCase() : 'Unclassified';
     }
   };
 
@@ -204,7 +204,7 @@ export const FeatureVectorPanel: React.FC<FeatureVectorPanelProps> = ({
                       className="tier-fill"
                       style={{
                         width: `${pct}%`,
-                        backgroundColor: isWinner ? '#FFFFFF' : 'rgba(255, 255, 255, 0.25)',
+                        backgroundColor: isWinner ? '#000000' : 'rgba(0, 0, 0, 0.25)',
                       }}
                     />
                   </div>
@@ -362,7 +362,7 @@ export const FeatureVectorPanel: React.FC<FeatureVectorPanelProps> = ({
               <div className="tile-metric-row">
                 <span className="metric-name">Exposure Balance</span>
                 <span className="metric-val">
-                  {lighting_analysis.is_balanced ? '✓ Optimal Natural Lighting' : '⚠ Non-Uniform Illumination'}
+                  {lighting_analysis.is_balanced ? 'Optimal Natural Lighting' : 'Non-Uniform Illumination'}
                 </span>
               </div>
             </div>

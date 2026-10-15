@@ -157,16 +157,16 @@ export const HotelMap: React.FC<HotelMapProps> = ({
     }
   }, [token, isTokenConfigured, onSelectHotel]);
 
-const DARK_MAP_STYLE: any = {
+const GLACIER_MAP_STYLE: any = {
   version: 8,
   sources: {
-    'carto-dark': {
+    'carto-glacier': {
       type: 'raster',
       tiles: [
-        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-        'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-        'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-        'https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+        'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
       ],
       tileSize: 256,
       attribution: '&copy; OpenStreetMap &copy; CARTO'
@@ -174,9 +174,9 @@ const DARK_MAP_STYLE: any = {
   },
   layers: [
     {
-      id: 'carto-dark-layer',
+      id: 'carto-glacier-layer',
       type: 'raster',
-      source: 'carto-dark',
+      source: 'carto-glacier',
       minzoom: 0,
       maxzoom: 20
     }
@@ -191,7 +191,7 @@ const DARK_MAP_STYLE: any = {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: DARK_MAP_STYLE,
+      style: GLACIER_MAP_STYLE,
       center: initialCenter, // [lng, lat]
       zoom: initialZoom,
     });
@@ -230,17 +230,18 @@ const DARK_MAP_STYLE: any = {
     <div className="hotel-mapbox-container" style={{
       borderRadius: '16px',
       overflow: 'hidden',
-      border: '1px solid rgba(255, 255, 255, 0.12)',
-      backgroundColor: '#1c1c1e',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+      border: '1px solid rgba(255, 255, 255, 0.40)',
+      backgroundColor: 'rgba(255, 255, 255, 0.20)',
+      backdropFilter: 'blur(16px)',
+      boxShadow: '0 8px 32px rgba(15, 23, 42, 0.08)',
       position: 'relative'
     }}>
       {/* Top Header / Control Bar */}
       <div style={{
         padding: '12px 16px',
-        backgroundColor: 'rgba(28, 28, 30, 0.95)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'rgba(255, 255, 255, 0.22)',
+        backdropFilter: 'blur(14px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.35)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -248,16 +249,20 @@ const DARK_MAP_STYLE: any = {
         gap: '8px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ color: '#0a84ff', fontSize: '14px' }}>📍</span>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#f5f5f7' }}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0056b3" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span style={{ fontSize: '13.5px', fontWeight: 850, color: '#000000' }}>
             Mapbox Hotel & Lodge Explorer
           </span>
           {hotels.length > 0 && (
             <span style={{
-              background: 'rgba(10, 132, 255, 0.2)',
-              color: '#0a84ff',
+              background: 'rgba(10, 132, 255, 0.15)',
+              color: '#0056b3',
+              border: '1px solid rgba(10, 132, 255, 0.3)',
               fontSize: '11px',
-              fontWeight: 600,
+              fontWeight: 800,
               padding: '2px 8px',
               borderRadius: '10px'
             }}>
@@ -270,21 +275,22 @@ const DARK_MAP_STYLE: any = {
           onClick={handleSearchCurrentArea}
           disabled={loading || !isTokenConfigured}
           style={{
-            background: hasMoved ? '#0a84ff' : 'rgba(255, 255, 255, 0.1)',
-            color: '#ffffff',
-            border: hasMoved ? '1px solid #0a84ff' : '1px solid rgba(255, 255, 255, 0.15)',
+            background: hasMoved ? '#0056b3' : 'rgba(255, 255, 255, 0.24)',
+            color: hasMoved ? '#ffffff' : '#000000',
+            border: hasMoved ? '1px solid #0056b3' : '1px solid rgba(255, 255, 255, 0.40)',
             borderRadius: '8px',
             padding: '6px 14px',
             fontSize: '12px',
-            fontWeight: 600,
+            fontWeight: 800,
             cursor: loading ? 'not-allowed' : 'pointer',
             transition: 'all 0.2s ease',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '6px',
+            boxShadow: '0 2px 6px rgba(15, 23, 42, 0.06)'
           }}
         >
-          {loading ? 'Searching Area...' : hasMoved ? '🔍 Search This Area' : '⟳ Refresh Hotels'}
+          {loading ? 'Searching Area...' : hasMoved ? 'Search This Area' : 'Refresh Hotels'}
         </button>
       </div>
 
@@ -298,15 +304,22 @@ const DARK_MAP_STYLE: any = {
           justifyContent: 'center',
           padding: '24px',
           textAlign: 'center',
-          background: 'linear-gradient(180deg, rgba(28,28,30,0.9) 0%, rgba(18,18,20,0.95) 100%)',
-          color: '#f5f5f7'
+          background: 'rgba(255, 255, 255, 0.25)',
+          backdropFilter: 'blur(16px)',
+          color: '#000000'
         }}>
-          <div style={{ fontSize: '32px', marginBottom: '12px' }}>🗺️</div>
-          <h4 style={{ fontSize: '17px', fontWeight: 600, margin: '0 0 8px 0' }}>Mapbox Access Token Required</h4>
-          <p style={{ fontSize: '13px', color: '#86868b', maxWidth: '400px', lineHeight: 1.5, margin: '0 0 16px 0' }}>
-            Please set your Mapbox public token in <code style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>frontend/.env</code> under <code style={{ color: '#0a84ff' }}>VITE_MAPBOX_TOKEN</code> to activate interactive map searches.
+          <div style={{ marginBottom: '12px', color: '#0056b3' }}>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+              <line x1="8" y1="2" x2="8" y2="18" />
+              <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+          </div>
+          <h4 style={{ fontSize: '17px', fontWeight: 850, margin: '0 0 8px 0', color: '#000000' }}>Mapbox Access Token Required</h4>
+          <p style={{ fontSize: '13px', color: '#0F172A', maxWidth: '400px', lineHeight: 1.5, margin: '0 0 16px 0', fontWeight: 650 }}>
+            Please set your Mapbox public token in <code style={{ background: 'rgba(15,23,42,0.08)', padding: '2px 6px', borderRadius: '4px', color: '#000000', fontWeight: 800 }}>frontend/.env</code> under <code style={{ color: '#0056b3', fontWeight: 800 }}>VITE_MAPBOX_TOKEN</code> to activate interactive map searches.
           </p>
-          <span style={{ fontSize: '11px', color: '#636366' }}>Example: VITE_MAPBOX_TOKEN=pk.eyJ1...</span>
+          <span style={{ fontSize: '11px', color: '#334155', fontWeight: 700 }}>Example: VITE_MAPBOX_TOKEN=pk.eyJ1...</span>
         </div>
       ) : (
         /* Map Container Div with explicit height */
@@ -322,19 +335,21 @@ const DARK_MAP_STYLE: any = {
           position: 'absolute',
           top: '55px',
           left: '16px',
-          background: 'rgba(28, 28, 30, 0.85)',
+          background: 'rgba(240, 245, 250, 0.95)',
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.8)',
           borderRadius: '8px',
           padding: '6px 12px',
           fontSize: '12px',
-          color: '#d2d2d7',
+          color: '#000000',
+          fontWeight: 750,
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          zIndex: 2
+          zIndex: 2,
+          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.1)'
         }}>
-          <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#0a84ff', animation: 'pulse 1s infinite' }} />
+          <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#0056b3', animation: 'pulse 1s infinite' }} />
           Querying Mapbox Search Box API...
         </div>
       )}
@@ -346,12 +361,13 @@ const DARK_MAP_STYLE: any = {
           bottom: '12px',
           left: '12px',
           right: '12px',
-          background: 'rgba(255, 59, 48, 0.2)',
-          border: '1px solid rgba(255, 59, 48, 0.4)',
+          background: 'rgba(239, 68, 68, 0.15)',
+          border: '1px solid rgba(239, 68, 68, 0.35)',
           borderRadius: '8px',
           padding: '8px 12px',
           fontSize: '12px',
-          color: '#ff453a',
+          color: '#b91c1c',
+          fontWeight: 750,
           zIndex: 2
         }}>
           {error}
@@ -364,14 +380,16 @@ const DARK_MAP_STYLE: any = {
           position: 'absolute',
           bottom: '12px',
           left: '12px',
-          background: 'rgba(28, 28, 30, 0.85)',
+          background: 'rgba(240, 245, 250, 0.95)',
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.8)',
           borderRadius: '8px',
           padding: '8px 12px',
           fontSize: '12px',
-          color: '#86868b',
-          zIndex: 2
+          color: '#000000',
+          fontWeight: 750,
+          zIndex: 2,
+          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.1)'
         }}>
           No hotels detected in this view. Pan or zoom the map and click "Search This Area".
         </div>

@@ -276,7 +276,9 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
       } else {
         badge.style.backgroundColor = '#636366';
         badge.style.border = '2px solid rgba(255,255,255,0.7)';
-        badge.innerText = '🏨';
+        badge.innerText = 'H';
+        badge.style.fontWeight = '800';
+        badge.style.fontSize = '12px';
       }
 
       container.addEventListener('mouseenter', () => { 
@@ -296,7 +298,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
         <div style="color: #1c1c1e; font-family: -apple-system, BlinkMacSystemFont, sans-serif; min-width: 210px; max-width: 270px; padding: 2px;">
           <div style="font-size: 14px; font-weight: 700; color: #000; margin-bottom: 2px; line-height: 1.25;">${hotelName}</div>
           <div style="font-size: 11px; color: #007aff; font-weight: 600; margin-bottom: 4px;">${hotelType}${starText}</div>
-          <div style="font-size: 12px; color: #3a3a3c; margin-bottom: 8px; line-height: 1.35;">📍 ${hotelAddress}</div>
+          <div style="font-size: 12px; color: #3a3a3c; margin-bottom: 8px; line-height: 1.35;">${hotelAddress}</div>
           ${priceText}
           <div style="
             background: ${hotel.has_phase1_analysis ? 'rgba(52, 199, 89, 0.15)' : 'rgba(142, 142, 147, 0.15)'};
@@ -310,7 +312,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
               <button id="popup-audit-${cleanHotelId}" style="
                 flex: 1; background: #34c759; color: #ffffff; border: none; border-radius: 6px;
                 padding: 6px 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: background 0.15s ease;
-              ">⚡ Audit in Phase 1</button>
+              ">Audit in Analysis</button>
             ` : ''}
             <button id="popup-compare-${cleanHotelId}" style="
               background: #0a84ff; color: #ffffff; border: none; border-radius: 6px;
@@ -381,15 +383,15 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
   };
 
   return (
-    <div className="hotel-discovery-view" style={{ color: '#f5f5f7', position: 'relative' }}>
+    <div className="hotel-discovery-view" style={{ color: '#000000', position: 'relative' }}>
       {/* Top Search & Filter Bar */}
-      <div className="apple-card mb-4" style={{ padding: '24px', borderRadius: '20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
+      <div className="apple-card mb-4" style={{ padding: '24px', borderRadius: '24px', backgroundColor: 'rgba(255, 255, 255, 0.18)', backdropFilter: 'blur(16px) saturate(160%)', WebkitBackdropFilter: 'blur(16px) saturate(160%)', border: '1.5px solid rgba(255, 255, 255, 0.40)', boxShadow: 'var(--shadow-glass)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <div className="eyebrow-label" style={{ color: '#0a84ff', marginBottom: '4px' }}>
-              PHASE 2: VERIFIED LODGING DISCOVERY
+            <div className="eyebrow-label" style={{ color: '#0071E3', fontWeight: 850, letterSpacing: '0.09em', marginBottom: '4px' }}>
+              VERIFIED LODGING DISCOVERY
             </div>
-            <h2 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>
+            <h2 style={{ fontSize: '26px', fontWeight: 850, color: '#000000', margin: 0, letterSpacing: '-0.02em' }}>
               Explore Hotels & Lodges in India
             </h2>
           </div>
@@ -399,21 +401,23 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
               <button
                 onClick={() => setShowComparisonModal(true)}
                 style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  color: '#ffffff',
-                  border: '1px solid rgba(255,255,255,0.15)',
+                  background: 'rgba(255, 255, 255, 0.20)',
+                  backdropFilter: 'blur(14px)',
+                  color: '#000000',
+                  border: '1px solid rgba(255, 255, 255, 0.40)',
                   borderRadius: '12px',
-                  padding: '8px 16px',
+                  padding: '9px 18px',
                   fontSize: '13px',
-                  fontWeight: 600,
+                  fontWeight: 800,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px'
+                  gap: '8px',
+                  boxShadow: 'var(--shadow-sm)'
                 }}
               >
-                <span>⚖ View Matrix</span>
-                <span style={{ background: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '10px', fontSize: '12px' }}>
+                <span>View Matrix</span>
+                <span style={{ background: '#000000', color: '#FFFFFF', padding: '2px 8px', borderRadius: '10px', fontSize: '12px', fontWeight: 800 }}>
                   {comparisonList.length}
                 </span>
               </button>
@@ -425,22 +429,22 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                   }
                 }}
                 style={{
-                  background: 'linear-gradient(135deg, #0a84ff 0%, #0056b3 100%)',
-                  color: '#ffffff',
+                  background: '#000000',
+                  color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '12px',
-                  padding: '8px 18px',
+                  padding: '9px 20px',
                   fontSize: '13px',
-                  fontWeight: 700,
+                  fontWeight: 850,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 16px rgba(10, 132, 255, 0.4)'
+                  boxShadow: '0 6px 18px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                <span>🔍 Compare in Image Analysis Phase</span>
-                <span>➔</span>
+                <span>Compare in Analysis</span>
+                <span style={{ fontSize: '14px', fontWeight: 900 }}>→</span>
               </button>
             </div>
           )}
@@ -448,20 +452,22 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
 
         {/* City Quick Pills & Search */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#86868b' }}>Cities in India:</span>
+          <span style={{ fontSize: '13px', fontWeight: 800, color: '#000000' }}>Cities in India:</span>
           {cities.map(c => (
             <button
               key={c.city}
               onClick={() => setSelectedCity(c.city)}
               style={{
-                background: selectedCity.toLowerCase() === c.city.toLowerCase() ? '#0a84ff' : 'rgba(255,255,255,0.06)',
-                color: selectedCity.toLowerCase() === c.city.toLowerCase() ? '#ffffff' : '#d2d2d7',
-                border: selectedCity.toLowerCase() === c.city.toLowerCase() ? '1px solid #0a84ff' : '1px solid rgba(255,255,255,0.1)',
-                padding: '6px 14px',
+                background: selectedCity.toLowerCase() === c.city.toLowerCase() ? '#000000' : 'rgba(255, 255, 255, 0.20)',
+                backdropFilter: 'blur(14px)',
+                color: selectedCity.toLowerCase() === c.city.toLowerCase() ? '#FFFFFF' : '#000000',
+                border: selectedCity.toLowerCase() === c.city.toLowerCase() ? '1.5px solid #000000' : '1px solid rgba(255, 255, 255, 0.40)',
+                padding: '7px 16px',
                 borderRadius: '20px',
                 fontSize: '13px',
-                fontWeight: 600,
+                fontWeight: 800,
                 cursor: 'pointer',
+                boxShadow: selectedCity.toLowerCase() === c.city.toLowerCase() ? '0 4px 12px rgba(0,0,0,0.25)' : 'var(--shadow-sm)',
                 transition: 'all 0.15s ease'
               }}
             >
@@ -471,16 +477,16 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
         </div>
 
         {/* Secondary Filter Row */}
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.35)' }}>
           {/* Accommodation Type */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '12px', color: '#86868b', fontWeight: 600 }}>Type:</span>
+            <span style={{ fontSize: '12.5px', color: '#000000', fontWeight: 800 }}>Type:</span>
             <select
               value={accommodationType}
               onChange={(e) => setAccommodationType(e.target.value)}
               style={{
-                background: '#1c1c1e', color: '#f5f5f7', border: '1px solid #424245',
-                padding: '6px 12px', borderRadius: '8px', fontSize: '13px', outline: 'none'
+                background: 'rgba(255, 255, 255, 0.20)', backdropFilter: 'blur(14px)', color: '#000000', border: '1.5px solid rgba(255, 255, 255, 0.40)',
+                padding: '7px 14px', borderRadius: '10px', fontSize: '13px', fontWeight: 750, outline: 'none'
               }}
             >
               <option value="All">All Types</option>
@@ -493,13 +499,13 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
 
           {/* Star Rating */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '12px', color: '#86868b', fontWeight: 600 }}>Stars:</span>
+            <span style={{ fontSize: '12.5px', color: '#000000', fontWeight: 800 }}>Stars:</span>
             <select
               value={minStars}
               onChange={(e) => setMinStars(Number(e.target.value))}
               style={{
-                background: '#1c1c1e', color: '#f5f5f7', border: '1px solid #424245',
-                padding: '6px 12px', borderRadius: '8px', fontSize: '13px', outline: 'none'
+                background: 'rgba(255, 255, 255, 0.20)', backdropFilter: 'blur(14px)', color: '#000000', border: '1.5px solid rgba(255, 255, 255, 0.40)',
+                padding: '7px 14px', borderRadius: '10px', fontSize: '13px', fontWeight: 750, outline: 'none'
               }}
             >
               <option value={0}>Any Stars</option>
@@ -511,13 +517,13 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
 
           {/* Sort By */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '12px', color: '#86868b', fontWeight: 600 }}>Sort:</span>
+            <span style={{ fontSize: '12.5px', color: '#000000', fontWeight: 800 }}>Sort:</span>
             <select
               value={sortBy}
               onChange={(e: any) => setSortBy(e.target.value)}
               style={{
-                background: '#1c1c1e', color: '#f5f5f7', border: '1px solid #424245',
-                padding: '6px 12px', borderRadius: '8px', fontSize: '13px', outline: 'none'
+                background: 'rgba(255, 255, 255, 0.20)', backdropFilter: 'blur(14px)', color: '#000000', border: '1.5px solid rgba(255, 255, 255, 0.40)',
+                padding: '7px 14px', borderRadius: '10px', fontSize: '13px', fontWeight: 750, outline: 'none'
               }}
             >
               <option value="trust_score">LodgeTrust Trust Score (High to Low)</option>
@@ -528,12 +534,12 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
           </div>
 
           {/* Verified Only Toggle */}
-          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '13px', color: '#d2d2d7', marginLeft: 'auto' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: 750, color: '#000000', marginLeft: 'auto' }}>
             <input
               type="checkbox"
               checked={verifiedOnly}
               onChange={(e) => setVerifiedOnly(e.target.checked)}
-              style={{ accentColor: '#34c759', width: '16px', height: '16px' }}
+              style={{ accentColor: '#059669', width: '18px', height: '18px' }}
             />
             <span>Audited Benchmark Listings Only</span>
           </label>
@@ -578,7 +584,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                     transition: 'all 0.15s ease'
                   }}
                 >
-                  {theme === 'streets' ? '🗺️ Streets' : theme === 'dark' ? '🌙 Dark' : '🛰️ Satellite'}
+                  {theme === 'streets' ? 'Streets' : theme === 'dark' ? 'Dark' : 'Satellite'}
                 </button>
               ))}
             </div>
@@ -629,8 +635,8 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
           )}
 
           {!loading && hotels.length === 0 && (
-            <div className="apple-card" style={{ padding: '32px', textAlign: 'center' }}>
-              <p style={{ color: '#86868b', fontSize: '14px', margin: 0 }}>No hotels match the selected filter criteria.</p>
+            <div className="apple-card" style={{ padding: '32px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.18)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255, 255, 255, 0.40)' }}>
+              <p style={{ color: '#000000', fontSize: '15px', fontWeight: 850, margin: 0 }}>No hotels match the selected filter criteria.</p>
             </div>
           )}
 
@@ -647,8 +653,11 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                   padding: '20px',
                   borderRadius: '16px',
                   cursor: 'pointer',
-                  border: isSelected ? '1px solid #0a84ff' : '1px solid rgba(255,255,255,0.08)',
-                  background: isSelected ? 'rgba(10, 132, 255, 0.08)' : 'rgba(28, 28, 30, 0.65)',
+                  border: isSelected ? '2px solid #0056b3' : '1px solid rgba(255, 255, 255, 0.40)',
+                  background: isSelected ? 'rgba(10, 132, 255, 0.18)' : 'rgba(255, 255, 255, 0.18)',
+                  backdropFilter: 'blur(16px) saturate(160%)',
+                  WebkitBackdropFilter: 'blur(16px) saturate(160%)',
+                  boxShadow: isSelected ? '0 8px 24px rgba(10, 132, 255, 0.2)' : '0 4px 16px rgba(15, 23, 42, 0.06)',
                   transition: 'all 0.2s ease',
                   position: 'relative'
                 }}
@@ -656,15 +665,15 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                 {/* Header Row */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                   <div>
-                    <h3 style={{ fontSize: '17px', fontWeight: 700, margin: '0 0 4px 0', color: '#f5f5f7' }}>
+                    <h3 style={{ fontSize: '18px', fontWeight: 850, margin: '0 0 4px 0', color: '#000000', letterSpacing: '-0.02em' }}>
                       {hotel.name || 'Name not available'}
                     </h3>
-                    <div style={{ fontSize: '12px', color: '#86868b', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                      <span style={{ color: '#d2d2d7' }}>{hotel.accommodation_type || 'Hotel'}</span>
+                    <div style={{ fontSize: '12px', color: '#0F172A', display: 'flex', gap: '8px', alignItems: 'center', fontWeight: 700 }}>
+                      <span style={{ color: '#000000' }}>{hotel.accommodation_type || 'Hotel'}</span>
                       {hotel.star_rating > 0 && (
                         <>
                           <span>•</span>
-                          <span style={{ color: '#ffd60a' }}>{'★'.repeat(Math.min(hotel.star_rating, 5))}</span>
+                          <span style={{ color: '#b45309', fontWeight: 800 }}>{'★'.repeat(Math.min(hotel.star_rating, 5))}</span>
                         </>
                       )}
                       <span>•</span>
@@ -676,26 +685,26 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                   <div>
                     {hotel.has_phase1_analysis && typeof hotel.trust_score === 'number' ? (
                       <div style={{
-                        background: hotel.trust_score >= 90 ? 'rgba(52, 199, 89, 0.15)' : 'rgba(10, 132, 255, 0.15)',
-                        color: hotel.trust_score >= 90 ? '#34c759' : '#0a84ff',
-                        border: `1px solid ${hotel.trust_score >= 90 ? 'rgba(52, 199, 89, 0.3)' : 'rgba(10, 132, 255, 0.3)'}`,
+                        background: hotel.trust_score >= 90 ? 'rgba(22, 101, 52, 0.15)' : 'rgba(10, 132, 255, 0.15)',
+                        color: hotel.trust_score >= 90 ? '#15803d' : '#0056b3',
+                        border: `1.5px solid ${hotel.trust_score >= 90 ? '#15803d' : '#0056b3'}`,
                         borderRadius: '12px',
                         padding: '4px 10px',
                         fontSize: '13px',
-                        fontWeight: 700,
+                        fontWeight: 850,
                         textAlign: 'center'
                       }}>
                         {hotel.trust_score}% Benchmark
                       </div>
                     ) : (
                       <div style={{
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        color: '#86868b',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'rgba(255, 255, 255, 0.22)',
+                        color: '#0F172A',
+                        border: '1px solid rgba(255, 255, 255, 0.40)',
                         borderRadius: '12px',
                         padding: '4px 10px',
                         fontSize: '11px',
-                        fontWeight: 600
+                        fontWeight: 800
                       }}>
                         Pending Audit
                       </div>
@@ -704,8 +713,8 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                 </div>
 
                 {/* Address */}
-                <p style={{ fontSize: '12px', color: '#8e8e93', margin: '0 0 12px 0', lineHeight: 1.4 }}>
-                  📍 {hotel.address || 'Address not available'}
+                <p style={{ fontSize: '12.5px', color: '#0F172A', margin: '0 0 12px 0', lineHeight: 1.4, fontWeight: 650 }}>
+                  {hotel.address || 'Address not available'}
                 </p>
 
                 {/* Amenities pills */}
@@ -714,36 +723,37 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                     <span 
                       key={a}
                       style={{
-                        background: 'rgba(255,255,255,0.04)',
-                        color: '#a1a1a6',
-                        fontSize: '11px',
-                        padding: '2px 8px',
+                        background: 'rgba(255, 255, 255, 0.22)',
+                        color: '#000000',
+                        fontSize: '11.5px',
+                        fontWeight: 750,
+                        padding: '3px 8px',
                         borderRadius: '6px',
-                        border: '1px solid rgba(255,255,255,0.06)'
+                        border: '1px solid rgba(255, 255, 255, 0.40)'
                       }}
                     >
                       {a}
                     </span>
                   ))}
                   {hotel.amenities.length > 4 && (
-                    <span style={{ fontSize: '11px', color: '#636366', alignSelf: 'center' }}>
+                    <span style={{ fontSize: '11px', color: '#0F172A', alignSelf: 'center', fontWeight: 800 }}>
                       +{hotel.amenities.length - 4} more
                     </span>
                   )}
                 </div>
 
                 {/* Footer / Price & Actions */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.3)' }}>
                   <div>
                     {hotel.price_per_night > 0 ? (
                       <>
-                        <span style={{ fontSize: '18px', fontWeight: 800, color: '#f5f5f7' }}>
+                        <span style={{ fontSize: '19px', fontWeight: 900, color: '#000000' }}>
                           ₹{hotel.price_per_night.toLocaleString()}
                         </span>
-                        <span style={{ fontSize: '11px', color: '#86868b', marginLeft: '4px' }}>/ night</span>
+                        <span style={{ fontSize: '12px', color: '#0F172A', marginLeft: '4px', fontWeight: 750 }}>/ night</span>
                       </>
                     ) : (
-                      <span style={{ fontSize: '12px', color: '#86868b', fontStyle: 'italic' }}>
+                      <span style={{ fontSize: '12px', color: '#0F172A', fontStyle: 'italic', fontWeight: 700 }}>
                         Price not specified
                       </span>
                     )}
@@ -756,14 +766,15 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                         toggleComparison(hotel);
                       }}
                       style={{
-                        background: isCompared ? 'rgba(10, 132, 255, 0.2)' : 'rgba(255,255,255,0.05)',
-                        color: isCompared ? '#0a84ff' : '#d2d2d7',
-                        border: isCompared ? '1px solid #0a84ff' : '1px solid rgba(255,255,255,0.1)',
+                        background: isCompared ? '#0056b3' : 'rgba(255, 255, 255, 0.32)',
+                        color: isCompared ? '#ffffff' : '#000000',
+                        border: isCompared ? '1px solid #0056b3' : '1px solid rgba(255, 255, 255, 0.45)',
                         borderRadius: '8px',
-                        padding: '5px 10px',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        cursor: 'pointer'
+                        padding: '6px 12px',
+                        fontSize: '11.5px',
+                        fontWeight: 800,
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 6px rgba(15, 23, 42, 0.08)'
                       }}
                     >
                       {isCompared ? '✓ Added' : '+ Compare'}
@@ -776,17 +787,18 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                           onAuditListing(hotel);
                         }}
                         style={{
-                          background: 'rgba(52, 199, 89, 0.15)',
-                          color: '#34c759',
-                          border: '1px solid rgba(52, 199, 89, 0.3)',
+                          background: '#15803d',
+                          color: '#ffffff',
+                          border: 'none',
                           borderRadius: '8px',
-                          padding: '5px 10px',
-                          fontSize: '11px',
-                          fontWeight: 600,
-                          cursor: 'pointer'
+                          padding: '6px 12px',
+                          fontSize: '11.5px',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          boxShadow: '0 2px 8px rgba(21, 128, 61, 0.3)'
                         }}
                       >
-                        ⚡ Audit in Phase 1
+                        Audit in Analysis
                       </button>
                     )}
                   </div>
@@ -802,19 +814,20 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
         <div style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(0,0,0,0.75)',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(15, 23, 42, 0.35)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 1000,
           padding: '24px'
         }}>
-          <div className="apple-card" style={{ maxWidth: '960px', width: '100%', padding: '32px', borderRadius: '24px', maxHeight: '90vh', overflowY: 'auto' }}>
+          <div className="apple-card" style={{ maxWidth: '960px', width: '100%', padding: '32px', borderRadius: '24px', maxHeight: '90vh', overflowY: 'auto', background: 'rgba(240, 248, 255, 0.40)', backdropFilter: 'blur(20px) saturate(160%)', WebkitBackdropFilter: 'blur(20px) saturate(160%)', border: '1.5px solid rgba(255, 255, 255, 0.50)', boxShadow: '0 24px 60px rgba(15, 23, 42, 0.15)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
               <div>
-                <div className="eyebrow-label" style={{ color: '#0a84ff', marginBottom: '4px' }}>LISTING COMPARISON MATRIX</div>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>Side-by-Side Trust Evaluation</h3>
+                <div className="eyebrow-label" style={{ color: '#0056b3', marginBottom: '4px', fontWeight: 850 }}>LISTING COMPARISON MATRIX</div>
+                <h3 style={{ fontSize: '24px', fontWeight: 900, margin: 0, color: '#000000' }}>Side-by-Side Trust Evaluation</h3>
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <button
@@ -831,7 +844,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                     borderRadius: '12px',
                     padding: '9px 18px',
                     fontSize: '13px',
-                    fontWeight: 700,
+                    fontWeight: 800,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -839,12 +852,12 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                     boxShadow: '0 4px 16px rgba(10, 132, 255, 0.4)'
                   }}
                 >
-                  <span>🔍 Audit & Compare in Image Analysis Phase</span>
-                  <span>➔</span>
+                  <span>Audit & Compare in Analysis</span>
+                  <span style={{ fontSize: '14px', fontWeight: 900 }}>→</span>
                 </button>
                 <button 
                   onClick={() => setShowComparisonModal(false)}
-                  style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: 'none', borderRadius: '50%', width: '32px', height: '32px', cursor: 'pointer', fontSize: '16px' }}
+                  style={{ background: 'rgba(255, 255, 255, 0.3)', color: '#000000', border: 'none', borderRadius: '50%', width: '32px', height: '32px', cursor: 'pointer', fontSize: '16px', fontWeight: 800 }}
                 >
                   ✕
                 </button>
@@ -853,45 +866,45 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
 
             <div style={{ display: 'grid', gridTemplateColumns: `repeat(${comparisonList.length}, 1fr)`, gap: '20px' }}>
               {comparisonList.map(h => (
-                <div key={h.id} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column' }}>
-                  <h4 style={{ fontSize: '18px', fontWeight: 700, margin: '0 0 6px 0' }}>{h.name}</h4>
-                  <div style={{ color: '#ffd60a', fontSize: '13px', marginBottom: '12px' }}>{'★'.repeat(h.star_rating)} • {h.accommodation_type}</div>
+                <div key={h.id} style={{ background: 'rgba(255, 255, 255, 0.24)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255, 255, 255, 0.45)', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.05)' }}>
+                  <h4 style={{ fontSize: '18px', fontWeight: 850, margin: '0 0 6px 0', color: '#000000' }}>{h.name}</h4>
+                  <div style={{ color: '#b45309', fontSize: '13px', marginBottom: '12px', fontWeight: 800 }}>{'★'.repeat(h.star_rating)} • {h.accommodation_type}</div>
                   
                   {/* Trust Score Box */}
                   <div style={{
-                    background: h.has_phase1_analysis ? 'rgba(52, 199, 89, 0.15)' : 'rgba(255,255,255,0.04)',
-                    border: `1px solid ${h.has_phase1_analysis ? 'rgba(52, 199, 89, 0.3)' : 'rgba(255,255,255,0.08)'}`,
+                    background: h.has_phase1_analysis ? 'rgba(22, 101, 52, 0.12)' : 'rgba(255, 255, 255, 0.25)',
+                    border: `1.5px solid ${h.has_phase1_analysis ? '#15803d' : 'rgba(255, 255, 255, 0.45)'}`,
                     borderRadius: '12px',
                     padding: '12px',
                     marginBottom: '16px',
                     textAlign: 'center'
                   }}>
-                    <div style={{ fontSize: '11px', color: '#86868b', textTransform: 'uppercase', marginBottom: '2px' }}>LodgeTrust Verdict</div>
-                    <div style={{ fontSize: '24px', fontWeight: 800, color: h.has_phase1_analysis ? '#34c759' : '#8e8e93' }}>
+                    <div style={{ fontSize: '11px', color: '#0F172A', textTransform: 'uppercase', marginBottom: '2px', fontWeight: 850 }}>LodgeTrust Verdict</div>
+                    <div style={{ fontSize: '26px', fontWeight: 900, color: h.has_phase1_analysis ? '#15803d' : '#0F172A' }}>
                       {h.has_phase1_analysis ? `${h.trust_score}%` : 'Unverified'}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#a1a1a6', marginTop: '2px' }}>
+                    <div style={{ fontSize: '11px', color: '#0F172A', marginTop: '2px', fontWeight: 750 }}>
                       {h.has_phase1_analysis ? `Audit Date: ${h.verified_date}` : 'Pending Multimodal Review'}
                     </div>
                   </div>
 
-                  <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '8px', color: '#d2d2d7', flex: 1 }}>
-                    <div><strong>Tariff:</strong> {h.price_per_night > 0 ? `₹${h.price_per_night.toLocaleString()} / night` : 'Price not specified'}</div>
-                    <div><strong>Location:</strong> {h.city}, {h.state}</div>
-                    {h.aesthetic_score && <div><strong>Aesthetic Score:</strong> {h.aesthetic_score} / 10</div>}
-                    {h.compliance_ratio && <div><strong>HRACC Compliance:</strong> {Math.round(h.compliance_ratio * 100)}%</div>}
+                  <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '8px', color: '#0F172A', flex: 1, fontWeight: 700 }}>
+                    <div><strong style={{ color: '#000000' }}>Tariff:</strong> {h.price_per_night > 0 ? `₹${h.price_per_night.toLocaleString()} / night` : 'Price not specified'}</div>
+                    <div><strong style={{ color: '#000000' }}>Location:</strong> {h.city}, {h.state}</div>
+                    {h.aesthetic_score && <div><strong style={{ color: '#000000' }}>Aesthetic Score:</strong> {h.aesthetic_score} / 10</div>}
+                    {h.compliance_ratio && <div><strong style={{ color: '#000000' }}>HRACC Compliance:</strong> {Math.round(h.compliance_ratio * 100)}%</div>}
                     <div style={{ marginTop: '8px' }}>
-                      <strong>Amenities:</strong>
+                      <strong style={{ color: '#000000' }}>Amenities:</strong>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '4px' }}>
                         {h.amenities.map(a => (
-                          <span key={a} style={{ fontSize: '10px', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: '4px' }}>{a}</span>
+                          <span key={a} style={{ fontSize: '10.5px', background: 'rgba(255, 255, 255, 0.4)', color: '#000000', fontWeight: 750, padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(255, 255, 255, 0.45)' }}>{a}</span>
                         ))}
                       </div>
                     </div>
                   </div>
 
                   {/* Individual Audit Button */}
-                  <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.3)' }}>
                     <button
                       onClick={() => {
                         setShowComparisonModal(false);
@@ -901,21 +914,22 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
                       }}
                       style={{
                         width: '100%',
-                        background: 'rgba(52, 199, 89, 0.15)',
-                        color: '#34c759',
-                        border: '1px solid rgba(52, 199, 89, 0.3)',
+                        background: '#15803d',
+                        color: '#ffffff',
+                        border: 'none',
                         borderRadius: '10px',
                         padding: '8px 12px',
                         fontSize: '12px',
-                        fontWeight: 700,
+                        fontWeight: 800,
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '6px'
+                        gap: '6px',
+                        boxShadow: '0 2px 8px rgba(21, 128, 61, 0.3)'
                       }}
                     >
-                      <span>⚡ Audit this Listing in Phase 1</span>
+                      <span>Audit this Listing in Analysis</span>
                     </button>
                   </div>
                 </div>
@@ -932,20 +946,20 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
           bottom: '24px',
           left: '50%',
           transform: 'translateX(-50%)',
-          background: 'rgba(28, 28, 30, 0.95)',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(255, 255, 255, 0.24)',
+          backdropFilter: 'blur(16px) saturate(160%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(160%)',
           padding: '12px 20px',
           borderRadius: '20px',
-          border: '1px solid rgba(10, 132, 255, 0.4)',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.7)',
+          border: '1.5px solid rgba(255, 255, 255, 0.45)',
+          boxShadow: '0 16px 40px rgba(15, 23, 42, 0.12)',
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
           zIndex: 90
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '18px' }}>⚖️</span>
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#f5f5f7' }}>
+            <span style={{ fontSize: '13.5px', fontWeight: 850, color: '#000000' }}>
               {comparisonList.length} {comparisonList.length === 1 ? 'hotel' : 'hotels'} selected to compare
             </span>
           </div>
@@ -953,14 +967,15 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
           <button
             onClick={() => setShowComparisonModal(true)}
             style={{
-              background: 'rgba(255,255,255,0.08)',
-              color: '#d2d2d7',
-              border: '1px solid rgba(255,255,255,0.12)',
+              background: 'rgba(255, 255, 255, 0.35)',
+              color: '#000000',
+              border: '1px solid rgba(255, 255, 255, 0.5)',
               borderRadius: '10px',
               padding: '6px 14px',
               fontSize: '12px',
-              fontWeight: 600,
-              cursor: 'pointer'
+              fontWeight: 800,
+              cursor: 'pointer',
+              boxShadow: '0 2px 6px rgba(15, 23, 42, 0.06)'
             }}
           >
             Side-by-Side Matrix
@@ -979,7 +994,7 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
               borderRadius: '10px',
               padding: '7px 16px',
               fontSize: '12px',
-              fontWeight: 700,
+              fontWeight: 800,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -987,18 +1002,19 @@ export const HotelDiscoveryView: React.FC<HotelDiscoveryViewProps> = ({ onAuditL
               boxShadow: '0 4px 14px rgba(10, 132, 255, 0.4)'
             }}
           >
-            <span>🔍 Move to Image Analysis Phase</span>
-            <span>➔</span>
+            <span>Move to Analysis</span>
+            <span style={{ fontSize: '14px', fontWeight: 900 }}>→</span>
           </button>
 
           <button
             onClick={() => setComparisonList([])}
             style={{
               background: 'transparent',
-              color: '#8e8e93',
+              color: '#000000',
               border: 'none',
               cursor: 'pointer',
-              fontSize: '12px',
+              fontSize: '13px',
+              fontWeight: 850,
               padding: '4px'
             }}
             title="Clear comparison list"
